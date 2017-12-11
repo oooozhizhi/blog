@@ -1,7 +1,7 @@
-cd ../../Program Files/blog/
+cd ../../Program Files/blog
 ls -l
 hexo generate
-cp -R public/* ../../.git/oooozhizhi.github.io/
+cp -R public/* ../../.git/oooozhizhi.github.io
 cd ../../.git/oooozhizhi.github.io
 git add .
 git commit -m "blog update"
