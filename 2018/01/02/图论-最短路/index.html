@@ -5,14 +5,19 @@
   
 
   
-  <title>阿福</title>
+  <title>图论-最短路 | 阿福</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="阿福">
-<meta property="og:url" content="http://dzjbupt.cn/index.html">
+  <meta name="description" content="之前就想对常见的图论的算法进行一个总结，借着这个机会开一个坑。 常见的最短路算法###floyd 弗洛伊德算法思想：想知道a到b点的最短路，只能加入中间节点来缩短路径。那么我们就要便利所有的最短路径，才能得到a到b的最短路径。核心代码只有5行 for(int mid = 0;mid &amp;lt; N;mid++){">
+<meta name="keywords" content="图论">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图论-最短路">
+<meta property="og:url" content="http://dzjbupt.cn/2018/01/02/图论-最短路/index.html">
 <meta property="og:site_name" content="阿福">
+<meta property="og:description" content="之前就想对常见的图论的算法进行一个总结，借着这个机会开一个坑。 常见的最短路算法###floyd 弗洛伊德算法思想：想知道a到b点的最短路，只能加入中间节点来缩短路径。那么我们就要便利所有的最短路径，才能得到a到b的最短路径。核心代码只有5行 for(int mid = 0;mid &amp;lt; N;mid++){     for(int i=0;i &amp;lt; N;i++){         for(">
+<meta property="og:updated_time" content="2018-01-02T14:50:09.241Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="阿福">
+<meta name="twitter:title" content="图论-最短路">
+<meta name="twitter:description" content="之前就想对常见的图论的算法进行一个总结，借着这个机会开一个坑。 常见的最短路算法###floyd 弗洛伊德算法思想：想知道a到b点的最短路，只能加入中间节点来缩短路径。那么我们就要便利所有的最短路径，才能得到a到b的最短路径。核心代码只有5行 for(int mid = 0;mid &amp;lt; N;mid++){     for(int i=0;i &amp;lt; N;i++){         for(">
   
     <link rel="alternate" href="/atom.xml" title="阿福" type="application/atom+xml">
   
@@ -63,9 +68,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-图论-最短路" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-图论-最短路" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/01/02/图论-最短路/" class="article-date">
   <time datetime="2018-01-02T14:44:36.000Z" itemprop="datePublished">2018-01-02</time>
@@ -78,8 +81,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/02/图论-最短路/">图论-最短路</a>
+    <h1 class="article-title" itemprop="name">
+      图论-最短路
     </h1>
   
 
@@ -172,101 +175,19 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-hadoop-streaming开坑贴" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/12/23/hadoop-streaming开坑贴/" class="article-date">
-  <time datetime="2017-12-23T14:56:44.000Z" itemprop="datePublished">2017-12-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/23/hadoop-streaming开坑贴/">hadoop streaming开坑贴</a>
-    </h1>
+    <a href="/2017/12/23/hadoop-streaming开坑贴/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">hadoop streaming开坑贴</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近有一个hadoop程序需要写，觉得streaming实现了调试起来非常的方便。但是这过程遇到了诸多的坑，想哭。。。</p>
-<h3 id="hadoop-streaming配置"><a href="#hadoop-streaming配置" class="headerlink" title="hadoop streaming配置"></a>hadoop streaming配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">hadoop jar &lt;streaming路径&gt; \</span><br><span class="line">	-input &lt;data dir&gt; <span class="comment">#输入文件在hadoop上的位置</span></span><br><span class="line">	-output &lt;output dir&gt; <span class="comment">#输出文件在hadoop上的位置</span></span><br><span class="line">	-mapper <span class="string">"python **.py"</span> <span class="comment">#输入以stdin的形式传出mapper,里面可以写自己的程序只要以标准输入的形式读入数据就可以了</span></span><br><span class="line">	-reducer <span class="string">"python **.py"</span> <span class="comment">#map的输入格式为 &lt;key\tval&gt; reducer以这个格式读入然后进行处理</span></span><br><span class="line">	-file &lt;<span class="built_in">local</span> file dir&gt; <span class="comment">#打包本地文件上传hadoop节点</span></span><br><span class="line">	-cacheArchive &lt;remote dir *.tar.gz&gt; <span class="comment"># 需要使用到的.tar.gz 在hadoop上的位置</span></span><br><span class="line">	-cacheFile &lt;remote file dir&gt; <span class="comment">#需要使用到的一般文件在hadoop上的位置</span></span><br><span class="line">	-D <span class="comment">#作业属性</span></span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://dzjbupt.cn/2017/12/23/hadoop-streaming开坑贴/" data-id="cjbxr49gk0000ucnai6kpilte" class="article-share-link">Teilen</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hadoop/">hadoop</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
-
-
-  
-    <article id="post-模板测试页" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/12/22/模板测试页/" class="article-date">
-  <time datetime="2017-12-22T08:36:33.000Z" itemprop="datePublished">2017-12-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/22/模板测试页/">模板测试页</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>忙完开题，赶紧把网站的坑填了。今天先做一个模板测试页，这里将更新网站各种支持的模板。</p>
-<h1 id="网站模板："><a href="#网站模板：" class="headerlink" title="网站模板："></a>网站模板：</h1><h1 id="lt-空格-gt-一级标题"><a href="#lt-空格-gt-一级标题" class="headerlink" title="#&lt;空格&gt;:一级标题"></a>#&lt;空格&gt;:一级标题</h1><h2 id="lt-空格-gt-二级标题"><a href="#lt-空格-gt-二级标题" class="headerlink" title="##&lt;空格&gt;:二级标题"></a>##&lt;空格&gt;:二级标题</h2><h3 id="lt-空格-gt-三级标题"><a href="#lt-空格-gt-三级标题" class="headerlink" title="###&lt;空格&gt;:三级标题"></a>###&lt;空格&gt;:三级标题</h3><h3 id="bash框"><a href="#bash框" class="headerlink" title="bash框"></a>bash框</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash shell框</span><br></pre></td></tr></table></figure>
-<h3 id="引用框"><a href="#引用框" class="headerlink" title="引用框"></a>引用框</h3><blockquote><p>NEW: DevDocs now comes with syntax highlighting. <a href="http://devdocs.io" target="_blank" rel="noopener">http://devdocs.io</a></p>
-<footer><strong>@DevDocs</strong><cite><a href="https://twitter.com/devdocs/status/356095192085962752" target="_blank" rel="noopener">twitter.com/devdocs/status/356095192085962752</a></cite></footer></blockquote>
-<h3 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert(&apos;Hello World!&apos;);</span><br></pre></td></tr></table></figure>
-<h1 id="网站部署基本命令"><a href="#网站部署基本命令" class="headerlink" title="网站部署基本命令:"></a>网站部署基本命令:</h1><h3 id="生成静态发布的网页"><a href="#生成静态发布的网页" class="headerlink" title="生成静态发布的网页"></a>生成静态发布的网页</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$hexo</span> generate</span><br></pre></td></tr></table></figure>
-<p>或者简写为<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$hexo</span> g</span><br></pre></td></tr></table></figure></p>
-<h3 id="部署到远程服务器"><a href="#部署到远程服务器" class="headerlink" title="部署到远程服务器"></a>部署到远程服务器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$hexo</span> deploy</span><br></pre></td></tr></table></figure>
-<h3 id="单机服务器启动"><a href="#单机服务器启动" class="headerlink" title="单机服务器启动"></a>单机服务器启动</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$hexo</span> server</span><br></pre></td></tr></table></figure>
-<p>启动服务器。默认情况下，访问网址为： <a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a></p>
-<h3 id="生成新的文章"><a href="#生成新的文章" class="headerlink" title="生成新的文章"></a>生成新的文章</h3><p>新建一篇文章。如果没有设置 layout 的话，默认使用 _config.yml 中的 default_layout 参数代替。如果标题包含空格的话，请使用引号括起来。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$hexo</span> new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure></p>
-<h3 id="网站清理"><a href="#网站清理" class="headerlink" title="网站清理"></a>网站清理</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$hexo</span> clean</span><br></pre></td></tr></table></figure>
-<p>清除缓存文件 (db.json) 和已生成的静态文件 (public)。<br>在某些情况（尤其是更换主题后），如果发现您对站点的更改无论如何也不生效，您可能需要运行该命令。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://dzjbupt.cn/2017/12/22/模板测试页/" data-id="cjbxr49h10003ucnaivsd12gf" class="article-share-link">Teilen</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网站建设/">网站建设</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
 
 </section>
         
