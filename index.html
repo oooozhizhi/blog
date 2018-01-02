@@ -88,7 +88,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>之前就想对常见的图论的算法进行一个总结，借着这个机会开一个坑。</p>
-<h2 id="常见的最短路算法"><a href="#常见的最短路算法" class="headerlink" title="常见的最短路算法"></a>常见的最短路算法</h2><p>###floyd 弗洛伊德算法<br>思想：想知道a到b点的最短路，只能加入中间节点来缩短路径。那么我们就要便利所有的最短路径，才能得到a到b的最短路径。<br>核心代码只有5行</p>
+<h2 id="常见的最短路算法"><a href="#常见的最短路算法" class="headerlink" title="常见的最短路算法"></a>常见的最短路算法</h2><h3 id="floyd-弗洛伊德算法"><a href="#floyd-弗洛伊德算法" class="headerlink" title="floyd 弗洛伊德算法"></a>floyd 弗洛伊德算法</h3><p>思想：想知道a到b点的最短路，只能加入中间节点来缩短路径。那么我们就要便利所有的最短路径，才能得到a到b的最短路径。<br>核心代码只有5行</p>
 <pre><code class="bash"><span class="keyword">for</span>(int mid = 0;mid &lt; N;mid++){
     <span class="keyword">for</span>(int i=0;i &lt; N;i++){
         <span class="keyword">for</span>(int j=0;j &lt; N;j++){
