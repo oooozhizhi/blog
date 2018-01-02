@@ -7,17 +7,17 @@
   
   <title>图论-最短路 | 阿福</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="之前就想对常见的图论的算法进行一个总结，借着这个机会开一个坑。 常见的最短路算法floyd 弗洛伊德算法思想：想知道a到b点的最短路，只能加入中间节点来缩短路径。那么我们就要便利所有的最短路径，才能得到a到b的最短路径。核心代码只有5行 for(int mid = 0;mid &amp;lt; N;mid++){   ">
+  <meta name="description" content="之前就想对常见的图论的算法进行一个总结，借着这个机会开一个坑。 常见的最短路算法floyd 弗洛伊德算法思想：想知道a到b点的最短路，只能加入中间节点来缩短路径。那么我们就要遍历所有可能的中间点，才能得到a到b的最短路径。核心代码只有5行 for(int mid = 0;mid &amp;lt; N;mid++){  ">
 <meta name="keywords" content="图论">
 <meta property="og:type" content="article">
 <meta property="og:title" content="图论-最短路">
 <meta property="og:url" content="http://dzjbupt.cn/2018/01/02/图论-最短路/index.html">
 <meta property="og:site_name" content="阿福">
-<meta property="og:description" content="之前就想对常见的图论的算法进行一个总结，借着这个机会开一个坑。 常见的最短路算法floyd 弗洛伊德算法思想：想知道a到b点的最短路，只能加入中间节点来缩短路径。那么我们就要便利所有的最短路径，才能得到a到b的最短路径。核心代码只有5行 for(int mid = 0;mid &amp;lt; N;mid++){     for(int i=0;i &amp;lt; N;i++){         for(int">
-<meta property="og:updated_time" content="2018-01-02T14:53:04.410Z">
+<meta property="og:description" content="之前就想对常见的图论的算法进行一个总结，借着这个机会开一个坑。 常见的最短路算法floyd 弗洛伊德算法思想：想知道a到b点的最短路，只能加入中间节点来缩短路径。那么我们就要遍历所有可能的中间点，才能得到a到b的最短路径。核心代码只有5行 for(int mid = 0;mid &amp;lt; N;mid++){     for(int i=0;i &amp;lt; N;i++){         for(in">
+<meta property="og:updated_time" content="2018-01-02T14:55:37.089Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="图论-最短路">
-<meta name="twitter:description" content="之前就想对常见的图论的算法进行一个总结，借着这个机会开一个坑。 常见的最短路算法floyd 弗洛伊德算法思想：想知道a到b点的最短路，只能加入中间节点来缩短路径。那么我们就要便利所有的最短路径，才能得到a到b的最短路径。核心代码只有5行 for(int mid = 0;mid &amp;lt; N;mid++){     for(int i=0;i &amp;lt; N;i++){         for(int">
+<meta name="twitter:description" content="之前就想对常见的图论的算法进行一个总结，借着这个机会开一个坑。 常见的最短路算法floyd 弗洛伊德算法思想：想知道a到b点的最短路，只能加入中间节点来缩短路径。那么我们就要遍历所有可能的中间点，才能得到a到b的最短路径。核心代码只有5行 for(int mid = 0;mid &amp;lt; N;mid++){     for(int i=0;i &amp;lt; N;i++){         for(in">
   
     <link rel="alternate" href="/atom.xml" title="阿福" type="application/atom+xml">
   
@@ -91,7 +91,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>之前就想对常见的图论的算法进行一个总结，借着这个机会开一个坑。</p>
-<h2 id="常见的最短路算法"><a href="#常见的最短路算法" class="headerlink" title="常见的最短路算法"></a>常见的最短路算法</h2><h3 id="floyd-弗洛伊德算法"><a href="#floyd-弗洛伊德算法" class="headerlink" title="floyd 弗洛伊德算法"></a>floyd 弗洛伊德算法</h3><p>思想：想知道a到b点的最短路，只能加入中间节点来缩短路径。那么我们就要便利所有的最短路径，才能得到a到b的最短路径。<br>核心代码只有5行</p>
+<h2 id="常见的最短路算法"><a href="#常见的最短路算法" class="headerlink" title="常见的最短路算法"></a>常见的最短路算法</h2><h3 id="floyd-弗洛伊德算法"><a href="#floyd-弗洛伊德算法" class="headerlink" title="floyd 弗洛伊德算法"></a>floyd 弗洛伊德算法</h3><p>思想：想知道a到b点的最短路，只能加入中间节点来缩短路径。那么我们就要遍历所有可能的中间点，才能得到a到b的最短路径。<br>核心代码只有5行</p>
 <pre><code class="bash"><span class="keyword">for</span>(int mid = 0;mid &lt; N;mid++){
     <span class="keyword">for</span>(int i=0;i &lt; N;i++){
         <span class="keyword">for</span>(int j=0;j &lt; N;j++){
@@ -100,8 +100,8 @@
     }
 }
 </code></pre>
-<p>这种算法可以找多远最短路。<br>时间复杂度 O(N^3) 空间复杂度 O(N^2)</p>
-<h2 id="dijkstra-狄杰斯特拉-－-邻接矩阵"><a href="#dijkstra-狄杰斯特拉-－-邻接矩阵" class="headerlink" title="dijkstra 狄杰斯特拉 － 邻接矩阵"></a>dijkstra 狄杰斯特拉 － 邻接矩阵</h2><p>思想：这个算法只能计算单元最短路，而且不能计算负权值，这个算法是贪心思想。<br>e[N][N]邻接矩阵 dis[N]初始点到个点的位置 book[N]标记 假设每个量都被正确初始化了。</p>
+<p>这种算法可以找多源多汇最短路。<br>时间复杂度 O(N^3)<br>空间复杂度 O(N^2)</p>
+<h3 id="dijkstra-狄杰斯特拉-－-邻接矩阵"><a href="#dijkstra-狄杰斯特拉-－-邻接矩阵" class="headerlink" title="dijkstra 狄杰斯特拉 － 邻接矩阵"></a>dijkstra 狄杰斯特拉 － 邻接矩阵</h3><p>思想：这个算法只能计算单源最短路，而且不能计算负权值，这个算法是贪心思想。<br>e[N][N]邻接矩阵 dis[N]初始点到个点的距离 book[N]标记该点最短路是否找到 假设每个量都被正确初始化了。</p>
 <pre><code class="bash"><span class="keyword">for</span>(int <span class="built_in">times</span>=1;<span class="built_in">times</span> &lt; N;<span class="built_in">times</span>++){
     int min = Integer.MAX_VALUE;
     int index = -1;
@@ -121,7 +121,7 @@
     }
 }
 </code></pre>
-<h2 id="dijkstra-狄杰斯特拉-－-邻接表-＋-优先队列"><a href="#dijkstra-狄杰斯特拉-－-邻接表-＋-优先队列" class="headerlink" title="dijkstra 狄杰斯特拉 － 邻接表 ＋ 优先队列"></a>dijkstra 狄杰斯特拉 － 邻接表 ＋ 优先队列</h2><p>例题：leetcode－744<br>times[i] = (u, v, w)<br>时间复杂度 O(N^2) 空间复杂度 O(N logN)</p>
+<h3 id="dijkstra-狄杰斯特拉-－-邻接表-＋-优先队列"><a href="#dijkstra-狄杰斯特拉-－-邻接表-＋-优先队列" class="headerlink" title="dijkstra 狄杰斯特拉 － 邻接表 ＋ 优先队列"></a>dijkstra 狄杰斯特拉 － 邻接表 ＋ 优先队列</h3><p>例题：leetcode－744<br>times[i] = (u, v, w)<br>时间复杂度 O(N^2) 空间复杂度 O(N logN)</p>
 <pre><code class="bash">public int networkDelayTime(int[][] <span class="built_in">times</span>,int N,int K){
     //开空间,用邻接表的方式存储图
     Map&lt;Integer,List&lt;int[]&gt;&gt; graph = new HashMap&lt;&gt;();
@@ -163,7 +163,7 @@
     <span class="built_in">return</span> ans;
 }
 </code></pre>
-<h2 id="有权值-Bellman-留坑，有时间再填"><a href="#有权值-Bellman-留坑，有时间再填" class="headerlink" title="有权值 Bellman (留坑，有时间再填)"></a>有权值 Bellman (留坑，有时间再填)</h2>
+<h3 id="有权值-Bellman-留坑，有时间再填"><a href="#有权值-Bellman-留坑，有时间再填" class="headerlink" title="有权值 Bellman (留坑，有时间再填)"></a>有权值 Bellman (留坑，有时间再填)</h3>
       
     </div>
     <footer class="article-footer">
