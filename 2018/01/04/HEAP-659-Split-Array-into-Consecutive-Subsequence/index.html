@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>HEAP-659.Split Array into Consecutive Subsequence | 阿福</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="@659leetcode.com/problems/split-array-into-consecutive-subsequences/description 2018-01-04rewrite(1) DengTime O(N) Space O(N)idea:    一个新的数只有两个去处：    1 接上之前的数  ">
+<meta name="keywords" content="Heap,Leetcode">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HEAP-659.Split Array into Consecutive Subsequence">
+<meta property="og:url" content="http://dzjbupt.cn/2018/01/04/HEAP-659-Split-Array-into-Consecutive-Subsequence/index.html">
+<meta property="og:site_name" content="阿福">
+<meta property="og:description" content="@659leetcode.com/problems/split-array-into-consecutive-subsequences/description 2018-01-04rewrite(1) DengTime O(N) Space O(N)idea:    一个新的数只有两个去处：    1 接上之前的数    2 新开一个子串    否则的话就不满足要求。123456789101112">
+<meta property="og:updated_time" content="2018-01-04T11:33:25.038Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HEAP-659.Split Array into Consecutive Subsequence">
+<meta name="twitter:description" content="@659leetcode.com/problems/split-array-into-consecutive-subsequences/description 2018-01-04rewrite(1) DengTime O(N) Space O(N)idea:    一个新的数只有两个去处：    1 接上之前的数    2 新开一个子串    否则的话就不满足要求。123456789101112">
+  
+    <link rel="alternate" href="/atom.xml" title="阿福" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">阿福</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">我很懒的。</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Buscar"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://dzjbupt.cn"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-HEAP-659-Split-Array-into-Consecutive-Subsequence" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/04/HEAP-659-Split-Array-into-Consecutive-Subsequence/" class="article-date">
+  <time datetime="2018-01-04T11:31:42.000Z" itemprop="datePublished">2018-01-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      HEAP-659.Split Array into Consecutive Subsequence
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote><footer><strong>@659</strong><cite><a href="https://leetcode.com/problems/split-array-into-consecutive-subsequences/description/" target="_blank" rel="noopener">leetcode.com/problems/split-array-into-consecutive-subsequences/description</a></cite></footer></blockquote>
+<p>2018-01-04<br>rewrite(1) Deng<br>Time O(N) Space O(N)<br>idea:<br>    一个新的数只有两个去处：<br>    1 接上之前的数<br>    2 新开一个子串<br>    否则的话就不满足要求。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public boolean isPossible(int[] nums) &#123;</span><br><span class="line">        Counter count = new Counter();</span><br><span class="line">        Counter tails = new Counter();</span><br><span class="line">        //统计数组中出现的num</span><br><span class="line">        <span class="keyword">for</span> (int x: nums) count.add(x, 1);</span><br><span class="line">        </span><br><span class="line">        //对于数组中的每一个num</span><br><span class="line">        <span class="keyword">for</span> (int x: nums) &#123;</span><br><span class="line">            <span class="keyword">if</span> (count.get(x) == 0) &#123;</span><br><span class="line">                <span class="built_in">continue</span>;</span><br><span class="line">            //成为之前子串的tail，优先这一步</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (tails.get(x) &gt; 0) &#123;</span><br><span class="line">                tails.add(x, -1);</span><br><span class="line">                tails.add(x+1, 1);</span><br><span class="line">            //如果这个num 之后两个值存在的话，新组一个子串</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (count.get(x+1) &gt; 0 &amp;&amp; count.get(x+2) &gt; 0) &#123;</span><br><span class="line">                count.add(x+1, -1);</span><br><span class="line">                count.add(x+2, -1);</span><br><span class="line">                //这里放一个元素到tail中作为标记，表示该元素可以往后接的</span><br><span class="line">                tails.add(x+3, 1);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            //1 </span><br><span class="line">            //2 与x+1 x+2组成一对然后删除</span><br><span class="line">            count.add(x, -1);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Counter extends HashMap&lt;Integer, Integer&gt; &#123;</span><br><span class="line">    public int get(int k) &#123;</span><br><span class="line">        //从父类中调用get</span><br><span class="line">        <span class="built_in">return</span> containsKey(k) ? super.get(k) : 0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void add(int k, int v) &#123;</span><br><span class="line">        put(k, get(k) + v);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://dzjbupt.cn/2018/01/04/HEAP-659-Split-Array-into-Consecutive-Subsequence/" data-id="cjc0eycll00006knazglz88ju" class="article-share-link">Compartir</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Heap/">Heap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Leetcode/">Leetcode</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/01/04/dp-691-Stickers-to-Spell-Word/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Viejo</strong>
+      <div class="article-nav-title">dp-691.Stickers to Spell Word</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DP/">DP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Heap/">Heap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Leetcode/">Leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hadoop/">hadoop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图论/">图论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建设/">网站建设</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Nube de Tags</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/DP/" style="font-size: 10px;">DP</a> <a href="/tags/Heap/" style="font-size: 10px;">Heap</a> <a href="/tags/Leetcode/" style="font-size: 20px;">Leetcode</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/图论/" style="font-size: 10px;">图论</a> <a href="/tags/网站建设/" style="font-size: 10px;">网站建设</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archivos</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Posts recientes</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/01/04/HEAP-659-Split-Array-into-Consecutive-Subsequence/">HEAP-659.Split Array into Consecutive Subsequence</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/04/dp-691-Stickers-to-Spell-Word/">dp-691.Stickers to Spell Word</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/02/图论-最短路/">图论-最短路</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/23/hadoop-streaming开坑贴/">hadoop streaming开坑贴</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/22/模板测试页/">模板测试页</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 阿福<br>
+      Construido por <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
