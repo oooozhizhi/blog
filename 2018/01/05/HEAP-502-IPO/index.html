@@ -5,19 +5,19 @@
   
 
   
-  <title>hadoop streaming开坑贴 | 阿福</title>
+  <title>HEAP-502.IPO | 阿福</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="最近有一个hadoop程序需要写，觉得streaming实现了调试起来非常的方便。但是这过程遇到了诸多的坑，想哭。。。 hadoop streaming配置123456789hadoop jar &amp;lt;streaming路径&amp;gt; \	-input &amp;lt;data dir&amp;gt; ">
-<meta name="keywords" content="hadoop">
+  <meta name="description" content="@502leetcode.com/problems/ipo/description 2017-01-05rewrite(1) DengTime O(N log N) Space O(N)idea:    贪心算法 ＋ 优先队列123456789101112131415161718192021222324252627pu">
+<meta name="keywords" content="Heap,Leetcode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hadoop streaming开坑贴">
-<meta property="og:url" content="http://dzjbupt.cn/2017/12/23/hadoop-streaming开坑贴/index.html">
+<meta property="og:title" content="HEAP-502.IPO">
+<meta property="og:url" content="http://dzjbupt.cn/2018/01/05/HEAP-502-IPO/index.html">
 <meta property="og:site_name" content="阿福">
-<meta property="og:description" content="最近有一个hadoop程序需要写，觉得streaming实现了调试起来非常的方便。但是这过程遇到了诸多的坑，想哭。。。 hadoop streaming配置123456789hadoop jar &amp;lt;streaming路径&amp;gt; \	-input &amp;lt;data dir&amp;gt; #输入文件在hadoop上的位置	-output &amp;lt;output dir&amp;gt; #输出文件在hadoop">
-<meta property="og:updated_time" content="2017-12-23T15:09:35.067Z">
+<meta property="og:description" content="@502leetcode.com/problems/ipo/description 2017-01-05rewrite(1) DengTime O(N log N) Space O(N)idea:    贪心算法 ＋ 优先队列123456789101112131415161718192021222324252627public class Solution &amp;#123;    // 贪心算法">
+<meta property="og:updated_time" content="2018-01-05T07:03:41.429Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hadoop streaming开坑贴">
-<meta name="twitter:description" content="最近有一个hadoop程序需要写，觉得streaming实现了调试起来非常的方便。但是这过程遇到了诸多的坑，想哭。。。 hadoop streaming配置123456789hadoop jar &amp;lt;streaming路径&amp;gt; \	-input &amp;lt;data dir&amp;gt; #输入文件在hadoop上的位置	-output &amp;lt;output dir&amp;gt; #输出文件在hadoop">
+<meta name="twitter:title" content="HEAP-502.IPO">
+<meta name="twitter:description" content="@502leetcode.com/problems/ipo/description 2017-01-05rewrite(1) DengTime O(N log N) Space O(N)idea:    贪心算法 ＋ 优先队列123456789101112131415161718192021222324252627public class Solution &amp;#123;    // 贪心算法">
   
     <link rel="alternate" href="/atom.xml" title="阿福" type="application/atom+xml">
   
@@ -68,10 +68,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-hadoop-streaming开坑贴" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-HEAP-502-IPO" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/12/23/hadoop-streaming开坑贴/" class="article-date">
-  <time datetime="2017-12-23T14:56:44.000Z" itemprop="datePublished">2017-12-23</time>
+    <a href="/2018/01/05/HEAP-502-IPO/" class="article-date">
+  <time datetime="2018-01-05T06:59:59.000Z" itemprop="datePublished">2018-01-05</time>
 </a>
     
   </div>
@@ -82,7 +82,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      hadoop streaming开坑贴
+      HEAP-502.IPO
     </h1>
   
 
@@ -90,15 +90,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>最近有一个hadoop程序需要写，觉得streaming实现了调试起来非常的方便。但是这过程遇到了诸多的坑，想哭。。。</p>
-<h3 id="hadoop-streaming配置"><a href="#hadoop-streaming配置" class="headerlink" title="hadoop streaming配置"></a>hadoop streaming配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">hadoop jar &lt;streaming路径&gt; \</span><br><span class="line">	-input &lt;data dir&gt; <span class="comment">#输入文件在hadoop上的位置</span></span><br><span class="line">	-output &lt;output dir&gt; <span class="comment">#输出文件在hadoop上的位置</span></span><br><span class="line">	-mapper <span class="string">"python **.py"</span> <span class="comment">#输入以stdin的形式传出mapper,里面可以写自己的程序只要以标准输入的形式读入数据就可以了</span></span><br><span class="line">	-reducer <span class="string">"python **.py"</span> <span class="comment">#map的输入格式为 &lt;key\tval&gt; reducer以这个格式读入然后进行处理</span></span><br><span class="line">	-file &lt;<span class="built_in">local</span> file dir&gt; <span class="comment">#打包本地文件上传hadoop节点</span></span><br><span class="line">	-cacheArchive &lt;remote dir *.tar.gz&gt; <span class="comment"># 需要使用到的.tar.gz 在hadoop上的位置</span></span><br><span class="line">	-cacheFile &lt;remote file dir&gt; <span class="comment">#需要使用到的一般文件在hadoop上的位置</span></span><br><span class="line">	-D <span class="comment">#作业属性</span></span><br></pre></td></tr></table></figure>
+        <blockquote><footer><strong>@502</strong><cite><a href="https://leetcode.com/problems/ipo/description/" target="_blank" rel="noopener">leetcode.com/problems/ipo/description</a></cite></footer></blockquote>
+<p>2017-01-05<br>rewrite(1) Deng<br>Time O(N log N) Space O(N)<br>idea:<br>    贪心算法 ＋ 优先队列<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    // 贪心算法</span><br><span class="line">    public int findMaximizedCapital(int k, int W, int[] Profits, int[] Capital) &#123;</span><br><span class="line">        //容量从小到大的优先队列</span><br><span class="line">        PriorityQueue&lt;int[]&gt; pqCap = new PriorityQueue&lt;&gt;((a, b) -&gt; (a[0] - b[0]));</span><br><span class="line">        //价格从大到小的优先队列</span><br><span class="line">        PriorityQueue&lt;int[]&gt; pqPro = new PriorityQueue&lt;&gt;((a, b) -&gt; (b[1] - a[1]));</span><br><span class="line">        </span><br><span class="line">        //先把所有的东西放到caption 中</span><br><span class="line">        <span class="keyword">for</span> (int i = 0; i &lt; Profits.length; i++) &#123;</span><br><span class="line">            pqCap.add(new int[] &#123;Capital[i], Profits[i]&#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        //总共拿k次</span><br><span class="line">        <span class="keyword">for</span> (int i = 0; i &lt; k; i++) &#123;</span><br><span class="line">            // 本次能拿的最多项目</span><br><span class="line">            <span class="keyword">while</span> (!pqCap.isEmpty() &amp;&amp; pqCap.peek()[0] &lt;= W) &#123;</span><br><span class="line">                pqPro.add(pqCap.poll());</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> (pqPro.isEmpty()) <span class="built_in">break</span>;</span><br><span class="line">            // 可能获取的最大利益</span><br><span class="line">            W += pqPro.poll()[1];</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">return</span> W;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://dzjbupt.cn/2017/12/23/hadoop-streaming开坑贴/" data-id="cjc1kudlk00070gnaljlrv47v" class="article-share-link">Share</a>
+      <a data-url="http://dzjbupt.cn/2018/01/05/HEAP-502-IPO/" data-id="cjc1kudl700030gnaz38r8lag" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hadoop/">hadoop</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Heap/">Heap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Leetcode/">Leetcode</a></li></ul>
 
     </footer>
   </div>
@@ -106,19 +107,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2018/01/02/图论-最短路/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/01/05/HEAP-451-Sort-Characters-By-Frequency/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          图论-最短路
+          HEAP-451.Sort Characters By Frequency
         
       </div>
     </a>
   
   
-    <a href="/2017/12/22/模板测试页/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/01/04/HEAP-659-Split-Array-into-Consecutive-Subsequence/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">模板测试页</div>
+      <div class="article-nav-title">HEAP-659.Split Array into Consecutive Subsequence</div>
     </a>
   
 </nav>

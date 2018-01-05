@@ -52,9 +52,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Buscar"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://dzjbupt.cn"></form>
@@ -64,6 +64,127 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-HEAP-407-Trapping-Rain-Water-II" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/05/HEAP-407-Trapping-Rain-Water-II/" class="article-date">
+  <time datetime="2018-01-05T07:05:08.000Z" itemprop="datePublished">2018-01-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/05/HEAP-407-Trapping-Rain-Water-II/">HEAP-407.Trapping Rain Water II</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote><footer><strong>@407</strong><cite><a href="https://leetcode.com/problems/trapping-rain-water-ii/description/" target="_blank" rel="noopener">leetcode.com/problems/trapping-rain-water-ii/description</a></cite></footer></blockquote>
+<p>2018-01-05<br>rewrite(1) Deng<br>Time O(N^2 2logN) Space O(N^2)<br>idea:<br>    优先队列，一直保持一个围好的形状。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">class Solution&#123;</span><br><span class="line">    class Cell&#123;</span><br><span class="line">        int row;</span><br><span class="line">        int col;</span><br><span class="line">        int height;</span><br><span class="line">        public Cell(int row,int col,int height)&#123;</span><br><span class="line">            this.row = row;</span><br><span class="line">            this.col = col;</span><br><span class="line">            this.height = height;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;    </span><br><span class="line">    public int trapRainWater(int[][] heights)&#123;</span><br><span class="line">        <span class="keyword">if</span>(heights == null || heights.length == 0 || heights[0].length == 0)    <span class="built_in">return</span> 0;</span><br><span class="line">        PriorityQueue&lt;Cell&gt; aCap = new PriorityQueue&lt;Cell&gt;((a,b)-&gt;(a.height - b.height));</span><br><span class="line">        int N = heights.length;</span><br><span class="line">        int M = heights[0].length;</span><br><span class="line">        boolean[][] visit = new boolean[N][M];</span><br><span class="line">        <span class="keyword">for</span>(int i=0;i &lt; N;i++)&#123;</span><br><span class="line">            aCap.offer(new Cell(i,0,heights[i][0]));</span><br><span class="line">            aCap.offer(new Cell(i,M-1,heights[i][M-1]));</span><br><span class="line">            visit[i][0] = <span class="literal">true</span>;</span><br><span class="line">            visit[i][M-1] = <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(int i=0;i &lt; M;i++)&#123;</span><br><span class="line">            aCap.offer(new Cell(0,i,heights[0][i]));</span><br><span class="line">            aCap.offer(new Cell(N-1,i,heights[N-1][i]));</span><br><span class="line">            visit[0][i] = <span class="literal">true</span>;</span><br><span class="line">            visit[N-1][i] = <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        int[][] <span class="built_in">dirs</span> = new int[][] &#123;&#123;0,1&#125;,&#123;0,-1&#125;,&#123;1,0&#125;,&#123;-1,0&#125;&#125;;</span><br><span class="line">        int res = 0;</span><br><span class="line">        <span class="keyword">while</span>(!aCap.isEmpty())&#123;</span><br><span class="line">            Cell tmp  =aCap.poll();</span><br><span class="line">            <span class="keyword">for</span>(int[] dir: <span class="built_in">dirs</span>)&#123;</span><br><span class="line">                int row = tmp.row + dir[0];</span><br><span class="line">                int col = tmp.col + dir[1];</span><br><span class="line">                <span class="keyword">if</span>(row &gt;=0 &amp;&amp; row &lt; N &amp;&amp; col &gt;= 0 &amp;&amp; col &lt; M &amp;&amp; !visit[row][col])&#123;</span><br><span class="line">                    visit[row][col]= <span class="literal">true</span>;</span><br><span class="line">                    res += Math.max(0,tmp.height - heights[row][col]);</span><br><span class="line">                    aCap.offer(new Cell(row,col,Math.max(tmp.height,heights[row][col])));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://dzjbupt.cn/2018/01/05/HEAP-407-Trapping-Rain-Water-II/" data-id="cjc1kudkq00000gnacgz2doy2" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Heap/">Heap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Leetcode/">Leetcode</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-HEAP-451-Sort-Characters-By-Frequency" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/05/HEAP-451-Sort-Characters-By-Frequency/" class="article-date">
+  <time datetime="2018-01-05T07:02:12.000Z" itemprop="datePublished">2018-01-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/05/HEAP-451-Sort-Characters-By-Frequency/">HEAP-451.Sort Characters By Frequency</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote><footer><strong>@451</strong><cite><a href="https://leetcode.com/problems/sort-characters-by-frequency/description/" target="_blank" rel="noopener">leetcode.com/problems/sort-characters-by-frequency/description</a></cite></footer></blockquote>
+<p>2017-01-05<br>rewrite(1) Deng<br>Time O(N) Space O(N)<br>idea:<br>    分筒 + HashMap<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public String frequencySort(String s) &#123;</span><br><span class="line">        Map&lt;Character, Integer&gt; map = new HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (char c : s.toCharArray()) &#123;</span><br><span class="line">            <span class="keyword">if</span> (map.containsKey(c)) &#123;</span><br><span class="line">                map.put(c, map.get(c) + 1);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                map.put(c, 1);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        List&lt;Character&gt; [] bucket = new List[s.length() + 1];</span><br><span class="line">        <span class="keyword">for</span> (char key : map.keySet()) &#123;</span><br><span class="line">            int frequency = map.get(key);</span><br><span class="line">            <span class="keyword">if</span> (bucket[frequency] == null) &#123;</span><br><span class="line">                bucket[frequency] = new ArrayList&lt;&gt;();</span><br><span class="line">            &#125;</span><br><span class="line">            bucket[frequency].add(key);</span><br><span class="line">        &#125;</span><br><span class="line">        StringBuilder sb = new StringBuilder();</span><br><span class="line">        <span class="keyword">for</span> (int pos = bucket.length - 1; pos &gt;=0; pos--) &#123;</span><br><span class="line">            <span class="keyword">if</span> (bucket[pos] != null) &#123;</span><br><span class="line">                <span class="keyword">for</span> (char num : bucket[pos]) &#123;</span><br><span class="line">                    <span class="keyword">for</span> (int i = 0; i &lt; map.get(num); i++) &#123;</span><br><span class="line">                        sb.append(num);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> sb.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>2017-01-05<br>rewrite(1) Deng<br>Time O(N) Space O(N)<br>idea:<br>    HashMap + 优先队列<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public String frequencySort(String s) &#123;</span><br><span class="line">        //int[] count = new int[26]</span><br><span class="line">        Map&lt;Character,Integer&gt; aMap = new HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(char c : s.toCharArray())&#123;</span><br><span class="line">            aMap.put(c,aMap.getOrDefault(c,0)+1);</span><br><span class="line">        &#125;</span><br><span class="line">        PriorityQueue&lt;freNode&gt; aQueue = new PriorityQueue&lt;freNode&gt;( (a,b)-&gt;(b.times - a.times));</span><br><span class="line">        <span class="keyword">for</span>(Map.Entry&lt;Character,Integer&gt; e: aMap.entrySet())&#123;</span><br><span class="line">            aQueue.offer(new freNode(e.getKey(),e.getValue()));</span><br><span class="line">        &#125;</span><br><span class="line">        StringBuilder sb = new StringBuilder();</span><br><span class="line">        <span class="keyword">while</span>(!aQueue.isEmpty())&#123;</span><br><span class="line">            freNode tmp = aQueue.poll();</span><br><span class="line">            <span class="keyword">for</span>(int i=0;i &lt; tmp.times;i++)&#123;</span><br><span class="line">                sb.append(tmp.c);</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> sb.toString();</span><br><span class="line">    &#125;</span><br><span class="line">    class freNode&#123;</span><br><span class="line">        char c;</span><br><span class="line">        int <span class="built_in">times</span>;</span><br><span class="line">        public freNode(char c,int <span class="built_in">times</span>)&#123;</span><br><span class="line">            this.c = c;</span><br><span class="line">            this.times = <span class="built_in">times</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://dzjbupt.cn/2018/01/05/HEAP-451-Sort-Characters-By-Frequency/" data-id="cjc1kudkz00010gnat40l1yxe" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Heap/">Heap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Leetcode/">Leetcode</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-HEAP-502-IPO" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/05/HEAP-502-IPO/" class="article-date">
+  <time datetime="2018-01-05T06:59:59.000Z" itemprop="datePublished">2018-01-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/05/HEAP-502-IPO/">HEAP-502.IPO</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote><footer><strong>@502</strong><cite><a href="https://leetcode.com/problems/ipo/description/" target="_blank" rel="noopener">leetcode.com/problems/ipo/description</a></cite></footer></blockquote>
+<p>2017-01-05<br>rewrite(1) Deng<br>Time O(N log N) Space O(N)<br>idea:<br>    贪心算法 ＋ 优先队列<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    // 贪心算法</span><br><span class="line">    public int findMaximizedCapital(int k, int W, int[] Profits, int[] Capital) &#123;</span><br><span class="line">        //容量从小到大的优先队列</span><br><span class="line">        PriorityQueue&lt;int[]&gt; pqCap = new PriorityQueue&lt;&gt;((a, b) -&gt; (a[0] - b[0]));</span><br><span class="line">        //价格从大到小的优先队列</span><br><span class="line">        PriorityQueue&lt;int[]&gt; pqPro = new PriorityQueue&lt;&gt;((a, b) -&gt; (b[1] - a[1]));</span><br><span class="line">        </span><br><span class="line">        //先把所有的东西放到caption 中</span><br><span class="line">        <span class="keyword">for</span> (int i = 0; i &lt; Profits.length; i++) &#123;</span><br><span class="line">            pqCap.add(new int[] &#123;Capital[i], Profits[i]&#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        //总共拿k次</span><br><span class="line">        <span class="keyword">for</span> (int i = 0; i &lt; k; i++) &#123;</span><br><span class="line">            // 本次能拿的最多项目</span><br><span class="line">            <span class="keyword">while</span> (!pqCap.isEmpty() &amp;&amp; pqCap.peek()[0] &lt;= W) &#123;</span><br><span class="line">                pqPro.add(pqCap.poll());</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> (pqPro.isEmpty()) <span class="built_in">break</span>;</span><br><span class="line">            // 可能获取的最大利益</span><br><span class="line">            W += pqPro.poll()[1];</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">return</span> W;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://dzjbupt.cn/2018/01/05/HEAP-502-IPO/" data-id="cjc1kudl700030gnaz38r8lag" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Heap/">Heap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Leetcode/">Leetcode</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-HEAP-659-Split-Array-into-Consecutive-Subsequence" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -93,7 +214,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://dzjbupt.cn/2018/01/04/HEAP-659-Split-Array-into-Consecutive-Subsequence/" data-id="cjc0eycll00006knazglz88ju" class="article-share-link">Compartir</a>
+      <a data-url="http://dzjbupt.cn/2018/01/04/HEAP-659-Split-Array-into-Consecutive-Subsequence/" data-id="cjc1kudmq000t0gnabuqmypai" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Heap/">Heap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Leetcode/">Leetcode</a></li></ul>
@@ -133,7 +254,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://dzjbupt.cn/2018/01/04/dp-691-Stickers-to-Spell-Word/" data-id="cjc0eycm400036kna267fzgvp" class="article-share-link">Compartir</a>
+      <a data-url="http://dzjbupt.cn/2018/01/04/dp-691-Stickers-to-Spell-Word/" data-id="cjc1kudlg00040gnaud8mcmug" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DP/">DP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Leetcode/">Leetcode</a></li></ul>
@@ -244,7 +365,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://dzjbupt.cn/2018/01/02/图论-最短路/" data-id="cjc0eycm600046knaf8ztqv0s" class="article-share-link">Compartir</a>
+      <a data-url="http://dzjbupt.cn/2018/01/02/图论-最短路/" data-id="cjc1kudli00050gnaamv2wv2f" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图论/">图论</a></li></ul>
@@ -283,7 +404,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://dzjbupt.cn/2017/12/23/hadoop-streaming开坑贴/" data-id="cjc0eyclt00016knapz113b10" class="article-share-link">Compartir</a>
+      <a data-url="http://dzjbupt.cn/2017/12/23/hadoop-streaming开坑贴/" data-id="cjc1kudlk00070gnaljlrv47v" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hadoop/">hadoop</a></li></ul>
@@ -334,7 +455,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://dzjbupt.cn/2017/12/22/模板测试页/" data-id="cjc0eycm800056knae2rfwjvg" class="article-share-link">Compartir</a>
+      <a data-url="http://dzjbupt.cn/2017/12/22/模板测试页/" data-id="cjc1kudlm00080gnaoinn13pr" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网站建设/">网站建设</a></li></ul>
@@ -367,16 +488,16 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Nube de Tags</h3>
+    <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/DP/" style="font-size: 10px;">DP</a> <a href="/tags/Heap/" style="font-size: 10px;">Heap</a> <a href="/tags/Leetcode/" style="font-size: 20px;">Leetcode</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/图论/" style="font-size: 10px;">图论</a> <a href="/tags/网站建设/" style="font-size: 10px;">网站建设</a>
+      <a href="/tags/DP/" style="font-size: 10px;">DP</a> <a href="/tags/Heap/" style="font-size: 15px;">Heap</a> <a href="/tags/Leetcode/" style="font-size: 20px;">Leetcode</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/图论/" style="font-size: 10px;">图论</a> <a href="/tags/网站建设/" style="font-size: 10px;">网站建设</a>
     </div>
   </div>
 
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archivos</h3>
+    <h3 class="widget-title">Archives</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li></ul>
     </div>
@@ -386,9 +507,21 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Posts recientes</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/01/05/HEAP-407-Trapping-Rain-Water-II/">HEAP-407.Trapping Rain Water II</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/05/HEAP-451-Sort-Characters-By-Frequency/">HEAP-451.Sort Characters By Frequency</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/05/HEAP-502-IPO/">HEAP-502.IPO</a>
+          </li>
         
           <li>
             <a href="/2018/01/04/HEAP-659-Split-Array-into-Consecutive-Subsequence/">HEAP-659.Split Array into Consecutive Subsequence</a>
@@ -396,18 +529,6 @@
         
           <li>
             <a href="/2018/01/04/dp-691-Stickers-to-Spell-Word/">dp-691.Stickers to Spell Word</a>
-          </li>
-        
-          <li>
-            <a href="/2018/01/02/图论-最短路/">图论-最短路</a>
-          </li>
-        
-          <li>
-            <a href="/2017/12/23/hadoop-streaming开坑贴/">hadoop streaming开坑贴</a>
-          </li>
-        
-          <li>
-            <a href="/2017/12/22/模板测试页/">模板测试页</a>
           </li>
         
       </ul>
@@ -423,7 +544,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2018 阿福<br>
-      Construido por <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
