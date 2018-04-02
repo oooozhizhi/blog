@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>二进制 | 阿福</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;做了很久时间的题目，感觉各个部分的知识非常的杂乱，趁现在有时间对知识进行归档工作。这篇文章是关于二进制的题目，有时候会遇到二进制相关的题目，感觉里面的trick还挺多的，这里开一个头，之后遇到二进制相关的工作会陆续归档到这篇文章里面。&am">
+<meta name="keywords" content="经典面试题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="二进制">
+<meta property="og:url" content="http://dzjbupt.cn/2018/04/02/二进制/index.html">
+<meta property="og:site_name" content="阿福">
+<meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;做了很久时间的题目，感觉各个部分的知识非常的杂乱，趁现在有时间对知识进行归档工作。这篇文章是关于二进制的题目，有时候会遇到二进制相关的题目，感觉里面的trick还挺多的，这里开一个头，之后遇到二进制相关的工作会陆续归档到这篇文章里面。&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;下面是LintCode上遇到的一些题目： 365.二进制中有多少个14">
+<meta property="og:updated_time" content="2018-04-02T07:01:27.803Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="二进制">
+<meta name="twitter:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;做了很久时间的题目，感觉各个部分的知识非常的杂乱，趁现在有时间对知识进行归档工作。这篇文章是关于二进制的题目，有时候会遇到二进制相关的题目，感觉里面的trick还挺多的，这里开一个头，之后遇到二进制相关的工作会陆续归档到这篇文章里面。&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;下面是LintCode上遇到的一些题目： 365.二进制中有多少个14">
+  
+    <link rel="alternate" href="/atom.xml" title="阿福" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">阿福</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">我很懒的。</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://dzjbupt.cn"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-二进制" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/02/二进制/" class="article-date">
+  <time datetime="2018-04-02T06:22:39.000Z" itemprop="datePublished">2018-04-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      二进制
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;做了很久时间的题目，感觉各个部分的知识非常的杂乱，趁现在有时间对知识进行归档工作。这篇文章是关于二进制的题目，有时候会遇到二进制相关的题目，感觉里面的trick还挺多的，这里开一个头，之后遇到二进制相关的工作会陆续归档到这篇文章里面。<br>&nbsp;&nbsp;&nbsp;&nbsp;下面是LintCode上遇到的一些题目：</p>
+<p></p><p style="color:#FF0000"><br><b>365.二进制中有多少个1</b><br><b>408.二进制求和</b><br><b>411.格雷编码 &lt;*&gt;</b><br></p>
+<p><div style="background:#28FF28"><br>365/408，利用一般的思路就能够将题目解完。<br>411：利用递进的思路，比如说：<br>n=1 的时候，只有两种可能{0,1}<br>n=2 的时候, 需要在n=1的结果上再左边补上一个0/1,此时的结果为:{0{0,1},1{1,0}}={00,01,11,10}<br>n=3 的时候，需要基于n=2的结果,此时的结果为:{0{00,01,11,10}(n=2的正向结果),1{10,11,01,00}(n=2的反向结果)}={…}<br></div><br><blockquote><footer><strong>@365</strong><cite><a href="http://www.lintcode.com/zh-cn/problem/count-1-in-binary/" target="_blank" rel="noopener">www.lintcode.com/zh-cn/problem/count-1-in-binary</a></cite></footer></blockquote></p>
+<p><div style="background:#BEBEBE"><br><b>题目:365. 二进制中有多少个1</b><br>描述：<br>&nbsp;&nbsp;&nbsp;&nbsp;计算在一个 32 位的整数的二进制表示中有多少个<br></div></p>
+<p><div style="background:#66B3FF"><br>样例：<br>&nbsp;&nbsp;&nbsp;&nbsp;给定 32 (100000)，返回 1<br>&nbsp;&nbsp;&nbsp;&nbsp;给定 5 (101)，返回 2<br>&nbsp;&nbsp;&nbsp;&nbsp;给定 1023 (1111111111)，返回 10<br></div><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    /*</span><br><span class="line">     * @param num: An <span class="built_in">integer</span></span><br><span class="line">     * @<span class="built_in">return</span>: An <span class="built_in">integer</span></span><br><span class="line">     */</span><br><span class="line">    public int countOnes(int num) &#123;</span><br><span class="line">        // write your code here</span><br><span class="line">        int count  = 0;</span><br><span class="line">        <span class="keyword">while</span>(num != 0)&#123;</span><br><span class="line">            count ++;</span><br><span class="line">            num &amp;= (num - 1);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Tips:<br>关于如何数int中1的个数，这篇文章讲的很好：<a href="https://www.cnblogs.com/graphics/archive/2010/06/21/1752421.html" target="_blank" rel="noopener">https://www.cnblogs.com/graphics/archive/2010/06/21/1752421.html</a></p>
+<blockquote><footer><strong>@408</strong><cite><a href="http://www.lintcode.com/zh-cn/problem/add-binary/" target="_blank" rel="noopener">www.lintcode.com/zh-cn/problem/add-binary</a></cite></footer></blockquote>
+<p><div style="background:#BEBEBE"><br><b>题目：408. 二进制求和</b><br>描述：<br>&nbsp;&nbsp;&nbsp;&nbsp;给定两个二进制字符串，返回他们的和（用二进制表示）。<br></div></p>
+<p><div style="background:#66B3FF"><br>样例：<br>&nbsp;&nbsp;&nbsp;&nbsp;a = 11<br>&nbsp;&nbsp;&nbsp;&nbsp;b = 1<br>&nbsp;&nbsp;&nbsp;&nbsp;返回 100<br></div><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    /**</span><br><span class="line">     * @param a: a number</span><br><span class="line">     * @param b: a number</span><br><span class="line">     * @<span class="built_in">return</span>: the result</span><br><span class="line">     */</span><br><span class="line">    public String addBinary(String a, String b) &#123;</span><br><span class="line">        // write your code here</span><br><span class="line">        StringBuilder sb = new StringBuilder();</span><br><span class="line">        int lenA = a.length(),lenB = b.length();</span><br><span class="line">        int upNum = 0;</span><br><span class="line">        <span class="keyword">for</span>(int i = 0;i &lt; lenA &amp;&amp; i &lt; lenB;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(a.charAt(lenA-i-1) == <span class="string">'1'</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(b.charAt(lenB-i-1) == <span class="string">'1'</span>)&#123;</span><br><span class="line">                    <span class="keyword">if</span>(upNum == 1)&#123;</span><br><span class="line">                        sb.append(<span class="string">'1'</span>);</span><br><span class="line">                    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                        sb.append(<span class="string">'0'</span>);</span><br><span class="line">                        upNum = 1;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="keyword">if</span>(upNum == 1)&#123;</span><br><span class="line">                        sb.append(<span class="string">'0'</span>);</span><br><span class="line">                        // upNum = 1;</span><br><span class="line">                    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                        sb.append(<span class="string">'1'</span>);</span><br><span class="line">                        upNum = 0;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;        </span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">if</span>(b.charAt(lenB-i-1) == <span class="string">'1'</span>)&#123;</span><br><span class="line">                    <span class="keyword">if</span>(upNum == 1)&#123;</span><br><span class="line">                        sb.append(<span class="string">'0'</span>);</span><br><span class="line">                    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                        sb.append(<span class="string">'1'</span>);</span><br><span class="line">                        upNum = 0;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="keyword">if</span>(upNum == 1)&#123;</span><br><span class="line">                        sb.append(<span class="string">'1'</span>);</span><br><span class="line">                    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                        sb.append(<span class="string">'0'</span>);</span><br><span class="line">                    &#125;</span><br><span class="line">                    upNum = 0;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(lenB &gt; lenA)&#123;</span><br><span class="line">            a = b;</span><br><span class="line">            int tmp = lenA;</span><br><span class="line">            lenA = lenB;</span><br><span class="line">            lenB = tmp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(lenA &gt; lenB)&#123;</span><br><span class="line">            <span class="keyword">for</span>(int i=lenB;i &lt; lenA;i++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(a.charAt(lenA-i-1) == <span class="string">'1'</span>)&#123;</span><br><span class="line">                    <span class="keyword">if</span>(upNum == 1)&#123;</span><br><span class="line">                        sb.append(<span class="string">'0'</span>);</span><br><span class="line">                    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                        sb.append(<span class="string">'1'</span>);</span><br><span class="line">                        upNum = 0;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="keyword">if</span>(upNum == 1)&#123;</span><br><span class="line">                        sb.append(<span class="string">'1'</span>);</span><br><span class="line">                        upNum = 0;</span><br><span class="line">                    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                        sb.append(<span class="string">'0'</span>);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(upNum == 1)  sb.append(<span class="string">'1'</span>);</span><br><span class="line">        <span class="built_in">return</span> sb.reverse().toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote><footer><strong>@411</strong><cite><a href="http://www.lintcode.com/zh-cn/problem/gray-code/" target="_blank" rel="noopener">www.lintcode.com/zh-cn/problem/gray-code</a></cite></footer></blockquote>
+<p><div style="background:#BEBEBE"><br><b>题目：411. 格雷编码</b><br>描述：<br>&nbsp;&nbsp;&nbsp;&nbsp;格雷编码是一个二进制数字系统，在该系统中，两个连续的数值仅有一个二进制的差异。给定一个非负整数 n ，表示该代码中所有二进制的总数，请找出其格雷编码顺序。一个格雷编码顺序必须以 0 开始，并覆盖所有的 2n 个整数。<br></div></p>
+<p><div style="background:#66B3FF"><br>注意事项<br>&nbsp;&nbsp;&nbsp;&nbsp;对于给定的 n，其格雷编码顺序并不唯一。<br>&nbsp;&nbsp;&nbsp;&nbsp;根据以上定义， [0,2,3,1] 也是一个有效的格雷编码顺序。<br>样例<br>&nbsp;&nbsp;&nbsp;&nbsp;给定 n = 2， 返回 [0,1,3,2]。其格雷编码顺序为：<br>&nbsp;&nbsp;&nbsp;&nbsp;00 - 0<br>&nbsp;&nbsp;&nbsp;&nbsp;01 - 1<br>&nbsp;&nbsp;&nbsp;&nbsp;11 - 3<br>&nbsp;&nbsp;&nbsp;&nbsp;10 - 2<br></div><br><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">import java.util.*;</span><br><span class="line">public class Solution &#123;</span><br><span class="line">    /**</span><br><span class="line">     * @param n: a number</span><br><span class="line">     * @<span class="built_in">return</span>: Gray code</span><br><span class="line">     */</span><br><span class="line">    public List&lt;Integer&gt; grayCode(int n) &#123;</span><br><span class="line">        // write your code here</span><br><span class="line">        // int N = (int)Math.pow(2,n);</span><br><span class="line">        List&lt;Integer&gt; res = new ArrayList&lt;Integer&gt;();</span><br><span class="line">        <span class="keyword">if</span>(n == 0)&#123;res.add(0);  <span class="built_in">return</span> res;&#125;</span><br><span class="line">        res.add(0);res.add(1);</span><br><span class="line">        <span class="keyword">for</span>(int i=2;i&lt;=n;i++)&#123;</span><br><span class="line">            List&lt;Integer&gt; tmp = new ArrayList&lt;Integer&gt;(res);</span><br><span class="line">            int add = 1&lt;&lt;(i-1);</span><br><span class="line">            <span class="keyword">for</span>(int j=res.size() -1;j &gt;=0;j--) tmp.add(res.get(j)|add);</span><br><span class="line">            res = tmp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://dzjbupt.cn/2018/04/02/二进制/" data-id="cjfhv5526000824nadkjxsb6m" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/经典面试题/">经典面试题</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/03/21/计算器系列/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">计算器系列</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DP/">DP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Heap/">Heap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Leetcode/">Leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hadoop/">hadoop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图论/">图论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经典面试题/">经典面试题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建设/">网站建设</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/DP/" style="font-size: 10px;">DP</a> <a href="/tags/Heap/" style="font-size: 16.67px;">Heap</a> <a href="/tags/Leetcode/" style="font-size: 20px;">Leetcode</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/图论/" style="font-size: 10px;">图论</a> <a href="/tags/经典面试题/" style="font-size: 13.33px;">经典面试题</a> <a href="/tags/网站建设/" style="font-size: 10px;">网站建设</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/04/02/二进制/">二进制</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/21/计算器系列/">计算器系列</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/05/HEAP-407-Trapping-Rain-Water-II/">HEAP-407.Trapping Rain Water II</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/05/HEAP-451-Sort-Characters-By-Frequency/">HEAP-451.Sort Characters By Frequency</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/05/HEAP-502-IPO/">HEAP-502.IPO</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 阿福<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

@@ -14,7 +14,7 @@
 <meta property="og:url" content="http://dzjbupt.cn/2018/03/21/计算器系列/index.html">
 <meta property="og:site_name" content="阿福">
 <meta property="og:description" content="计算器作为一个考察 字符串 + 栈 的题目，觉得在很多的面试中会遇到。如果对这个题目不太熟悉的话，很可能会在上面花费很多的时间。接下来以LEETCODE为基础，讲讲计算器类型题目的解法和这个类型题目的扩展。@224leetcode.com/problems/basic-calculator/description 题目(+ - () 计算器)Implement a basic calculator">
-<meta property="og:updated_time" content="2018-03-21T14:09:06.773Z">
+<meta property="og:updated_time" content="2018-03-22T01:22:08.598Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算器系列">
 <meta name="twitter:description" content="计算器作为一个考察 字符串 + 栈 的题目，觉得在很多的面试中会遇到。如果对这个题目不太熟悉的话，很可能会在上面花费很多的时间。接下来以LEETCODE为基础，讲讲计算器类型题目的解法和这个类型题目的扩展。@224leetcode.com/problems/basic-calculator/description 题目(+ - () 计算器)Implement a basic calculator">
@@ -59,7 +59,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://dzjbupt.cn"></form>
@@ -96,11 +96,12 @@
 <blockquote><footer><strong>@227</strong><cite><a href="https://leetcode.com/problems/basic-calculator-ii/description/" target="_blank" rel="noopener">leetcode.com/problems/basic-calculator-ii/description</a></cite></footer></blockquote>
 <h3 id="题目-计算器-1"><a href="#题目-计算器-1" class="headerlink" title="题目 (+ - * / 计算器)"></a>题目 (+ - * / 计算器)</h3><p><div style="background:#BEBEBE"><br>Implement a basic calculator to evaluate a simple expression string.<br>The expression string contains only non-negative integers, +, -, <em>, / operators and empty spaces . The integer division should truncate toward zero.<br>You may assume that the given expression is always valid.<br>Some examples:<br>“3+2</em>2” = 7<br>“ 3/2 “ = 1<br>“ 3+5 / 2 “ = 5<br></div></p>
 <h3 id="解法：-1"><a href="#解法：-1" class="headerlink" title="解法："></a>解法：</h3><p>2018-03-21<br>rewrite(3) Deng<br>Time O() Space O()<br>idea:<br>&nbsp;&nbsp;&nbsp;&nbsp;跟上面的思路相同，不过引入了两个新的计算符号 ‘*’ ‘/‘ 要注意出现这两个符号要优先计算。不过没有了括号，难度跟上面一致。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int calculate(String s) &#123;</span><br><span class="line">        Stack&lt;Integer&gt; numStack = new Stack&lt;Integer&gt;();</span><br><span class="line">        Stack&lt;Character&gt; opStack = new Stack&lt;Character&gt;();</span><br><span class="line">        int num = 0;</span><br><span class="line">        boolean flag = <span class="literal">false</span>;</span><br><span class="line">        int num1,num2;</span><br><span class="line">        <span class="keyword">for</span>(char c : s.toCharArray())&#123;</span><br><span class="line">            <span class="keyword">if</span>(Character.isDigit(c))&#123;</span><br><span class="line">                num = 10 * num + (c - <span class="string">'0'</span>);</span><br><span class="line">                flag = <span class="literal">true</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(c == <span class="string">'*'</span> || c == <span class="string">'/'</span> || c == <span class="string">'-'</span> || c == <span class="string">'+'</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(flag)    numStack.push(num);</span><br><span class="line">                <span class="keyword">if</span>(!opStack.isEmpty() )&#123;</span><br><span class="line">                    <span class="keyword">if</span>(opStack.peek() == <span class="string">'*'</span>)&#123;</span><br><span class="line">                        num2 = numStack.pop();</span><br><span class="line">                        num1 = numStack.pop();</span><br><span class="line">                        numStack.push(num1 * num2);</span><br><span class="line">                        opStack.pop();</span><br><span class="line">                    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(opStack.peek() == <span class="string">'/'</span>)&#123;</span><br><span class="line">                        num2 = numStack.pop();</span><br><span class="line">                        num1 = numStack.pop();</span><br><span class="line">                        numStack.push(num1 / num2);</span><br><span class="line">                        opStack.pop();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(c != <span class="string">'*'</span> &amp;&amp; c != <span class="string">'/'</span>)&#123;</span><br><span class="line">                    <span class="keyword">while</span>(!opStack.isEmpty())&#123;</span><br><span class="line">                        <span class="keyword">if</span>(opStack.peek() == <span class="string">'+'</span>)&#123;</span><br><span class="line">                            num2 = numStack.pop();</span><br><span class="line">                            num1 = numStack.pop();</span><br><span class="line">                            numStack.push(num1 + num2);</span><br><span class="line">                            opStack.pop();</span><br><span class="line">                        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(opStack.peek() == <span class="string">'-'</span>)&#123;</span><br><span class="line">                            num2 = numStack.pop();</span><br><span class="line">                            num1 = numStack.pop();</span><br><span class="line">                            numStack.push(num1 - num2);</span><br><span class="line">                            opStack.pop();</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                opStack.push(c);</span><br><span class="line">                flag = <span class="literal">false</span>;</span><br><span class="line">                num = 0;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(numStack.isEmpty())  <span class="built_in">return</span> num;</span><br><span class="line">        <span class="keyword">if</span>(flag)    numStack.push(num);</span><br><span class="line">        <span class="keyword">while</span>(!opStack.isEmpty())&#123;</span><br><span class="line">            num2 = numStack.pop();</span><br><span class="line">            num1 =numStack.pop();</span><br><span class="line">            <span class="keyword">if</span>(opStack.peek() == <span class="string">'*'</span>)&#123;</span><br><span class="line">                numStack.push(num1 * num2);</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(opStack.peek() == <span class="string">'/'</span>)&#123;</span><br><span class="line">                numStack.push(num1 / num2);</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(opStack.peek() == <span class="string">'+'</span>)&#123;</span><br><span class="line">                numStack.push(num1 + num2);</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(opStack.peek() == <span class="string">'-'</span>)&#123;</span><br><span class="line">                numStack.push(num1 - num2);</span><br><span class="line">            &#125;</span><br><span class="line">            opStack.pop();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> numStack.peek();</span><br><span class="line">        // <span class="keyword">if</span>(flag)    numStack.push(num);</span><br><span class="line">        // Stack&lt;Integer&gt; rNumStack = new Stack&lt;Integer&gt;();</span><br><span class="line">        // Stack&lt;Character&gt; rOpStack = new Stack</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
+<h3 id="前缀表达式-中缀表达式-后缀表达式"><a href="#前缀表达式-中缀表达式-后缀表达式" class="headerlink" title="前缀表达式-中缀表达式-后缀表达式"></a>前缀表达式-中缀表达式-后缀表达式</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;上面的两个式子都是中缀表达式的计算方式。实际上四则运算中，前缀表达式，中缀表达式，后缀表达式都是四则运算的表达方式，用以四则运算的表达式求值。<br>&nbsp;&nbsp;&nbsp;&nbsp;1 中缀表达式:(3+4)<em>5-6    其实就是常见的运算表达式。<br>&nbsp;&nbsp;&nbsp;&nbsp;2 前缀表达式又称波兰式，<b>前缀表达式的运算符位于操作符之前</b>。比如：-</em>+3456。可以很容易计算出前缀表达式的值。<br>&nbsp;&nbsp;&nbsp;&nbsp;3 后缀表达式又称波兰表达式，与前缀表达式类似，只是运算符位于操作数之后。比如:3 4 + 5 * 6 -</p>
+<h3 id="之后将会补充各个表达式之间互相转换的代码。"><a href="#之后将会补充各个表达式之间互相转换的代码。" class="headerlink" title="之后将会补充各个表达式之间互相转换的代码。"></a>之后将会补充各个表达式之间互相转换的代码。</h3>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://dzjbupt.cn/2018/03/21/计算器系列/" data-id="cjf0wpfqt000c8sna15t7g9ts" class="article-share-link">Share</a>
+      <a data-url="http://dzjbupt.cn/2018/03/21/计算器系列/" data-id="cjfhv552d000f24naewvx27cq" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/经典面试题/">经典面试题</a></li></ul>
@@ -111,9 +112,18 @@
     
 <nav id="article-nav">
   
+    <a href="/2018/04/02/二进制/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          二进制
+        
+      </div>
+    </a>
+  
   
     <a href="/2018/01/05/HEAP-407-Trapping-Rain-Water-II/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">Älter</strong>
       <div class="article-nav-title">HEAP-407.Trapping Rain Water II</div>
     </a>
   
@@ -143,16 +153,16 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/DP/" style="font-size: 10px;">DP</a> <a href="/tags/Heap/" style="font-size: 15px;">Heap</a> <a href="/tags/Leetcode/" style="font-size: 20px;">Leetcode</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/图论/" style="font-size: 10px;">图论</a> <a href="/tags/经典面试题/" style="font-size: 10px;">经典面试题</a> <a href="/tags/网站建设/" style="font-size: 10px;">网站建设</a>
+      <a href="/tags/DP/" style="font-size: 10px;">DP</a> <a href="/tags/Heap/" style="font-size: 16.67px;">Heap</a> <a href="/tags/Leetcode/" style="font-size: 20px;">Leetcode</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/图论/" style="font-size: 10px;">图论</a> <a href="/tags/经典面试题/" style="font-size: 13.33px;">经典面试题</a> <a href="/tags/网站建设/" style="font-size: 10px;">网站建设</a>
     </div>
   </div>
 
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Archiv</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li></ul>
     </div>
   </div>
 
@@ -160,9 +170,13 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">letzter Beitrag</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/04/02/二进制/">二进制</a>
+          </li>
         
           <li>
             <a href="/2018/03/21/计算器系列/">计算器系列</a>
@@ -178,10 +192,6 @@
         
           <li>
             <a href="/2018/01/05/HEAP-502-IPO/">HEAP-502.IPO</a>
-          </li>
-        
-          <li>
-            <a href="/2018/01/04/HEAP-659-Split-Array-into-Consecutive-Subsequence/">HEAP-659.Split Array into Consecutive Subsequence</a>
           </li>
         
       </ul>
