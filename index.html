@@ -54,7 +54,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://dzjbupt.cn"></form>
@@ -64,6 +64,52 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-约瑟夫问题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/03/约瑟夫问题/" class="article-date">
+  <time datetime="2018-04-03T01:34:49.000Z" itemprop="datePublished">2018-04-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/03/约瑟夫问题/">约瑟夫问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>昨天做笔试题的时候遇到这个问题，觉得有很意思，在这里记录一下。<br>约瑟夫问题：</p>
+<p><ul></ul></p>
+<p><li>所有人围成一圈</li></p>
+<p><li>顺时针报数，每次报到q的人将被杀掉</li></p>
+<p><li>被杀掉的人将从房间内被移走</li></p>
+<p><li>然后从被杀掉的下一个人重新报数，继续报q，再清楚，直到剩余一人</li><br><br><b>输入：</b>一共有n个人，每次报到k的时候，那个人被杀掉<br><b>初始情况：</b>0,1,2…n-2,n-1(共n个人)<br>假设第一个人已经自杀，剩下的n-1个人组成了一个新的约瑟夫环(以编号为k%n)的人开始：<b>k k+1 k+2 … n-2 n-1 0 1 2 … k-3 k-2 </b>对剩余的人编号做一下转换：</p>
+<p></p><p style="color:#FF0000"><br>x –&gt; x’ (这里的x表示的是最后留下来那个人x’就是我们要求的结果)<br>k –&gt; 0<br>k+1 –&gt; 1<br>…<br>k-2 –&gt; n-2<br>k-1 –&gt; n-1<br></p><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;变换之后就成了n-1个人报数的子问题，假如我们知道这个子问题的解(也就是x的坐标),那么我们就可以知道原问题的解。可以知道转换公式为: <p></p>
+<h3 id="x-n-x-n-1-k-n"><a href="#x-n-x-n-1-k-n" class="headerlink" title="x(n) = (x(n-1) + k)%n"></a>x(n) = (x(n-1) + k)%n</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;根据上面的公式，我们可以从只有一个人开始坐标转换，最后到第n轮该人的坐标就是我们要的结果。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class Solution&#123;</span><br><span class="line">	public int yusefu(int peopleNum,int k)&#123;</span><br><span class="line">		int res = 0;//最后活下来这个人的坐标是0,在只剩一个人的情况下</span><br><span class="line">		<span class="keyword">for</span>(int i=2;i &lt; peopleNum;i++)&#123;</span><br><span class="line">			//假设有i个人的话，那么这个人的坐标是</span><br><span class="line">			res = (res +k)%i;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">return</span> res;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://dzjbupt.cn/2018/04/03/约瑟夫问题/" data-id="cjfj12i48000fz0naapeggauo" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/经典面试题/">经典面试题</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-二进制" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -103,7 +149,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://dzjbupt.cn/2018/04/02/二进制/" data-id="cjfhv5526000824nadkjxsb6m" class="article-share-link">Teilen</a>
+      <a data-url="http://dzjbupt.cn/2018/04/02/二进制/" data-id="cjfj12i410008z0nahnib9dpg" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/经典面试题/">经典面试题</a></li></ul>
@@ -148,7 +194,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://dzjbupt.cn/2018/03/21/计算器系列/" data-id="cjfhv552d000f24naewvx27cq" class="article-share-link">Teilen</a>
+      <a data-url="http://dzjbupt.cn/2018/03/21/计算器系列/" data-id="cjfj12i4d000gz0napwk6mj3z" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/经典面试题/">经典面试题</a></li></ul>
@@ -188,7 +234,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://dzjbupt.cn/2018/01/05/HEAP-407-Trapping-Rain-Water-II/" data-id="cjfhv551j000024na1y60sin8" class="article-share-link">Teilen</a>
+      <a data-url="http://dzjbupt.cn/2018/01/05/HEAP-407-Trapping-Rain-Water-II/" data-id="cjfj12i3i0000z0naedhd33sp" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Heap/">Heap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Leetcode/">Leetcode</a></li></ul>
@@ -229,7 +275,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://dzjbupt.cn/2018/01/05/HEAP-451-Sort-Characters-By-Frequency/" data-id="cjfhv551x000324na7aynfmw5" class="article-share-link">Teilen</a>
+      <a data-url="http://dzjbupt.cn/2018/01/05/HEAP-451-Sort-Characters-By-Frequency/" data-id="cjfj12i3o0001z0najser4isf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Heap/">Heap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Leetcode/">Leetcode</a></li></ul>
@@ -269,7 +315,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://dzjbupt.cn/2018/01/05/HEAP-502-IPO/" data-id="cjfhv551s000124na4bdwtedl" class="article-share-link">Teilen</a>
+      <a data-url="http://dzjbupt.cn/2018/01/05/HEAP-502-IPO/" data-id="cjfj12i3t0003z0na87ccqbb9" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Heap/">Heap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Leetcode/">Leetcode</a></li></ul>
@@ -309,7 +355,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://dzjbupt.cn/2018/01/04/HEAP-659-Split-Array-into-Consecutive-Subsequence/" data-id="cjfhv551y000424na1lw41fay" class="article-share-link">Teilen</a>
+      <a data-url="http://dzjbupt.cn/2018/01/04/HEAP-659-Split-Array-into-Consecutive-Subsequence/" data-id="cjfj12i3w0004z0na4ud7dl4e" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Heap/">Heap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Leetcode/">Leetcode</a></li></ul>
@@ -349,7 +395,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://dzjbupt.cn/2018/01/04/dp-691-Stickers-to-Spell-Word/" data-id="cjfhv5524000724na2tcolm0p" class="article-share-link">Teilen</a>
+      <a data-url="http://dzjbupt.cn/2018/01/04/dp-691-Stickers-to-Spell-Word/" data-id="cjfj12i3y0005z0naktv8b310" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DP/">DP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Leetcode/">Leetcode</a></li></ul>
@@ -460,7 +506,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://dzjbupt.cn/2018/01/02/图论-最短路/" data-id="cjfhv5529000a24nactftgr8x" class="article-share-link">Teilen</a>
+      <a data-url="http://dzjbupt.cn/2018/01/02/图论-最短路/" data-id="cjfj12i46000cz0nam0vq1qcd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图论/">图论</a></li></ul>
@@ -511,7 +557,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://dzjbupt.cn/2017/12/22/模板测试页/" data-id="cjfhv552b000c24nalo35y44w" class="article-share-link">Teilen</a>
+      <a data-url="http://dzjbupt.cn/2017/12/22/模板测试页/" data-id="cjfj12i44000az0na038tscet" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网站建设/">网站建设</a></li></ul>
@@ -523,52 +569,12 @@
 
 
   
-    <article id="post-hadoop-streaming开坑贴" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/01/07/hadoop-streaming开坑贴/" class="article-date">
-  <time datetime="2017-01-07T06:56:44.000Z" itemprop="datePublished">2017-01-07</time>
-</a>
+
+
+  <nav id="page-nav">
     
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/07/hadoop-streaming开坑贴/">hadoop streaming开坑贴</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="更新于2017-01-07"><a href="#更新于2017-01-07" class="headerlink" title="更新于2017-01-07"></a>更新于2017-01-07</h3><h3 id="Hadoop-Streaming"><a href="#Hadoop-Streaming" class="headerlink" title="Hadoop Streaming"></a>Hadoop Streaming</h3><p>Hadoop streaming是Hadoop的一个工具，它帮助用户创建和运行一类特殊的map/reduce作业，这些特殊的map/reduce作业是由一些可执行文件或者脚本文件充当mapper或者reducer。例如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$HADOOP_HOME</span>/bin/hadoop jar <span class="variable">$HADOOP_HOME</span>/hadoop-streaming.jar \</span><br><span class="line">	-input myInputDirs \</span><br><span class="line">	-output myOutputDirs \</span><br><span class="line">	-mapper /bin/car \</span><br><span class="line">	-reducer /bin/wc</span><br></pre></td></tr></table></figure></p>
-<h3 id="Streaming工作原理"><a href="#Streaming工作原理" class="headerlink" title="Streaming工作原理"></a>Streaming工作原理</h3><p>在上面的例子里，mapper和reducer都是可执行文件，它们从标准输入读入数据(一行一行读)，并把计算结果发给标准输出。Streaming工具会创建一个Map/Reducer作业，并把它发送给合适的集群，同时监视这个作业的整个执行过程。<br>如果一个可执行文件被用于mapper，则在mapper初始化时，每个mapper任务会把这个可执行文件作为一个单独的进程启动。mapper任务运行时，它把输入切分成行并把每一行提供给可执行文件进程的标准输入。同时，mapper收集可执行文件标准输出的内容，并把收到的第一行内容转化成key/value对，作为mapper的输出。默认情况下，一行中第一个tab之前的部分作为key，之后的（不包括tab）作为value。如果没有tab，整行作为key值，value值为null。不过，这可以定制，在下文中将会讨论如何自定义key和value的切分方式。<br>如果一个可执行文件被用于reducer,每个reducer任务会把这个可执行文件作为一个单独的进程启动。Reducer任务运行时，它把输入切分成行并把每一行提供给可执行文件进程的标准输入。同时，reducer收集可执行文件进程标准输出的内容，并把每一行内容转化为key/value对，作为reducer的输出。默认情况下，一行中第一个tab之前的部分作为key，之后的（不包括tab）作为value。在下文中将会讨论如何自定义key和value的切分方式。<br>以上是Map/Reducer框架和Streaming mapper/reducer之间的基本通信协议。<br>用户也可以java类作为mapper或者reducer。<br>用户可以设定stream.non.zero.exit.is.failure true或者false来表明streaming task的返回值非零时是Failure 还是 Success。默认情况，streaming task的返回值非零时是Failure.</p>
-<h3 id="将文件打包到提交的作业中"><a href="#将文件打包到提交的作业中" class="headerlink" title="将文件打包到提交的作业中"></a>将文件打包到提交的作业中</h3><p>任何可执行文件都可以被指定为mapper/reducer。这些可执行文件不需要事先存放在集群上；如果在集群上还没有，则需要用-file选项让framework把可执行文件作为作业的一部分，一起打包提交。例如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$HADOOP_HOME</span>/bin/hadoop  jar <span class="variable">$HADOOP_HOME</span>/hadoop-streaming.jar \</span><br><span class="line">    -input myInputDirs \</span><br><span class="line">    -output myOutputDir \</span><br><span class="line">    -mapper myPythonScript.py \</span><br><span class="line">    -reducer /bin/wc \</span><br><span class="line">    -file myPythonScript.py</span><br></pre></td></tr></table></figure></p>
-<p>上面的例子描述了一个用户把可执行python文件作为mapper。其中的选项”-file myPythonScript.py”使可执行python文件作为作业提交的一部分上传到集群的机器上。<br>除了可执行文件外，其他mapper或reducer需要用到的辅助文件（比如字典，配置文件等）也可以用这种方式打包上传。PS:如果文件过大的话需要利用别的方式，之后将会介绍。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$HADOOP_HOME</span>/bin/hadoop  jar <span class="variable">$HADOOP_HOME</span>/hadoop-streaming.jar \</span><br><span class="line">    -input myInputDirs \</span><br><span class="line">    -output myOutputDir \</span><br><span class="line">    -mapper myPythonScript.py \</span><br><span class="line">    -reducer /bin/wc \</span><br><span class="line">    -file myPythonScript.py</span><br></pre></td></tr></table></figure>
-<h3 id="Streaming选项与用法"><a href="#Streaming选项与用法" class="headerlink" title="Streaming选项与用法"></a>Streaming选项与用法</h3><h3 id="只使用Mapper的作业"><a href="#只使用Mapper的作业" class="headerlink" title="只使用Mapper的作业"></a>只使用Mapper的作业</h3><p>有时只需要map函数处理输入数据。这时只需要把mapred.reduce.tasks设置为0，Map/reducer框架就不会创建reducer任务，mapper任务的输出就是整个作业的最终输出。(“-jobconf mapred.reduce.tasks = 0”)</p>
-<h3 id="为作业指定其他插件"><a href="#为作业指定其他插件" class="headerlink" title="为作业指定其他插件"></a>为作业指定其他插件</h3><p>和其他普通的Map/Reduce作业一样，用户可以为streaming作业指定其他插件:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-inputformat	JavaClassName</span><br><span class="line">-outputformat	JavaClassName</span><br><span class="line">-partitioner	JavaClassName</span><br><span class="line">-combiner	JavaClassName</span><br></pre></td></tr></table></figure></p>
-<h3 id="hadoop-streaming配置"><a href="#hadoop-streaming配置" class="headerlink" title="hadoop streaming配置"></a>hadoop streaming配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">hadoop jar &lt;streaming路径&gt; \</span><br><span class="line">	-input &lt;data dir&gt; <span class="comment">#输入文件在hadoop上的位置</span></span><br><span class="line">	-output &lt;output dir&gt; <span class="comment">#输出文件在hadoop上的位置</span></span><br><span class="line">	-mapper <span class="string">"python **.py"</span> <span class="comment">#输入以stdin的形式传出mapper,里面可以写自己的程序只要以标准输入的形式读入数据就可以了</span></span><br><span class="line">	-reducer <span class="string">"python **.py"</span> <span class="comment">#map的输入格式为 &lt;key\tval&gt; reducer以这个格式读入然后进行处理</span></span><br><span class="line">	-file &lt;<span class="built_in">local</span> file dir&gt; <span class="comment">#打包本地文件上传hadoop节点</span></span><br><span class="line">	-cacheArchive &lt;remote dir *.tar.gz&gt; <span class="comment"># 需要使用到的.tar.gz 在hadoop上的位置</span></span><br><span class="line">	-cacheFile &lt;remote file dir&gt; <span class="comment">#需要使用到的一般文件在hadoop上的位置</span></span><br><span class="line">	-D <span class="comment">#作业属性</span></span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://dzjbupt.cn/2017/01/07/hadoop-streaming开坑贴/" data-id="cjfhv5520000524naoebzz2ox" class="article-share-link">Teilen</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hadoop/">hadoop</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+  </nav>
 
 </section>
         
@@ -598,7 +604,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archiv</h3>
+    <h3 class="widget-title">Archives</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li></ul>
     </div>
@@ -608,9 +614,13 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">letzter Beitrag</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/04/03/约瑟夫问题/">约瑟夫问题</a>
+          </li>
         
           <li>
             <a href="/2018/04/02/二进制/">二进制</a>
@@ -626,10 +636,6 @@
         
           <li>
             <a href="/2018/01/05/HEAP-451-Sort-Characters-By-Frequency/">HEAP-451.Sort Characters By Frequency</a>
-          </li>
-        
-          <li>
-            <a href="/2018/01/05/HEAP-502-IPO/">HEAP-502.IPO</a>
           </li>
         
       </ul>
