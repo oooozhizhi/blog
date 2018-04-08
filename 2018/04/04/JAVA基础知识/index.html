@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>JAVA基础知识 | 阿福</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="这里简要的记录一些我不是很清楚的JAVA知识，主要是一些语法相关的知识。至于多线程相关的知识，看我进度吧。1数据类型：1)基本数据类型(8种):byte,short,int,long,float,double,char,boolean。这种数据类型是赋值。2)引用数据类型(3种):数组，类，接口。这种数据类型是引用。2">
+<meta name="keywords" content="JAVA基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JAVA基础知识">
+<meta property="og:url" content="http://dzjbupt.cn/2018/04/04/JAVA基础知识/index.html">
+<meta property="og:site_name" content="阿福">
+<meta property="og:description" content="这里简要的记录一些我不是很清楚的JAVA知识，主要是一些语法相关的知识。至于多线程相关的知识，看我进度吧。1数据类型：1)基本数据类型(8种):byte,short,int,long,float,double,char,boolean。这种数据类型是赋值。2)引用数据类型(3种):数组，类，接口。这种数据类型是引用。2如何在java中定义一个数组：1)元素类型[] 变量名 = new 元素类型[元">
+<meta property="og:updated_time" content="2018-04-05T07:11:42.444Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JAVA基础知识">
+<meta name="twitter:description" content="这里简要的记录一些我不是很清楚的JAVA知识，主要是一些语法相关的知识。至于多线程相关的知识，看我进度吧。1数据类型：1)基本数据类型(8种):byte,short,int,long,float,double,char,boolean。这种数据类型是赋值。2)引用数据类型(3种):数组，类，接口。这种数据类型是引用。2如何在java中定义一个数组：1)元素类型[] 变量名 = new 元素类型[元">
+  
+    <link rel="alternate" href="/atom.xml" title="阿福" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">阿福</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">我很懒的。</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://dzjbupt.cn"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-JAVA基础知识" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/04/JAVA基础知识/" class="article-date">
+  <time datetime="2018-04-04T09:19:32.000Z" itemprop="datePublished">2018-04-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JAVA基础知识
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这里简要的记录一些我不是很清楚的JAVA知识，主要是一些语法相关的知识。至于多线程相关的知识，看我进度吧。<br><b>1<em>数据类型：</em></b><br>1)基本数据类型(8种):byte,short,int,long,float,double,char,boolean。这种数据类型是赋值。<br>2)引用数据类型(3种):数组，类，接口。这种数据类型是引用。<br><b>2如何在java中定义一个数组：</b><br>1)元素类型[] 变量名 = new 元素类型[元素个数];<br>2)元素类型[] 变量名 = {元素1,元素2,…};<br>3)元素类型[] 变量名 = new 元素类型[]{元素1,元素2,…}<br><b>3<em>java分了5片内存</em></b><br>3.1.寄存器<br>3.2.本地方法区<br>3.3.方法区<br>3.4.栈<br>1)栈中存储的都是局部变量(函数中定义的变量，函数上的参数，语句中的变量)，只要数据运算完成所在的区域释放。<br>3.5.堆<br>1)用于存储数组和对象，也就是实体。<br>1.1)每个实体都有内存首地址<br>1.2)堆内存中的变量都有默认初始化值，因为数据类型不同，值也不一样。<br>1.3)垃圾回收机制。<br><b>4类中怎么没有定义主函数？</b><br>1)主函数的存在，仅为该类是否需要独立运行，如果不需要，主函数是不用定义的。<br>2)主函数的解释:保证所在类的独立运行，是程序的入口，被jvm调用。<br><b>5_创建一个对象在内存中做了什么事情？Person p = new Person()</b><br>1)先将硬盘上指定位置的Person.class文件加载进内存。<br>2)执行main方法时，在栈内存中开辟了main方法的空间(压栈-&gt;进栈)，然后在main方法的栈区分配了一个变量p。<br>3)在堆内存中开辟了一个实体空间，分配了一个内存首地址值。new<br>4)在该实体空间中进行属性的空间分配，并进行了默认初始化。<br>5)对空间中的属性进行显示初始化。<br>6)进行实体的构造代码块初始化。<br>7)调用该实体对应的构造函数，进行构造函数的初始化。<br>8)将首地址赋值给p,p变量就引用了该实体。（指向该对象）<br><b>6.static:关键字，是一个修饰符，用于修饰成员</b><br>特点：<br>1.想要实现对象中的共性数据的对象共享。可以将这个数据进行静态修饰。<br>2.被静态修饰的成员，可以直接被类名所调用。也就是说，静态的成员多了一种调用方式。<b>类名.静态方式</b><br>3.静态随着类的加载而加载，而且优先于对象存在。<br>弊端:<br>1.有些数据是对象特有的数据，是不可以被静态修饰的。<br>2.静态方法只能访问静态成员，不可以访问非静态成员。因为静态方法加载时，优先于对象存在，所有没有办法访问对象中的成员。<br><b>7.单例设计模式</b><br>1.解决的问题：保证一个类在内存中的对象唯一性。比如：多程序读取一个配置文件时，建议配置文件封装成对象。会方便操作其中数据，又要保证多个程序读到的是同一个配置文件对象，就需要该配置文件对象在内存中是唯一的。<br>2.如何保证对象的唯一性？<br>1)不让其他程序创建该类的对象。<br>2)在本类中创建一个本类对象。<br>3)对外提供方法，让其他程序获取这个对象。<br>4)步骤<br>4.1)因为创建对象都需要构造函数初始化，只要将本类中的构造函数私有化，其他程序就无法再创建该类。<br>4.2)就在类中创建一个本类的对象。<br>4.3)定义一个方法，返回该对象，让其他程序可以通过方法就能够得到本类对象。这里有两种方式，一种是定义成static，这样这些信息随着类加载的时候就加载进来了。另外一种方式是，等到外部访问这类对象的时候，该对象再加载。<br><b>9.final关键字</b><br>1)这个关键字是一个修饰符，可以修饰类，方法和变量。<br>2)被final修饰的类是一个最终类，不可以被继承。<br>3)被final修饰的方法是一个最终方法，不可以被覆盖。<br>4)被final修饰的变量是一个常量，只能赋值一次。<br><b>抽象类:abstract</b><br>1)抽象方法只能定义在抽象类中，抽象类和抽象方法必须由abstract关键字修饰。<br>2)抽象方法值定义方法声明，并不定义方法实现。<br>3)抽象类不可以被创建对象(实例化)。<br>4)只用通过子类集成并覆盖了抽象类中<b>所有</b>抽象方法后，该子类才可以实例化。<br>5)抽象类的细节：<br>5.1)抽象类中是否有构造函数？有，用于给予抽象类对象进行初始化。<br>5.2)抽象类中是否可以定义非抽象方法？可以，其实，抽象类和一般类没有太大的区别，都是在描述事务，只不过抽象类在描述事物时，有些功能不具体。<br>5.3)抽象关键字abstract和哪些不可以共存?final,private,static<br><b>10.接口</b><br>1)是用关键字interface定义的。<br>2)接口包含的成员，最常见的有全局常量，抽象方法。<br>2.1)接口的成员都有固定的修饰符。<b>成员变量:public static final 成员方法:public abstract</b><br>3)接口中有抽象方法，说明接口不可以实例化。<br>4)类与类之间存在着继承关系，类与接口中间存在的是<b>实现</b>关系。<b>继承用extends,实现用implements</b><br>5)一个类在继承另一个类的同时，还可以实现多个接口。所以<b>接口的出现避免了单继承的局限性</b>。<br>6)其实java中是有多继承的。接口与接口之间存在着继承关系，接口可以多继承接口。<br><b>11.如果想用子类对象的特有方法，如何判断对象是哪个具体的子类类型</b><br>1)可以通过一个关键字instanceof，格式&lt;对象 instanceof 类型&gt;，判断一个对象是否所属于指定的类型。举例：Student instanceof Person = true;//student类继承了person类<br><b>12.异常</b><br>1)定义：就是不正常，程序在运行时出现的不正常的情况。其实就是程序中出现的问题。这个问题按照面向对象思想进行描述，并封装成了对象。因为问题的产生有产生的原因，有问题的名称，有问题的描述等多个属性信息存在。当出现多属性信息最方便的方式就是将这些信息进行封装。异常类：java.lang.Throwable;<br>2)Throwable是可抛出的。Error，错误一般情况下，不编写针对性的代码进行处理，通常是jvm发生的，需要对程序进行修正。Exception,异常，可以有针对性的处理方式。<br>3)对于捕捉，java有针对性的语句块进行处理：<br>try{需要被检测的代码;}catch(异常类 变量名){异常处理代码;}finally{一定会执行的代码;}<br>4)throw和throws关键字的区别：throw用于抛出异常对象，后面跟的是异常对象，throw用在函数内；throws用于抛出异常类，后面跟的异常类名，throws用在函数上。<br>5)异常分为两种：<br>5.1)编译时被检查的异常，只要是Exception及其子类都是编译时被检测的异常。<br>5.2)运行时异常，其中Exception有一个特殊的子类RuntimeException，以及RuntimeException的子类是运行异常，也就是说这个异常时编译时不被检查的异常。<br>6)记住finally很有用，主要用户关闭资源。无论是否发生异常，资源都必须进行关闭。System.exit(0);//退出jvm，只有这种情况finally不执行。<br>7)常见异常：<br>7.1)脚标越界异常(IndexOutOfBoundsException)<br>7.2)空指针异常(NullPointerException)<br>7.3)类型转换异常(ClassCastException)<br>7.4)没有这个元素异常(NullPointerException)<br>7.5)不支持操作异常<br><b>11.java常见的软件包</b><br>1)<b>java.lang</b>language java的核心包，jdk1.2之后，该包中的类被自动导入。<br>2)<b>java.awt</b>定义的都是用于java图形界面开发的对象<br>3)<b>java.swing</b>提供所有的windows桌面应用程序包括控件<br>4)<b>java.net</b>用于java网络编程方面的对象都在该包中<br>5)<b>java.io</b>input,output用于操作设备上数据的对象都在该包中。比如：读取硬盘数据，往硬盘写入数据<br>6)<b>java.util</b>java的工具包，时间对象，集合框架<br><b>12.多线程</b><br>1)<b>进程：</b>正在进行中的程序，其实进程就是一个应用程序运行时的内存分配空间。<br>2)<b>线程：</b>其实就是进程中一个程序执行控制单元，一条执行路径。进程负责的是应用程序的空间标示，线程负责的是应用程序的执行顺序。一个进程至少有一个线程在运行，当一个进程中出现多个线程，就称这个应用程序是多线程应用程序。每个线程在栈区中都有自己的执行空间，自己的方法区，自己的变量。JVM在启动的时候，首先有一个主线程，负责程序的执行，调用的是main函数。主线程执行的代码都在main方法中。当产生垃圾时，收集垃圾的工作，是不需要主线程来完成。因为这样会出现主线程中的代码执行停止，效率较低，所以由单独一个线程来负责垃圾回收。<br>3)<b>随机性原理：</b>因为cpu的快速切换造成，哪个线程获取到了cpu的执行权，哪个线程就执行。<br>3.1)返回当前线程的名称:<b>Thread.currentThread().getName()</b>。<br>3.2)线程的名称是由：<b>Thread-编号</b>定义的，编号从0开始。<br>3.3)线程要运行的代码都统一存放在了<b>run</b>方法中。线程要运行必须要通过类中指定的方法开启，<b>start</b>方法。<br>3.4)创建线程的第一种方式：<b>继承Thread，由子类复写run方法</b><br>3.5)步骤：<br>3.5.1)定义类继承Thread方法。<br>3.5.2)目的是复写run方法，将要让线程运行的代码都存储到run方法中。<br>3.5.3)通过创建Thread类的子类对象，创建线程对象。<br>3.5.4)调用线程的start方法，开启线程，并执行run方法。<br>3.6)创建线程的第二种方式：<b>实现一个接口Runnable</b><br>3.6.1)步骤：<br>3.6.2)定义类实现Runnable接口<br>3.6.3)覆盖接口中的run方法(用于封装线程要运行的代码)<br>3.6.4)通过Thread类创建线程对象<br>3.6.5)<b>将实现了Runnable接口的子类对象作为实际参数传递给Thread类中的构造函数</b><br>3.6.6)调用Thread对象的start方法。开启线程，并运行Runnable接口子类的run方法。<br>3.6.7)举例:Ticket t = new Ticket();Thread t1 = new Thread(t);t1.start();<br>3.6.8)<b>为什么要有Runnable接口的出现？</b>通过继承Thread类的方式，可以完成多线程的建立。但是这种方式有一个局限性，如果一个类已经有了自己的父类，就不可以继承Thread类，因为java单继承的局限性。<br>3.7)线程的状态：<br>3.7.1)被创建：start()；<br>3.7.2)运行：具备执行资格，同时具备执行权；<br>3.7.3)冻结：sleep(time),wait() - notifry()唤醒；线程释放了执行权，同时释放执行资格；<br>3.7.4)临时阻塞状态：线程具备cpu的执行资格，没有cpu的执行权。<br>3.7.5)消亡：stop()<br>3.8）</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://dzjbupt.cn/2018/04/04/JAVA基础知识/" data-id="cjfqu24810000q8nane8gr39f" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVA基础/">JAVA基础</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/04/08/线段树/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          线段树
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/04/04/二进制/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">二进制</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DP/">DP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Heap/">Heap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JAVA基础/">JAVA基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Leetcode/">Leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LintCode/">LintCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hadoop/">hadoop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图论/">图论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经典面试题/">经典面试题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建设/">网站建设</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/DP/" style="font-size: 10px;">DP</a> <a href="/tags/Heap/" style="font-size: 16.67px;">Heap</a> <a href="/tags/JAVA基础/" style="font-size: 10px;">JAVA基础</a> <a href="/tags/Leetcode/" style="font-size: 20px;">Leetcode</a> <a href="/tags/LintCode/" style="font-size: 10px;">LintCode</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/图论/" style="font-size: 10px;">图论</a> <a href="/tags/经典面试题/" style="font-size: 13.33px;">经典面试题</a> <a href="/tags/网站建设/" style="font-size: 10px;">网站建设</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/04/08/线段树/">线段树</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/04/JAVA基础知识/">JAVA基础知识</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/04/二进制/">二进制</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/03/约瑟夫问题/">约瑟夫问题</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/21/计算器系列/">计算器系列</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 阿福<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

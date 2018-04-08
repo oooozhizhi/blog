@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>二进制 | 阿福</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;做了很久时间的题目，感觉各个部分的知识非常的杂乱，趁现在有时间对知识进行归档工作。这篇文章是关于二进制的题目，有时候会遇到二进制相关的题目，感觉里面的trick还挺多的，这里开一个头，之后遇到二进制相关的工作会陆续归档到这篇文章里面。&am">
+<meta name="keywords" content="经典面试题,LintCode">
+<meta property="og:type" content="article">
+<meta property="og:title" content="二进制">
+<meta property="og:url" content="http://dzjbupt.cn/2018/04/04/二进制/index.html">
+<meta property="og:site_name" content="阿福">
+<meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;做了很久时间的题目，感觉各个部分的知识非常的杂乱，趁现在有时间对知识进行归档工作。这篇文章是关于二进制的题目，有时候会遇到二进制相关的题目，感觉里面的trick还挺多的，这里开一个头，之后遇到二进制相关的工作会陆续归档到这篇文章里面。&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;下面是LintCode上遇到的一些题目：  365.二进制中有多少个1">
+<meta property="og:updated_time" content="2018-04-04T03:05:45.633Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="二进制">
+<meta name="twitter:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;做了很久时间的题目，感觉各个部分的知识非常的杂乱，趁现在有时间对知识进行归档工作。这篇文章是关于二进制的题目，有时候会遇到二进制相关的题目，感觉里面的trick还挺多的，这里开一个头，之后遇到二进制相关的工作会陆续归档到这篇文章里面。&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;下面是LintCode上遇到的一些题目：  365.二进制中有多少个1">
+  
+    <link rel="alternate" href="/atom.xml" title="阿福" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">阿福</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">我很懒的。</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://dzjbupt.cn"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-二进制" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/04/二进制/" class="article-date">
+  <time datetime="2018-04-04T06:22:39.000Z" itemprop="datePublished">2018-04-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      二进制
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;做了很久时间的题目，感觉各个部分的知识非常的杂乱，趁现在有时间对知识进行归档工作。这篇文章是关于二进制的题目，有时候会遇到二进制相关的题目，感觉里面的trick还挺多的，这里开一个头，之后遇到二进制相关的工作会陆续归档到这篇文章里面。<br>&nbsp;&nbsp;&nbsp;&nbsp;下面是LintCode上遇到的一些题目：</p>
+<p><ul style="color:#FF0000"></ul></p>
+<p><li><b>365.二进制中有多少个1 AC</b></li></p>
+<p><li><b>408.二进制求和 AC</b></li></p>
+<p><li><b>411.格雷编码 &lt;*&gt;</b></li><br>2018-04-04 新增</p>
+<p><li><b>1.A+B问题 AC</b></li></p>
+<p><li><b>142.O(1)时间检测2的幂次 AC</b></li></p>
+<p><li><b>181. 将整数A转换为B AC</b></li></p>
+<p><li><b>179. 更新二进制位 AC</b></li></p>
+<p><li><b>180. 二进制表示 <87%...></87%...></b></li></p>
+<p><li><b>723. 左旋转二进制位 AC</b></li><br><br></p>
+<p><div style="background:#ACD6FF"><br>背景知识：暂无，预计这里将讲二进制问题常用的一些套路和操作。<br>    <ul><br>    <li>关于如何数int中1的个数，这篇文章讲的很好：<a href="https://www.cnblogs.com/graphics/archive/2010/06/21/1752421.html" target="_blank" rel="noopener">https://www.cnblogs.com/graphics/archive/2010/06/21/1752421.html</a></li><br>    <li>利用位移操作，实现四则运算:<a href="https://blog.csdn.net/ojshilu/article/details/11179911" target="_blank" rel="noopener">https://blog.csdn.net/ojshilu/article/details/11179911</a></li><br>    </ul><br></div><br><blockquote><footer><strong>@365</strong><cite><a href="http://www.lintcode.com/zh-cn/problem/count-1-in-binary/" target="_blank" rel="noopener">www.lintcode.com/zh-cn/problem/count-1-in-binary</a></cite></footer></blockquote></p>
+<p><div style="background:#BEBEBE"><br><b>题目:365. 二进制中有多少个1</b><br>描述：<br>&nbsp;&nbsp;&nbsp;&nbsp;计算在一个 32 位的整数的二进制表示中有多少个<br></div></p>
+<p><div style="background:#66B3FF"><br>样例：<br>&nbsp;&nbsp;&nbsp;&nbsp;给定 32 (100000)，返回 1<br>&nbsp;&nbsp;&nbsp;&nbsp;给定 5 (101)，返回 2<br>&nbsp;&nbsp;&nbsp;&nbsp;给定 1023 (1111111111)，返回 10<br></div><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    /*</span><br><span class="line">     * @param num: An <span class="built_in">integer</span></span><br><span class="line">     * @<span class="built_in">return</span>: An <span class="built_in">integer</span></span><br><span class="line">     */</span><br><span class="line">    public int countOnes(int num) &#123;</span><br><span class="line">        // write your code here</span><br><span class="line">        int count  = 0;</span><br><span class="line">        <span class="keyword">while</span>(num != 0)&#123;</span><br><span class="line">            count ++;</span><br><span class="line">            num &amp;= (num - 1);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote><footer><strong>@408</strong><cite><a href="http://www.lintcode.com/zh-cn/problem/add-binary/" target="_blank" rel="noopener">www.lintcode.com/zh-cn/problem/add-binary</a></cite></footer></blockquote>
+<p><div style="background:#BEBEBE"><br><b>题目：408. 二进制求和</b><br>描述：<br>&nbsp;&nbsp;&nbsp;&nbsp;给定两个二进制字符串，返回他们的和（用二进制表示）。<br></div></p>
+<p><div style="background:#66B3FF"><br>样例：<br>&nbsp;&nbsp;&nbsp;&nbsp;a = 11<br>&nbsp;&nbsp;&nbsp;&nbsp;b = 1<br>&nbsp;&nbsp;&nbsp;&nbsp;返回 100<br></div><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    /**</span><br><span class="line">     * @param a: a number</span><br><span class="line">     * @param b: a number</span><br><span class="line">     * @<span class="built_in">return</span>: the result</span><br><span class="line">     */</span><br><span class="line">    public String addBinary(String a, String b) &#123;</span><br><span class="line">        // write your code here</span><br><span class="line">        StringBuilder sb = new StringBuilder();</span><br><span class="line">        int lenA = a.length(),lenB = b.length();</span><br><span class="line">        int upNum = 0;</span><br><span class="line">        <span class="keyword">for</span>(int i = 0;i &lt; lenA &amp;&amp; i &lt; lenB;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(a.charAt(lenA-i-1) == <span class="string">'1'</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(b.charAt(lenB-i-1) == <span class="string">'1'</span>)&#123;</span><br><span class="line">                    <span class="keyword">if</span>(upNum == 1)&#123;</span><br><span class="line">                        sb.append(<span class="string">'1'</span>);</span><br><span class="line">                    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                        sb.append(<span class="string">'0'</span>);</span><br><span class="line">                        upNum = 1;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="keyword">if</span>(upNum == 1)&#123;</span><br><span class="line">                        sb.append(<span class="string">'0'</span>);</span><br><span class="line">                        // upNum = 1;</span><br><span class="line">                    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                        sb.append(<span class="string">'1'</span>);</span><br><span class="line">                        upNum = 0;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;        </span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">if</span>(b.charAt(lenB-i-1) == <span class="string">'1'</span>)&#123;</span><br><span class="line">                    <span class="keyword">if</span>(upNum == 1)&#123;</span><br><span class="line">                        sb.append(<span class="string">'0'</span>);</span><br><span class="line">                    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                        sb.append(<span class="string">'1'</span>);</span><br><span class="line">                        upNum = 0;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="keyword">if</span>(upNum == 1)&#123;</span><br><span class="line">                        sb.append(<span class="string">'1'</span>);</span><br><span class="line">                    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                        sb.append(<span class="string">'0'</span>);</span><br><span class="line">                    &#125;</span><br><span class="line">                    upNum = 0;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(lenB &gt; lenA)&#123;</span><br><span class="line">            a = b;</span><br><span class="line">            int tmp = lenA;</span><br><span class="line">            lenA = lenB;</span><br><span class="line">            lenB = tmp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(lenA &gt; lenB)&#123;</span><br><span class="line">            <span class="keyword">for</span>(int i=lenB;i &lt; lenA;i++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(a.charAt(lenA-i-1) == <span class="string">'1'</span>)&#123;</span><br><span class="line">                    <span class="keyword">if</span>(upNum == 1)&#123;</span><br><span class="line">                        sb.append(<span class="string">'0'</span>);</span><br><span class="line">                    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                        sb.append(<span class="string">'1'</span>);</span><br><span class="line">                        upNum = 0;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="keyword">if</span>(upNum == 1)&#123;</span><br><span class="line">                        sb.append(<span class="string">'1'</span>);</span><br><span class="line">                        upNum = 0;</span><br><span class="line">                    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                        sb.append(<span class="string">'0'</span>);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(upNum == 1)  sb.append(<span class="string">'1'</span>);</span><br><span class="line">        <span class="built_in">return</span> sb.reverse().toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote><footer><strong>@411</strong><cite><a href="http://www.lintcode.com/zh-cn/problem/gray-code/" target="_blank" rel="noopener">www.lintcode.com/zh-cn/problem/gray-code</a></cite></footer></blockquote>
+<p><div style="background:#BEBEBE"><br><b>题目：411. 格雷编码</b><br>描述：<br>&nbsp;&nbsp;&nbsp;&nbsp;格雷编码是一个二进制数字系统，在该系统中，两个连续的数值仅有一个二进制的差异。给定一个非负整数 n ，表示该代码中所有二进制的总数，请找出其格雷编码顺序。一个格雷编码顺序必须以 0 开始，并覆盖所有的 2n 个整数。<br></div></p>
+<p><div style="background:#66B3FF"><br>注意事项<br>&nbsp;&nbsp;&nbsp;&nbsp;对于给定的 n，其格雷编码顺序并不唯一。<br>&nbsp;&nbsp;&nbsp;&nbsp;根据以上定义， [0,2,3,1] 也是一个有效的格雷编码顺序。<br>样例<br>&nbsp;&nbsp;&nbsp;&nbsp;给定 n = 2， 返回 [0,1,3,2]。其格雷编码顺序为：<br>&nbsp;&nbsp;&nbsp;&nbsp;00 - 0<br>&nbsp;&nbsp;&nbsp;&nbsp;01 - 1<br>&nbsp;&nbsp;&nbsp;&nbsp;11 - 3<br>&nbsp;&nbsp;&nbsp;&nbsp;10 - 2<br></div><br><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">import java.util.*;</span><br><span class="line">public class Solution &#123;</span><br><span class="line">    /**</span><br><span class="line">     * @param n: a number</span><br><span class="line">     * @<span class="built_in">return</span>: Gray code</span><br><span class="line">     */</span><br><span class="line">    public List&lt;Integer&gt; grayCode(int n) &#123;</span><br><span class="line">        // write your code here</span><br><span class="line">        // int N = (int)Math.pow(2,n);</span><br><span class="line">        List&lt;Integer&gt; res = new ArrayList&lt;Integer&gt;();</span><br><span class="line">        <span class="keyword">if</span>(n == 0)&#123;res.add(0);  <span class="built_in">return</span> res;&#125;</span><br><span class="line">        res.add(0);res.add(1);</span><br><span class="line">        <span class="keyword">for</span>(int i=2;i&lt;=n;i++)&#123;</span><br><span class="line">            List&lt;Integer&gt; tmp = new ArrayList&lt;Integer&gt;(res);</span><br><span class="line">            int add = 1&lt;&lt;(i-1);</span><br><span class="line">            <span class="keyword">for</span>(int j=res.size() -1;j &gt;=0;j--) tmp.add(res.get(j)|add);</span><br><span class="line">            res = tmp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote><footer><strong>@1</strong><cite><a href="http://www.lintcode.com/zh-cn/problem/a-b-problem/" target="_blank" rel="noopener">www.lintcode.com/zh-cn/problem/a-b-problem</a></cite></footer></blockquote>
+<p><div style="background:#BEBEBE"><br><b>题目:1. A + B 问题</b><br>描述：给出两个整数a和b, 求他们的和, 但不能使用 + 等数学运算符。<br></div></p>
+<p><div style="background:#66B3FF"><br>说明：<br>a和b都是 32位 整数么？<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;是的<br>我可以使用位运算符么？<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当然可以<br>样例？<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如果 a=1 并且 b=2，返回3<br></div></p>
+<p><div style="background:#28FF28"><br>思路：<br>加法:对于两个数a和b，我们分别计算<b>add = a^b</b>表示本次留下来的bit位，<b> carry=(a&amp;b)&lt;&lt;1 </b>表示发生进位的数。一直重复这样的计算，直到<b>carry=0</b>停止。<br>减法:同于加法,公式为<b>a-b = a + (~b+1)</b><br>限于时间，乘法,除法贴出我觉得好的网站:<a href="https://blog.csdn.net/ojshilu/article/details/11179911" target="_blank" rel="noopener">https://blog.csdn.net/ojshilu/article/details/11179911</a><br>扩展：<br>    <ul style="background:#28FF28"><br>        <li>如何处理乘除的问题？</li><br>    </ul><br></div><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    /**</span><br><span class="line">     * @param a: An <span class="built_in">integer</span></span><br><span class="line">     * @param b: An <span class="built_in">integer</span></span><br><span class="line">     * @<span class="built_in">return</span>: The sum of a and b </span><br><span class="line">     */</span><br><span class="line">    public int aplusb(int a, int b) &#123;</span><br><span class="line">        // write your code here</span><br><span class="line">        <span class="built_in">return</span> add(a,b);</span><br><span class="line">    &#125;</span><br><span class="line">	//两个数相加的代码</span><br><span class="line">    public int add(int a,int b)&#123;</span><br><span class="line">        int carry,add;</span><br><span class="line">        <span class="keyword">do</span>&#123;</span><br><span class="line">            add = a^b;</span><br><span class="line">            carry = (a&amp;b)&lt;&lt;1;</span><br><span class="line">            a = add;</span><br><span class="line">            b = carry;</span><br><span class="line">        &#125;<span class="keyword">while</span>(carry!=0);</span><br><span class="line">        <span class="built_in">return</span> add;</span><br><span class="line">    &#125;</span><br><span class="line">	//两个数的减法</span><br><span class="line">	public int del(int a,int b)&#123;</span><br><span class="line">		<span class="built_in">return</span> add(a,add(~b,1));</span><br><span class="line">	&#125;</span><br><span class="line">	//</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote><footer><strong>@142</strong><cite><a href="http://www.lintcode.com/zh-cn/problem/o1-check-power-of-2/" target="_blank" rel="noopener">www.lintcode.com/zh-cn/problem/o1-check-power-of-2</a></cite></footer></blockquote>
+<p><div style="background:#BEBEBE"><br><b>题目:142. O(1)时间检测2的幂次</b><br>描述：用 O(1) 时间检测整数 n 是否是 2 的幂次。<br></div></p>
+<p><div style="background:#66B3FF"><br>样例<br>n=4，返回 true;<br>n=5，返回 false.<br></div></p>
+<p><div style="background:#28FF28"><br>思路：<br>这里面涉及两个操作:<br>    <p align="center"><br>    <b>n&amp;(-n)</b>获取n上最低位的1<br>    </p><br></div><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    /**</span><br><span class="line">     * @param n: An <span class="built_in">integer</span></span><br><span class="line">     * @<span class="built_in">return</span>: True or <span class="literal">false</span></span><br><span class="line">     */</span><br><span class="line">    public boolean checkPowerOf2(int n) &#123;</span><br><span class="line">        // write your code here</span><br><span class="line">        <span class="keyword">if</span>(n == 0 || n == Integer.MIN_VALUE)  <span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">		//如果n上有不止一个位置上有1,那n一定不是2的幂次</span><br><span class="line">		<span class="built_in">return</span> (n - ( n&amp;(-n) ) ) == 0;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote><footer><strong>@181</strong><cite><a href="http://www.lintcode.com/zh-cn/problem/flip-bits/" target="_blank" rel="noopener">www.lintcode.com/zh-cn/problem/flip-bits</a></cite></footer></blockquote>
+<p><div style="background:#BEBEBE"><br><b>题目:181. 将整数A转换为B </b><br>描述：如果要将整数A转换为B，需要改变多少个bit位？<br></div></p>
+<p><div style="background:#66B3FF"><br>样例<br>如把31转换为14，需要改变2个bit位。<br>(31)10=(11111)2<br>(14)10=(01110)2<br></div></p>
+<p><div style="background:#28FF28"><br>思路：简单的想法就是看a 和 b 有多少不同位<br><b>a|b</b>记录a和b并<br><b>a&amp;b</b>记录a和b交<br><b>(a|b) ^ (a&amp;b)</b>记录a和b有多少位不同，最后再计算有多少位上是1就行了<br>注意：1. JAVA的负数编码问题：假设a是一个正数，那么有<b>-a=(~a+1)</b><br></div><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">//这里要复习一下JAVA对负数的编码方式</span><br><span class="line">public class Solution &#123;</span><br><span class="line">    /**</span><br><span class="line">     * @param a: An <span class="built_in">integer</span></span><br><span class="line">     * @param b: An <span class="built_in">integer</span></span><br><span class="line">     * @<span class="built_in">return</span>: An <span class="built_in">integer</span></span><br><span class="line">     */</span><br><span class="line">    public int bitSwapRequired(int a, int b) &#123;</span><br><span class="line">        // write your code here</span><br><span class="line">        int res = (a|b)^(a&amp;b);</span><br><span class="line">        int count = 0;</span><br><span class="line">        <span class="keyword">while</span>(res != 0)&#123;</span><br><span class="line">            count ++;</span><br><span class="line">            res -= res&amp;(-res);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote><footer><strong>@179</strong><cite><a href="http://www.lintcode.com/zh-cn/problem/update-bits/" target="_blank" rel="noopener">www.lintcode.com/zh-cn/problem/update-bits</a></cite></footer></blockquote>
+<p><div style="background:#BEBEBE"><br><b>题目:179. 更新二进制位</b><br>描述：给出两个32位的整数N和M，以及两个二进制位的位置i和j。写一个方法来使得N中的第i到j位等于M（M会是N中从第i为开始到第j位的子串）<br></div></p>
+<p><div style="background:#66B3FF"><br>说明<br>You can assume that the bits j through i have enough space to fit all of M. That is, if M=10011， you can assume that there are at least 5 bits between j and i. You would not, for example, have j=3 and i=2, because M could not fully fit between bit 3 and bit 2.<br>样例<br>给出N = (10000000000)2，M = (10101)2， i = 2, j = 6<br>返回 N = (10001010100)2<br></div></p>
+<p><div style="background:#28FF28"><br>思路：来一个mask记录最左边的bit位上是0还是1，然后用一个变量来记录就行了。<br></div><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    /**</span><br><span class="line">     * @param n: An <span class="built_in">integer</span></span><br><span class="line">     * @param m: An <span class="built_in">integer</span></span><br><span class="line">     * @param i: A bit position</span><br><span class="line">     * @param j: A bit position</span><br><span class="line">     * @<span class="built_in">return</span>: An <span class="built_in">integer</span></span><br><span class="line">     */</span><br><span class="line">    public int updateBits(int n, int m, int i, int j) &#123;</span><br><span class="line">        // write your code here</span><br><span class="line">        int mask = -1; //-1的二进制编码是全1</span><br><span class="line">        int work = 1&lt;&lt;i;//把work上的比特位移到指定的位置</span><br><span class="line">        <span class="keyword">for</span>(int start =i;start &lt;=j;start ++)&#123;</span><br><span class="line">            mask = mask^work;//把i-j位置上的1，翻转成0</span><br><span class="line">            work = work &lt;&lt; 1;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> (n&amp;mask)|(m&lt;&lt;i);//n&amp;mask把i-j位置上的结果清洗， | m&lt;&lt;i 表示把m移动到对应的位置，并粘贴上去 </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote><footer><strong>@180</strong><cite><a href="http://www.lintcode.com/zh-cn/problem/binary-representation/" target="_blank" rel="noopener">www.lintcode.com/zh-cn/problem/binary-representation</a></cite></footer></blockquote>
+<p><div style="background:#BEBEBE"><br><b>题目:180. 二进制表示</b><br>描述：给定一个数将其转换为二进制（均用字符串表示），如果这个数的小数部分不能在 32 个字符之内来精确地表示，则返回 “ERROR”。<br></div></p>
+<p><div style="background:#66B3FF"><br>样例<br>n = “3.72”, 返回 “ERROR”.<br>n = “3.5”, 返回 “11.1”<br></div></p>
+<p><div style="background:#28FF28"><br>思路:<br>1 整数的编码方式就是常见的二进制编码<br>2 小数部分的二进制编码方式为：假设a&lt;1,如果2<em>a&gt;1，该位编码1，并且a -= 1.如果2</em>a&lt;1,该位编码0.不断重复，直到达到位数的限制。<br></div><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">// import java.util.*;</span><br><span class="line">public class Solution &#123;</span><br><span class="line">    /**</span><br><span class="line">     * @param n: Given a decimal number that is passed <span class="keyword">in</span> as a string</span><br><span class="line">     * @<span class="built_in">return</span>: A string</span><br><span class="line">     */</span><br><span class="line">    public String binaryRepresentation(String n) &#123;</span><br><span class="line">        // write your code here</span><br><span class="line">        String[] strs = n.split(<span class="string">"\\."</span>);</span><br><span class="line">        // System.out.println(strs.length());</span><br><span class="line">        <span class="keyword">if</span>(strs.length ==   1)&#123;</span><br><span class="line">            <span class="built_in">return</span> intSec(strs[0]);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            String left = intSec(strs[0]);</span><br><span class="line">            <span class="keyword">if</span>(left.equals(<span class="string">"-0"</span>))   <span class="built_in">return</span> <span class="string">"ERROR"</span>;</span><br><span class="line">            String right = rigSec(strs[1],32-1-left.length());</span><br><span class="line">            <span class="keyword">if</span>(right.equals(<span class="string">"-1"</span>))  <span class="built_in">return</span> <span class="string">"ERROR"</span>;</span><br><span class="line">            <span class="keyword">if</span>(right.length() ==0)  <span class="built_in">return</span> left;</span><br><span class="line">            <span class="built_in">return</span> left+<span class="string">"."</span>+right;</span><br><span class="line">        &#125;</span><br><span class="line">        // <span class="built_in">return</span> <span class="string">"ERROR"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    public String intSec(String s)&#123;</span><br><span class="line">        <span class="keyword">if</span>(s.length() == 0) <span class="built_in">return</span> <span class="string">""</span>;</span><br><span class="line">        </span><br><span class="line">        // <span class="keyword">if</span>(s.length() &gt; 10)   <span class="built_in">return</span> <span class="string">"-0"</span>;</span><br><span class="line">        int tmp_l = Integer.parseInt(s);</span><br><span class="line">        <span class="keyword">if</span>(tmp_l &gt; Integer.MAX_VALUE)  <span class="built_in">return</span> <span class="string">"-0"</span>;</span><br><span class="line">        int num = (int)tmp_l;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(num == 0)    <span class="built_in">return</span> <span class="string">"0"</span>;</span><br><span class="line">        StringBuilder sb = new StringBuilder();</span><br><span class="line">        <span class="keyword">while</span>(num != 0)&#123;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span>( (num&amp;1) ==1)&#123;</span><br><span class="line">                sb.append(<span class="string">'1'</span>);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                sb.append(<span class="string">'0'</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            num = num &gt;&gt; 1;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> sb.reverse().toString();</span><br><span class="line">    &#125;</span><br><span class="line">    public String rigSec(String rig,int len)&#123;</span><br><span class="line">        // <span class="keyword">if</span>(rig.length() &gt; 10)   <span class="built_in">return</span> <span class="string">"-0"</span>;</span><br><span class="line">        // <span class="keyword">if</span>(rig.length() &gt;=  30)   <span class="built_in">return</span> <span class="string">"-1"</span>;</span><br><span class="line">        long tmp = Long.parseLong(rig);</span><br><span class="line">        // <span class="keyword">if</span>(tmp_l &gt; Integer.MAX_VALUE)  <span class="built_in">return</span> <span class="string">"-0"</span>;</span><br><span class="line">        // int tmp = (int) tmp_l;</span><br><span class="line">        double res= tmp* 1.0;</span><br><span class="line">        int count = rig.length();</span><br><span class="line">        <span class="keyword">while</span>(count -- &gt; 0) res /= 10.0;</span><br><span class="line">        // double res = tmp/(base * 1.0);</span><br><span class="line">        StringBuilder sb = new StringBuilder();</span><br><span class="line">        <span class="keyword">while</span>(len -- &gt;= 0)&#123;</span><br><span class="line">            res *= 2;</span><br><span class="line">            <span class="keyword">if</span>(res &gt;= 1)&#123;</span><br><span class="line">                res -= 1.0;</span><br><span class="line">                sb.append(<span class="string">'1'</span>);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">if</span>(res  &lt; 1e-15) <span class="built_in">break</span>;</span><br><span class="line">                sb.append(<span class="string">'0'</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(res &gt; 1e-15)  <span class="built_in">return</span> <span class="string">"-1"</span>;</span><br><span class="line">        <span class="built_in">return</span> sb.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote><footer><strong>@723</strong><cite><a href="http://www.lintcode.com/zh-cn/problem/rotate-bits-left/" target="_blank" rel="noopener">www.lintcode.com/zh-cn/problem/rotate-bits-left</a></cite></footer></blockquote>
+<p><div style="background:#BEBEBE"><br><b>题目:723. 左旋转二进制位 </b><br>描述：<br>位旋转 -—— 旋转（或循环移位）是类似于移位的操作, 不同的是一端脱落的那一位会被放回到另一端<br>在左旋转中, 左端掉下来的那一位会放在右端<br>假设 n 用 8 位二进制来存. 对 n = 11100101 左旋转 3 位, 得到 n = 00101111 (左移3位, 原先的前3位放在末尾).<br>如果 n 用 16 位或 32 位二进制来存, 那么对 n (000…11100101)左旋转了之后会变成 (00..0011100101000).<br>在本问题中, 你可以假设 n 是用 32 位二进制来存的.<br></div></p>
+<p><div style="background:#66B3FF"><br>样例<br>给出 n = 123, d = 4 返回 183<br></div></p>
+<p><div style="background:#28FF28"><br>思路：来一个mask变量探测最左端的是1还是0，然后拿一个 变量记录结果，最后把这两个变量整合到一起就行了。<br></div><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    /**</span><br><span class="line">     * @param n: a number</span><br><span class="line">     * @param d: digit needed to be rorated</span><br><span class="line">     * @<span class="built_in">return</span>: a number</span><br><span class="line">     */</span><br><span class="line">    public int leftRotate(int n, int d) &#123;</span><br><span class="line">        // write code here</span><br><span class="line">        int mask = 1;</span><br><span class="line">        mask = mask &lt;&lt;31;</span><br><span class="line">        int tail = 0;</span><br><span class="line">        <span class="keyword">for</span>(int i=0;i &lt; d;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>( (n &amp; mask) != 0)   tail = (tail &lt;&lt; 1) + 1;</span><br><span class="line">            <span class="keyword">else</span> tail = tail &lt;&lt; 1;</span><br><span class="line">            n = n &lt;&lt; 1;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> n | tail;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>格式备份<br><blockquote><footer><strong>@title</strong><cite><a href="http://www.lintcode.com/zh-cn/problem/gray-code/" target="_blank" rel="noopener">www.lintcode.com/zh-cn/problem/gray-code</a></cite></footer></blockquote></p>
+<p><div style="background:#BEBEBE"><br><b>题目:</b><br>描述：<br></div></p>
+<p><div style="background:#66B3FF"><br>样例<br></div></p>
+<p><div style="background:#28FF28"><br>思路：<br></div></p>
+<pre><code class="bash">
+</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://dzjbupt.cn/2018/04/04/二进制/" data-id="cjfqu24ba0014q8nad6y0gf2o" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LintCode/">LintCode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/经典面试题/">经典面试题</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/04/04/JAVA基础知识/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          JAVA基础知识
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/04/03/约瑟夫问题/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">约瑟夫问题</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DP/">DP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Heap/">Heap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JAVA基础/">JAVA基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Leetcode/">Leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LintCode/">LintCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hadoop/">hadoop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图论/">图论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经典面试题/">经典面试题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建设/">网站建设</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/DP/" style="font-size: 10px;">DP</a> <a href="/tags/Heap/" style="font-size: 16.67px;">Heap</a> <a href="/tags/JAVA基础/" style="font-size: 10px;">JAVA基础</a> <a href="/tags/Leetcode/" style="font-size: 20px;">Leetcode</a> <a href="/tags/LintCode/" style="font-size: 10px;">LintCode</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/图论/" style="font-size: 10px;">图论</a> <a href="/tags/经典面试题/" style="font-size: 13.33px;">经典面试题</a> <a href="/tags/网站建设/" style="font-size: 10px;">网站建设</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/04/08/线段树/">线段树</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/04/JAVA基础知识/">JAVA基础知识</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/04/二进制/">二进制</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/03/约瑟夫问题/">约瑟夫问题</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/21/计算器系列/">计算器系列</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 阿福<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

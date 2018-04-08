@@ -65,6 +65,168 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-图论-最短路" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/02/图论-最短路/" class="article-date">
+  <time datetime="2018-01-02T14:44:36.000Z" itemprop="datePublished">2018-01-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/02/图论-最短路/">图论-最短路</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>之前就想对常见的图论的算法进行一个总结，借着这个机会开一个坑。</p>
+<h2 id="常见的最短路算法"><a href="#常见的最短路算法" class="headerlink" title="常见的最短路算法"></a>常见的最短路算法</h2><h3 id="floyd-弗洛伊德算法"><a href="#floyd-弗洛伊德算法" class="headerlink" title="floyd 弗洛伊德算法"></a>floyd 弗洛伊德算法</h3><p>思想：想知道a到b点的最短路，只能加入中间节点来缩短路径。那么我们就要遍历所有可能的中间点，才能得到a到b的最短路径。<br>核心代码只有5行</p>
+<pre><code class="bash"><span class="keyword">for</span>(int mid = 0;mid &lt; N;mid++){
+    <span class="keyword">for</span>(int i=0;i &lt; N;i++){
+        <span class="keyword">for</span>(int j=0;j &lt; N;j++){
+        <span class="keyword">if</span>(map[i][j] &gt; map[i][k] + map[k][j])    map[i][j]=map[i][k]+map[k][j];
+        }
+    }
+}
+</code></pre>
+<p>这种算法可以找多源多汇最短路。<br>时间复杂度 O(N^3)<br>空间复杂度 O(N^2)</p>
+<h3 id="dijkstra-狄杰斯特拉-－-邻接矩阵"><a href="#dijkstra-狄杰斯特拉-－-邻接矩阵" class="headerlink" title="dijkstra 狄杰斯特拉 － 邻接矩阵"></a>dijkstra 狄杰斯特拉 － 邻接矩阵</h3><p>思想：这个算法只能计算单源最短路，而且不能计算负权值，这个算法是贪心思想。<br>e[N][N]邻接矩阵 dis[N]初始点到个点的距离 book[N]标记该点最短路是否找到 假设每个量都被正确初始化了。</p>
+<pre><code class="bash"><span class="keyword">for</span>(int <span class="built_in">times</span>=1;<span class="built_in">times</span> &lt; N;<span class="built_in">times</span>++){
+    int min = Integer.MAX_VALUE;
+    int index = -1;
+    //寻找本次最短路，标记为最终最短路
+    <span class="keyword">for</span>(int i=0;i &lt; N;i++){
+        <span class="keyword">if</span>(!book[i] &amp;&amp;dis[i] &lt; min){
+            min = dis[i];
+            index = i;
+        }
+    }
+    <span class="keyword">if</span>(index == -1)    <span class="built_in">break</span>;//提前退出
+    book[index] = <span class="literal">true</span>;
+    <span class="keyword">for</span>(int j=0;j &lt; N;j++){
+        <span class="keyword">if</span>(e[i][j] == Integer.MAX_VALUE){
+            <span class="keyword">if</span>(dis[j] &gt; dis[index] + e[index][j])    dis[j] = dis[index] + e[index][j];
+        }
+    }
+}
+</code></pre>
+<h3 id="dijkstra-狄杰斯特拉-－-邻接表-＋-优先队列"><a href="#dijkstra-狄杰斯特拉-－-邻接表-＋-优先队列" class="headerlink" title="dijkstra 狄杰斯特拉 － 邻接表 ＋ 优先队列"></a>dijkstra 狄杰斯特拉 － 邻接表 ＋ 优先队列</h3><p>例题：leetcode－744<br>输入：<br>times[i] = (u, v, w) u源点v汇点w权重<br>N 网络节点总数<br>K 起始点<br>时间复杂度 O(N^2)<br>空间复杂度 O(N logN)</p>
+<pre><code class="bash">public int networkDelayTime(int[][] <span class="built_in">times</span>,int N,int K){
+    //开空间,用邻接表的方式存储图
+    Map&lt;Integer,List&lt;int[]&gt;&gt; graph = new HashMap&lt;&gt;();
+    //优先队列 &lt;dist , end node&gt;
+    PriorityQueue&lt;int[]&gt; heap = new PriorityQueue&lt;int[]&gt;((info1,info2)-&gt;info1[0] - info2[0]);
+    //距离矩阵 &lt;end node , dist&gt;
+    Map&lt;Integer,Integer&gt; dist = new HashMap&lt;&gt;();
+    //存入数据
+    <span class="keyword">for</span>(int[] edge: <span class="built_in">times</span>){
+        <span class="keyword">if</span>(!graph.containsKey(edge[0])){
+            graph.put(edge[0],new ArrayList&lt;int[]&gt;());
+        }
+        graph.get(edge[0]).add(new int[]{edge[1],edge[2]});
+    }
+    //存入初始点，从K点出发，
+    heap.offer(new int[]{0,K});
+    <span class="keyword">while</span>(!heap.isEmpty()){
+        int[] info = heap.poll();
+        int d = info[0], node = info[1];
+        //如果包含这个点<span class="built_in">continue</span> | 先到先的,因为优先队列能够保证最后的结果是
+        <span class="keyword">if</span>(dist.containsKey(node))    <span class="built_in">continue</span>;
+        //如果出现新的点，放入最后的距离队列
+        dist.put(node,d);
+        //如果图中包含该点到其他点的边
+        <span class="keyword">if</span>(graph.containsKey(node)){
+        //对于出发点的所有边
+            <span class="keyword">for</span>(int[] edge : graph.get(node)){
+                int nei = edge[0], d2 = edge[1];
+                //如果dist中不包含这个尾部节点
+                <span class="keyword">if</span>(!dist.containsKey(nei))
+                    heap.offer(new int[]{d+d2,nei});
+            }
+        }
+    }
+    <span class="keyword">if</span>(dist.size() != N)    <span class="built_in">return</span> -1;
+    int ans = 0;
+    <span class="keyword">for</span>(int cand : dist.values())
+    ans = Math.max(ans,cand);
+    <span class="built_in">return</span> ans;
+}
+</code></pre>
+<h3 id="有权值-Bellman-留坑，有时间再填"><a href="#有权值-Bellman-留坑，有时间再填" class="headerlink" title="有权值 Bellman (留坑，有时间再填)"></a>有权值 Bellman (留坑，有时间再填)</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://dzjbupt.cn/2018/01/02/图论-最短路/" data-id="cjfqu249m0008q8naj00fyh3m" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图论/">图论</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-模板测试页" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/22/模板测试页/" class="article-date">
+  <time datetime="2017-12-22T08:36:33.000Z" itemprop="datePublished">2017-12-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/22/模板测试页/">模板测试页</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>忙完开题，赶紧把网站的坑填了。今天先做一个模板测试页，这里将更新网站各种支持的模板。</p>
+<h1 id="网站模板："><a href="#网站模板：" class="headerlink" title="网站模板："></a>网站模板：</h1><h1 id="lt-空格-gt-一级标题"><a href="#lt-空格-gt-一级标题" class="headerlink" title="#&lt;空格&gt;:一级标题"></a>#&lt;空格&gt;:一级标题</h1><h2 id="lt-空格-gt-二级标题"><a href="#lt-空格-gt-二级标题" class="headerlink" title="##&lt;空格&gt;:二级标题"></a>##&lt;空格&gt;:二级标题</h2><h3 id="lt-空格-gt-三级标题"><a href="#lt-空格-gt-三级标题" class="headerlink" title="###&lt;空格&gt;:三级标题"></a>###&lt;空格&gt;:三级标题</h3><h3 id="bash框"><a href="#bash框" class="headerlink" title="bash框"></a>bash框</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash shell框</span><br></pre></td></tr></table></figure>
+<h3 id="引用框"><a href="#引用框" class="headerlink" title="引用框"></a>引用框</h3><blockquote><p>NEW: DevDocs now comes with syntax highlighting. <a href="http://devdocs.io" target="_blank" rel="noopener">http://devdocs.io</a></p>
+<footer><strong>@DevDocs</strong><cite><a href="https://twitter.com/devdocs/status/356095192085962752" target="_blank" rel="noopener">twitter.com/devdocs/status/356095192085962752</a></cite></footer></blockquote>
+<h3 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h3><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">alert</span>(<span class="string">'Hello World!'</span>);</span><br></pre></td></tr></table></figure>
+<h1 id="网站部署基本命令"><a href="#网站部署基本命令" class="headerlink" title="网站部署基本命令:"></a>网站部署基本命令:</h1><h3 id="生成静态发布的网页"><a href="#生成静态发布的网页" class="headerlink" title="生成静态发布的网页"></a>生成静态发布的网页</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$hexo</span> generate</span><br></pre></td></tr></table></figure>
+<p>或者简写为<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$hexo</span> g</span><br></pre></td></tr></table></figure></p>
+<h3 id="部署到远程服务器"><a href="#部署到远程服务器" class="headerlink" title="部署到远程服务器"></a>部署到远程服务器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$hexo</span> deploy</span><br></pre></td></tr></table></figure>
+<h3 id="单机服务器启动"><a href="#单机服务器启动" class="headerlink" title="单机服务器启动"></a>单机服务器启动</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$hexo</span> server</span><br></pre></td></tr></table></figure>
+<p>启动服务器。默认情况下，访问网址为： <a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a></p>
+<h3 id="生成新的文章"><a href="#生成新的文章" class="headerlink" title="生成新的文章"></a>生成新的文章</h3><p>新建一篇文章。如果没有设置 layout 的话，默认使用 _config.yml 中的 default_layout 参数代替。如果标题包含空格的话，请使用引号括起来。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$hexo</span> new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="网站清理"><a href="#网站清理" class="headerlink" title="网站清理"></a>网站清理</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$hexo</span> clean</span><br></pre></td></tr></table></figure>
+<p>清除缓存文件 (db.json) 和已生成的静态文件 (public)。<br>在某些情况（尤其是更换主题后），如果发现您对站点的更改无论如何也不生效，您可能需要运行该命令。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://dzjbupt.cn/2017/12/22/模板测试页/" data-id="cjfqu249t000eq8nagcmjp3u3" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网站建设/">网站建设</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-hadoop-streaming开坑贴" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/01/07/hadoop-streaming开坑贴/" class="article-date">
@@ -98,7 +260,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://dzjbupt.cn/2017/01/07/hadoop-streaming开坑贴/" data-id="cjfj12i400007z0na0d1h6ir9" class="article-share-link">Share</a>
+      <a data-url="http://dzjbupt.cn/2017/01/07/hadoop-streaming开坑贴/" data-id="cjfqu249q000cq8nancvtecps" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hadoop/">hadoop</a></li></ul>
@@ -128,7 +290,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DP/">DP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Heap/">Heap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Leetcode/">Leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hadoop/">hadoop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图论/">图论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经典面试题/">经典面试题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建设/">网站建设</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DP/">DP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Heap/">Heap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JAVA基础/">JAVA基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Leetcode/">Leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LintCode/">LintCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hadoop/">hadoop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图论/">图论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经典面试题/">经典面试题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建设/">网站建设</a></li></ul>
     </div>
   </div>
 
@@ -138,7 +300,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/DP/" style="font-size: 10px;">DP</a> <a href="/tags/Heap/" style="font-size: 16.67px;">Heap</a> <a href="/tags/Leetcode/" style="font-size: 20px;">Leetcode</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/图论/" style="font-size: 10px;">图论</a> <a href="/tags/经典面试题/" style="font-size: 13.33px;">经典面试题</a> <a href="/tags/网站建设/" style="font-size: 10px;">网站建设</a>
+      <a href="/tags/DP/" style="font-size: 10px;">DP</a> <a href="/tags/Heap/" style="font-size: 16.67px;">Heap</a> <a href="/tags/JAVA基础/" style="font-size: 10px;">JAVA基础</a> <a href="/tags/Leetcode/" style="font-size: 20px;">Leetcode</a> <a href="/tags/LintCode/" style="font-size: 10px;">LintCode</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/图论/" style="font-size: 10px;">图论</a> <a href="/tags/经典面试题/" style="font-size: 13.33px;">经典面试题</a> <a href="/tags/网站建设/" style="font-size: 10px;">网站建设</a>
     </div>
   </div>
 
@@ -160,23 +322,23 @@
       <ul>
         
           <li>
+            <a href="/2018/04/08/线段树/">线段树</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/04/JAVA基础知识/">JAVA基础知识</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/04/二进制/">二进制</a>
+          </li>
+        
+          <li>
             <a href="/2018/04/03/约瑟夫问题/">约瑟夫问题</a>
           </li>
         
           <li>
-            <a href="/2018/04/02/二进制/">二进制</a>
-          </li>
-        
-          <li>
             <a href="/2018/03/21/计算器系列/">计算器系列</a>
-          </li>
-        
-          <li>
-            <a href="/2018/01/05/HEAP-407-Trapping-Rain-Water-II/">HEAP-407.Trapping Rain Water II</a>
-          </li>
-        
-          <li>
-            <a href="/2018/01/05/HEAP-451-Sort-Characters-By-Frequency/">HEAP-451.Sort Characters By Frequency</a>
           </li>
         
       </ul>
