@@ -65,6 +65,53 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Volatile使用" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/22/Volatile使用/" class="article-date">
+  <time datetime="2018-04-22T11:42:02.000Z" itemprop="datePublished">2018-04-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/22/Volatile使用/">Volatile使用</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Java语言中的volatile变量可以被看作一种”程度较轻的synchronized”;与synchronized块相比，volatile变量所需的编码较少，并且运行时开销也较少，但是它所能实现的功能也仅是synchronized的一部分。本文只简要的介绍一下volatile变量，具体内容请看扩展。<br><blockquote><p><br></p>
+<footer><strong>@正确使用Volatile变量</strong><cite><a href="https://www.ibm.com/developerworks/cn/java/j-jtp06197.html" target="_blank" rel="noopener">www.ibm.com/developerworks/cn/java/j-jtp06197.html</a></cite></footer></blockquote><br>锁提供了两种主要特征：互斥(mutual exclusion)和可见性(visiblility)。互斥即一次只允许一个线程持有某个特定的锁，因此可使用该特性实现对共享数据的协调访问协议，这样，一次就只有一个线程能够使用该共享数据。可见性要更加复杂一点，它必须确保释放锁之前对共享数据做出的更改对于随后获得该锁的另一个线程是可见的。</p>
+<h3 id="Volatile变量"><a href="#Volatile变量" class="headerlink" title="Volatile变量"></a>Volatile变量</h3><p>Volatile变量具有synchronized的可见性特征，但是不具备原子特性。这就是说线程能够自动发现volatile变量的最新值。Volatile变量可用于提供线程安全，但是只能应用于非常有限的一组用例：多个变量之间或者某个变量的当前值与修改后值之间没有约束。因此，单独使用volatile还不足以实现计数器，互斥锁或任何具有与多个变量相关的不变式的类。<br>出于简易性或可伸缩的考虑，您可能倾向于使用volatile变量而不是锁。当使用volatile变量而非锁时，某些习惯用法更加易于编码和与阅读。此外，volatile变量不会像锁那样造成线程阻塞，因此也很少造成可伸缩性问题。在某些情况下，如果读操作远远大于写操作，volatile变量还可以提供优于锁的性能优势。</p>
+<h3 id="正确使用Volatile变量的条件"><a href="#正确使用Volatile变量的条件" class="headerlink" title="正确使用Volatile变量的条件"></a>正确使用Volatile变量的条件</h3><p>只能在有限的一些情形下使用volatile变量代替锁。要使volatile变量提供理想的线程安全，必须同时满足下面两个条件：</p>
+<p><ul></ul></p>
+<p><li>对变量的写操作不依赖于当前值</li></p>
+<p><li>该变量没有包含在具有其他变量的不变式中</li><br><br>实际上，这些条件表明，可以被写入volatile变量的这些有效值独立于任何程序的状态，包括变量的当前状态。<br>第一个条件的限制使volatile变量不能用作线程安全计数器。虽然增量操作看上去类似一个单独操作，实际上它是一个由读取-修改-写入操作序列组成的组合操作，必须以原子方式执行，而volatile不能提供必须的原子特性。实现正确的操作需要使x的值在操作期间保持不变，而volatile变量无法实现这点。</p>
+<h3 id="性能考虑"><a href="#性能考虑" class="headerlink" title="性能考虑"></a>性能考虑</h3><p>使用volatile变量的主要原因是其简易：在某些情况下，使用volatile变量要比使用相应的锁简单的多。使用volatile变量次要原因是其性能：某些情况下，volatile变量同步机制的性能要优于锁。<br>在目前大多数的处理器架构上，volatile读操作开销非常低–几乎和非volatile操作一样。而volatile写操作的开销要比非volatile写操作多很多，因为要保证可见性需要实现内存界定。即便如此，volatile的总开销仍然要比锁获取低。<br>volatile操作不会像锁一样造成阻塞，因此，在能够安全使用volatile的情况下，volatile可以提供一些优于锁的可伸缩特性。如果读操作的次数要远远超过写操作，与锁相比，volatile变量通常能够减少同步的性能开销。</p>
+<h3 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h3><p>与锁相比，Volatile变量是一种非常简单但同时又非常脆弱的同步机制，它在某些情况下将提供优于锁的性能和伸缩性。如果严格遵循Volatile的使用条件–即变量真正独立于其他变量和自己以前的值–在某些情况下可以使用volatile代替synchronized来简化代码。然而，使用volatile的代码往往比使用锁的代码更加容易出错。<br>这个篇只是给自己科普一下知识就不深入了，看情况。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://dzjbupt.cn/2018/04/22/Volatile使用/" data-id="cjgasndxm00072snatszoin8m" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVA理论与实践/">JAVA理论与实践</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-线段树" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/04/08/线段树/" class="article-date">
@@ -95,7 +142,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://dzjbupt.cn/2018/04/08/线段树/" data-id="cjfqu249p000bq8nagzd78ns0" class="article-share-link">Teilen</a>
+      <a data-url="http://dzjbupt.cn/2018/04/08/线段树/" data-id="cjgasndy8000k2snabzbz6pip" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/经典面试题/">经典面试题</a></li></ul>
@@ -129,12 +176,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>这里简要的记录一些我不是很清楚的JAVA知识，主要是一些语法相关的知识。至于多线程相关的知识，看我进度吧。<br><b>1<em>数据类型：</em></b><br>1)基本数据类型(8种):byte,short,int,long,float,double,char,boolean。这种数据类型是赋值。<br>2)引用数据类型(3种):数组，类，接口。这种数据类型是引用。<br><b>2如何在java中定义一个数组：</b><br>1)元素类型[] 变量名 = new 元素类型[元素个数];<br>2)元素类型[] 变量名 = {元素1,元素2,…};<br>3)元素类型[] 变量名 = new 元素类型[]{元素1,元素2,…}<br><b>3<em>java分了5片内存</em></b><br>3.1.寄存器<br>3.2.本地方法区<br>3.3.方法区<br>3.4.栈<br>1)栈中存储的都是局部变量(函数中定义的变量，函数上的参数，语句中的变量)，只要数据运算完成所在的区域释放。<br>3.5.堆<br>1)用于存储数组和对象，也就是实体。<br>1.1)每个实体都有内存首地址<br>1.2)堆内存中的变量都有默认初始化值，因为数据类型不同，值也不一样。<br>1.3)垃圾回收机制。<br><b>4类中怎么没有定义主函数？</b><br>1)主函数的存在，仅为该类是否需要独立运行，如果不需要，主函数是不用定义的。<br>2)主函数的解释:保证所在类的独立运行，是程序的入口，被jvm调用。<br><b>5_创建一个对象在内存中做了什么事情？Person p = new Person()</b><br>1)先将硬盘上指定位置的Person.class文件加载进内存。<br>2)执行main方法时，在栈内存中开辟了main方法的空间(压栈-&gt;进栈)，然后在main方法的栈区分配了一个变量p。<br>3)在堆内存中开辟了一个实体空间，分配了一个内存首地址值。new<br>4)在该实体空间中进行属性的空间分配，并进行了默认初始化。<br>5)对空间中的属性进行显示初始化。<br>6)进行实体的构造代码块初始化。<br>7)调用该实体对应的构造函数，进行构造函数的初始化。<br>8)将首地址赋值给p,p变量就引用了该实体。（指向该对象）<br><b>6.static:关键字，是一个修饰符，用于修饰成员</b><br>特点：<br>1.想要实现对象中的共性数据的对象共享。可以将这个数据进行静态修饰。<br>2.被静态修饰的成员，可以直接被类名所调用。也就是说，静态的成员多了一种调用方式。<b>类名.静态方式</b><br>3.静态随着类的加载而加载，而且优先于对象存在。<br>弊端:<br>1.有些数据是对象特有的数据，是不可以被静态修饰的。<br>2.静态方法只能访问静态成员，不可以访问非静态成员。因为静态方法加载时，优先于对象存在，所有没有办法访问对象中的成员。<br><b>7.单例设计模式</b><br>1.解决的问题：保证一个类在内存中的对象唯一性。比如：多程序读取一个配置文件时，建议配置文件封装成对象。会方便操作其中数据，又要保证多个程序读到的是同一个配置文件对象，就需要该配置文件对象在内存中是唯一的。<br>2.如何保证对象的唯一性？<br>1)不让其他程序创建该类的对象。<br>2)在本类中创建一个本类对象。<br>3)对外提供方法，让其他程序获取这个对象。<br>4)步骤<br>4.1)因为创建对象都需要构造函数初始化，只要将本类中的构造函数私有化，其他程序就无法再创建该类。<br>4.2)就在类中创建一个本类的对象。<br>4.3)定义一个方法，返回该对象，让其他程序可以通过方法就能够得到本类对象。这里有两种方式，一种是定义成static，这样这些信息随着类加载的时候就加载进来了。另外一种方式是，等到外部访问这类对象的时候，该对象再加载。<br><b>9.final关键字</b><br>1)这个关键字是一个修饰符，可以修饰类，方法和变量。<br>2)被final修饰的类是一个最终类，不可以被继承。<br>3)被final修饰的方法是一个最终方法，不可以被覆盖。<br>4)被final修饰的变量是一个常量，只能赋值一次。<br><b>抽象类:abstract</b><br>1)抽象方法只能定义在抽象类中，抽象类和抽象方法必须由abstract关键字修饰。<br>2)抽象方法值定义方法声明，并不定义方法实现。<br>3)抽象类不可以被创建对象(实例化)。<br>4)只用通过子类集成并覆盖了抽象类中<b>所有</b>抽象方法后，该子类才可以实例化。<br>5)抽象类的细节：<br>5.1)抽象类中是否有构造函数？有，用于给予抽象类对象进行初始化。<br>5.2)抽象类中是否可以定义非抽象方法？可以，其实，抽象类和一般类没有太大的区别，都是在描述事务，只不过抽象类在描述事物时，有些功能不具体。<br>5.3)抽象关键字abstract和哪些不可以共存?final,private,static<br><b>10.接口</b><br>1)是用关键字interface定义的。<br>2)接口包含的成员，最常见的有全局常量，抽象方法。<br>2.1)接口的成员都有固定的修饰符。<b>成员变量:public static final 成员方法:public abstract</b><br>3)接口中有抽象方法，说明接口不可以实例化。<br>4)类与类之间存在着继承关系，类与接口中间存在的是<b>实现</b>关系。<b>继承用extends,实现用implements</b><br>5)一个类在继承另一个类的同时，还可以实现多个接口。所以<b>接口的出现避免了单继承的局限性</b>。<br>6)其实java中是有多继承的。接口与接口之间存在着继承关系，接口可以多继承接口。<br><b>11.如果想用子类对象的特有方法，如何判断对象是哪个具体的子类类型</b><br>1)可以通过一个关键字instanceof，格式&lt;对象 instanceof 类型&gt;，判断一个对象是否所属于指定的类型。举例：Student instanceof Person = true;//student类继承了person类<br><b>12.异常</b><br>1)定义：就是不正常，程序在运行时出现的不正常的情况。其实就是程序中出现的问题。这个问题按照面向对象思想进行描述，并封装成了对象。因为问题的产生有产生的原因，有问题的名称，有问题的描述等多个属性信息存在。当出现多属性信息最方便的方式就是将这些信息进行封装。异常类：java.lang.Throwable;<br>2)Throwable是可抛出的。Error，错误一般情况下，不编写针对性的代码进行处理，通常是jvm发生的，需要对程序进行修正。Exception,异常，可以有针对性的处理方式。<br>3)对于捕捉，java有针对性的语句块进行处理：<br>try{需要被检测的代码;}catch(异常类 变量名){异常处理代码;}finally{一定会执行的代码;}<br>4)throw和throws关键字的区别：throw用于抛出异常对象，后面跟的是异常对象，throw用在函数内；throws用于抛出异常类，后面跟的异常类名，throws用在函数上。<br>5)异常分为两种：<br>5.1)编译时被检查的异常，只要是Exception及其子类都是编译时被检测的异常。<br>5.2)运行时异常，其中Exception有一个特殊的子类RuntimeException，以及RuntimeException的子类是运行异常，也就是说这个异常时编译时不被检查的异常。<br>6)记住finally很有用，主要用户关闭资源。无论是否发生异常，资源都必须进行关闭。System.exit(0);//退出jvm，只有这种情况finally不执行。<br>7)常见异常：<br>7.1)脚标越界异常(IndexOutOfBoundsException)<br>7.2)空指针异常(NullPointerException)<br>7.3)类型转换异常(ClassCastException)<br>7.4)没有这个元素异常(NullPointerException)<br>7.5)不支持操作异常<br><b>11.java常见的软件包</b><br>1)<b>java.lang</b>language java的核心包，jdk1.2之后，该包中的类被自动导入。<br>2)<b>java.awt</b>定义的都是用于java图形界面开发的对象<br>3)<b>java.swing</b>提供所有的windows桌面应用程序包括控件<br>4)<b>java.net</b>用于java网络编程方面的对象都在该包中<br>5)<b>java.io</b>input,output用于操作设备上数据的对象都在该包中。比如：读取硬盘数据，往硬盘写入数据<br>6)<b>java.util</b>java的工具包，时间对象，集合框架<br><b>12.多线程</b><br>1)<b>进程：</b>正在进行中的程序，其实进程就是一个应用程序运行时的内存分配空间。<br>2)<b>线程：</b>其实就是进程中一个程序执行控制单元，一条执行路径。进程负责的是应用程序的空间标示，线程负责的是应用程序的执行顺序。一个进程至少有一个线程在运行，当一个进程中出现多个线程，就称这个应用程序是多线程应用程序。每个线程在栈区中都有自己的执行空间，自己的方法区，自己的变量。JVM在启动的时候，首先有一个主线程，负责程序的执行，调用的是main函数。主线程执行的代码都在main方法中。当产生垃圾时，收集垃圾的工作，是不需要主线程来完成。因为这样会出现主线程中的代码执行停止，效率较低，所以由单独一个线程来负责垃圾回收。<br>3)<b>随机性原理：</b>因为cpu的快速切换造成，哪个线程获取到了cpu的执行权，哪个线程就执行。<br>3.1)返回当前线程的名称:<b>Thread.currentThread().getName()</b>。<br>3.2)线程的名称是由：<b>Thread-编号</b>定义的，编号从0开始。<br>3.3)线程要运行的代码都统一存放在了<b>run</b>方法中。线程要运行必须要通过类中指定的方法开启，<b>start</b>方法。<br>3.4)创建线程的第一种方式：<b>继承Thread，由子类复写run方法</b><br>3.5)步骤：<br>3.5.1)定义类继承Thread方法。<br>3.5.2)目的是复写run方法，将要让线程运行的代码都存储到run方法中。<br>3.5.3)通过创建Thread类的子类对象，创建线程对象。<br>3.5.4)调用线程的start方法，开启线程，并执行run方法。<br>3.6)创建线程的第二种方式：<b>实现一个接口Runnable</b><br>3.6.1)步骤：<br>3.6.2)定义类实现Runnable接口<br>3.6.3)覆盖接口中的run方法(用于封装线程要运行的代码)<br>3.6.4)通过Thread类创建线程对象<br>3.6.5)<b>将实现了Runnable接口的子类对象作为实际参数传递给Thread类中的构造函数</b><br>3.6.6)调用Thread对象的start方法。开启线程，并运行Runnable接口子类的run方法。<br>3.6.7)举例:Ticket t = new Ticket();Thread t1 = new Thread(t);t1.start();<br>3.6.8)<b>为什么要有Runnable接口的出现？</b>通过继承Thread类的方式，可以完成多线程的建立。但是这种方式有一个局限性，如果一个类已经有了自己的父类，就不可以继承Thread类，因为java单继承的局限性。<br>3.7)线程的状态：<br>3.7.1)被创建：start()；<br>3.7.2)运行：具备执行资格，同时具备执行权；<br>3.7.3)冻结：sleep(time),wait() - notifry()唤醒；线程释放了执行权，同时释放执行资格；<br>3.7.4)临时阻塞状态：线程具备cpu的执行资格，没有cpu的执行权。<br>3.7.5)消亡：stop()<br>3.8）</p>
+        <p>这里简要的记录一些我不是很清楚的JAVA知识，主要是一些语法相关的知识。至于多线程相关的知识，看我进度吧。<br><b>1<em>数据类型：</em></b><br>1)基本数据类型(8种):byte,short,int,long,float,double,char,boolean。这种数据类型是赋值。<br>2)引用数据类型(3种):数组，类，接口。这种数据类型是引用。<br><b>2如何在java中定义一个数组：</b><br>1)元素类型[] 变量名 = new 元素类型[元素个数];<br>2)元素类型[] 变量名 = {元素1,元素2,…};<br>3)元素类型[] 变量名 = new 元素类型[]{元素1,元素2,…}<br><b>3<em>java分了5片内存</em></b><br>3.1.寄存器<br>3.2.本地方法区<br>3.3.方法区<br>3.4.栈<br>1)栈中存储的都是局部变量(函数中定义的变量，函数上的参数，语句中的变量)，只要数据运算完成所在的区域释放。<br>3.5.堆<br>1)用于存储数组和对象，也就是实体。<br>1.1)每个实体都有内存首地址<br>1.2)堆内存中的变量都有默认初始化值，因为数据类型不同，值也不一样。<br>1.3)垃圾回收机制。<br><b>4类中怎么没有定义主函数？</b><br>1)主函数的存在，仅为该类是否需要独立运行，如果不需要，主函数是不用定义的。<br>2)主函数的解释:保证所在类的独立运行，是程序的入口，被jvm调用。<br><b>5_创建一个对象在内存中做了什么事情？Person p = new Person()</b><br>1)先将硬盘上指定位置的Person.class文件加载进内存。<br>2)执行main方法时，在栈内存中开辟了main方法的空间(压栈-&gt;进栈)，然后在main方法的栈区分配了一个变量p。<br>3)在堆内存中开辟了一个实体空间，分配了一个内存首地址值。new<br>4)在该实体空间中进行属性的空间分配，并进行了默认初始化。<br>5)对空间中的属性进行显示初始化。<br>6)进行实体的构造代码块初始化。<br>7)调用该实体对应的构造函数，进行构造函数的初始化。<br>8)将首地址赋值给p,p变量就引用了该实体。（指向该对象）<br><b>6.static:关键字，是一个修饰符，用于修饰成员</b><br>特点：<br>1.想要实现对象中的共性数据的对象共享。可以将这个数据进行静态修饰。<br>2.被静态修饰的成员，可以直接被类名所调用。也就是说，静态的成员多了一种调用方式。<b>类名.静态方式</b><br>3.静态随着类的加载而加载，而且优先于对象存在。<br>弊端:<br>1.有些数据是对象特有的数据，是不可以被静态修饰的。<br>2.静态方法只能访问静态成员，不可以访问非静态成员。因为静态方法加载时，优先于对象存在，所有没有办法访问对象中的成员。<br><b>7.单例设计模式</b><br>1.解决的问题：保证一个类在内存中的对象唯一性。比如：多程序读取一个配置文件时，建议配置文件封装成对象。会方便操作其中数据，又要保证多个程序读到的是同一个配置文件对象，就需要该配置文件对象在内存中是唯一的。<br>2.如何保证对象的唯一性？<br>1)不让其他程序创建该类的对象。<br>2)在本类中创建一个本类对象。<br>3)对外提供方法，让其他程序获取这个对象。<br>4)步骤<br>4.1)因为创建对象都需要构造函数初始化，只要将本类中的构造函数私有化，其他程序就无法再创建该类。<br>4.2)就在类中创建一个本类的对象。<br>4.3)定义一个方法，返回该对象，让其他程序可以通过方法就能够得到本类对象。这里有两种方式，一种是定义成static，这样这些信息随着类加载的时候就加载进来了。另外一种方式是，等到外部访问这类对象的时候，该对象再加载。<br><b>9.final关键字</b><br>1)这个关键字是一个修饰符，可以修饰类，方法和变量。<br>2)被final修饰的类是一个最终类，不可以被继承。<br>3)被final修饰的方法是一个最终方法，不可以被覆盖。<br>4)被final修饰的变量是一个常量，只能赋值一次。<br><b>抽象类:abstract</b><br>1)抽象方法只能定义在抽象类中，抽象类和抽象方法必须由abstract关键字修饰。<br>2)抽象方法值定义方法声明，并不定义方法实现。<br>3)抽象类不可以被创建对象(实例化)。<br>4)只用通过子类集成并覆盖了抽象类中<b>所有</b>抽象方法后，该子类才可以实例化。<br>5)抽象类的细节：<br>5.1)抽象类中是否有构造函数？有，用于给予抽象类对象进行初始化。<br>5.2)抽象类中是否可以定义非抽象方法？可以，其实，抽象类和一般类没有太大的区别，都是在描述事务，只不过抽象类在描述事物时，有些功能不具体。<br>5.3)抽象关键字abstract和哪些不可以共存?final,private,static<br><b>10.接口</b><br>1)是用关键字interface定义的。<br>2)接口包含的成员，最常见的有全局常量，抽象方法。<br>2.1)接口的成员都有固定的修饰符。<b>成员变量:public static final 成员方法:public abstract</b><br>3)接口中有抽象方法，说明接口不可以实例化。<br>4)类与类之间存在着继承关系，类与接口中间存在的是<b>实现</b>关系。<b>继承用extends,实现用implements</b><br>5)一个类在继承另一个类的同时，还可以实现多个接口。所以<b>接口的出现避免了单继承的局限性</b>。<br>6)其实java中是有多继承的。接口与接口之间存在着继承关系，接口可以多继承接口。<br><b>11.如果想用子类对象的特有方法，如何判断对象是哪个具体的子类类型</b><br>1)可以通过一个关键字instanceof，格式&lt;对象 instanceof 类型&gt;，判断一个对象是否所属于指定的类型。举例：Student instanceof Person = true;//student类继承了person类<br><b>12.异常</b><br>1)定义：就是不正常，程序在运行时出现的不正常的情况。其实就是程序中出现的问题。这个问题按照面向对象思想进行描述，并封装成了对象。因为问题的产生有产生的原因，有问题的名称，有问题的描述等多个属性信息存在。当出现多属性信息最方便的方式就是将这些信息进行封装。异常类：java.lang.Throwable;<br>2)Throwable是可抛出的。Error，错误一般情况下，不编写针对性的代码进行处理，通常是jvm发生的，需要对程序进行修正。Exception,异常，可以有针对性的处理方式。<br>3)对于捕捉，java有针对性的语句块进行处理：<br>try{需要被检测的代码;}catch(异常类 变量名){异常处理代码;}finally{一定会执行的代码;}<br>4)throw和throws关键字的区别：throw用于抛出异常对象，后面跟的是异常对象，throw用在函数内；throws用于抛出异常类，后面跟的异常类名，throws用在函数上。<br>5)异常分为两种：<br>5.1)编译时被检查的异常，只要是Exception及其子类都是编译时被检测的异常。<br>5.2)运行时异常，其中Exception有一个特殊的子类RuntimeException，以及RuntimeException的子类是运行异常，也就是说这个异常时编译时不被检查的异常。<br>6)记住finally很有用，主要用户关闭资源。无论是否发生异常，资源都必须进行关闭。System.exit(0);//退出jvm，只有这种情况finally不执行。<br>7)常见异常：<br>7.1)脚标越界异常(IndexOutOfBoundsException)<br>7.2)空指针异常(NullPointerException)<br>7.3)类型转换异常(ClassCastException)<br>7.4)没有这个元素异常(NullPointerException)<br>7.5)不支持操作异常<br><b>11.java常见的软件包</b><br>1)<b>java.lang</b>language java的核心包，jdk1.2之后，该包中的类被自动导入。<br>2)<b>java.awt</b>定义的都是用于java图形界面开发的对象<br>3)<b>java.swing</b>提供所有的windows桌面应用程序包括控件<br>4)<b>java.net</b>用于java网络编程方面的对象都在该包中<br>5)<b>java.io</b>input,output用于操作设备上数据的对象都在该包中。比如：读取硬盘数据，往硬盘写入数据<br>6)<b>java.util</b>java的工具包，时间对象，集合框架<br><b>13.多线程</b><br>1)<b>进程：</b>正在进行中的程序，其实进程就是一个应用程序运行时的内存分配空间。<br>2)<b>线程：</b>其实就是进程中一个程序执行控制单元，一条执行路径。进程负责的是应用程序的空间标示，线程负责的是应用程序的执行顺序。一个进程至少有一个线程在运行，当一个进程中出现多个线程，就称这个应用程序是多线程应用程序。每个线程在栈区中都有自己的执行空间，自己的方法区，自己的变量。JVM在启动的时候，首先有一个主线程，负责程序的执行，调用的是main函数。主线程执行的代码都在main方法中。当产生垃圾时，收集垃圾的工作，是不需要主线程来完成。因为这样会出现主线程中的代码执行停止，效率较低，所以由单独一个线程来负责垃圾回收。<br>3)<b>随机性原理：</b>因为cpu的快速切换造成，哪个线程获取到了cpu的执行权，哪个线程就执行。<br>3.1)返回当前线程的名称:<b>Thread.currentThread().getName()</b>。<br>3.2)线程的名称是由：<b>Thread-编号</b>定义的，编号从0开始。<br>3.3)线程要运行的代码都统一存放在了<b>run</b>方法中。线程要运行必须要通过类中指定的方法开启，<b>start</b>方法。<br>3.4)创建线程的第一种方式：<b>继承Thread，由子类复写run方法</b><br>3.5)步骤：<br>3.5.1)定义类继承Thread方法。<br>3.5.2)目的是复写run方法，将要让线程运行的代码都存储到run方法中。<br>3.5.3)通过创建Thread类的子类对象，创建线程对象。<br>3.5.4)调用线程的start方法，开启线程，并执行run方法。<br>3.6)创建线程的第二种方式：<b>实现一个接口Runnable</b><br>3.6.1)步骤：<br>3.6.2)定义类实现Runnable接口<br>3.6.3)覆盖接口中的run方法(用于封装线程要运行的代码)<br>3.6.4)通过Thread类创建线程对象<br>3.6.5)<b>将实现了Runnable接口的子类对象作为实际参数传递给Thread类中的构造函数</b><br>3.6.6)调用Thread对象的start方法。开启线程，并运行Runnable接口子类的run方法。<br>3.6.7)举例:Ticket t = new Ticket();Thread t1 = new Thread(t);t1.start();<br>3.6.8)<b>为什么要有Runnable接口的出现？</b>通过继承Thread类的方式，可以完成多线程的建立。但是这种方式有一个局限性，如果一个类已经有了自己的父类，就不可以继承Thread类，因为java单继承的局限性。<br>3.7)线程的状态：<br>3.7.1)被创建：start()；<br>3.7.2)运行：具备执行资格，同时具备执行权；<br>3.7.3)冻结：sleep(time),wait() - notifry()唤醒；线程释放了执行权，同时释放执行资格；<br>3.7.4)临时阻塞状态：线程具备cpu的执行资格，没有cpu的执行权。<br>3.7.5)消亡：stop()<br>3.8）</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://dzjbupt.cn/2018/04/04/JAVA基础知识/" data-id="cjfqu24810000q8nane8gr39f" class="article-share-link">Teilen</a>
+      <a data-url="http://dzjbupt.cn/2018/04/04/JAVA基础知识/" data-id="cjgasndxk00052snatckua5wa" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVA基础/">JAVA基础</a></li></ul>
@@ -222,7 +269,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://dzjbupt.cn/2018/04/04/二进制/" data-id="cjfqu24ba0014q8nad6y0gf2o" class="article-share-link">Teilen</a>
+      <a data-url="http://dzjbupt.cn/2018/04/04/二进制/" data-id="cjgasndxt000c2snavocp9fzy" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LintCode/">LintCode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/经典面试题/">经典面试题</a></li></ul>
@@ -268,7 +315,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://dzjbupt.cn/2018/04/03/约瑟夫问题/" data-id="cjfqu24bc0015q8natx0nrlyi" class="article-share-link">Teilen</a>
+      <a data-url="http://dzjbupt.cn/2018/04/03/约瑟夫问题/" data-id="cjgasndy6000i2snaoiyrvh25" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/经典面试题/">经典面试题</a></li></ul>
@@ -313,7 +360,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://dzjbupt.cn/2018/03/21/计算器系列/" data-id="cjfqu24al0011q8na8tn5u8o9" class="article-share-link">Teilen</a>
+      <a data-url="http://dzjbupt.cn/2018/03/21/计算器系列/" data-id="cjgasndya000n2sna00wr8fad" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/经典面试题/">经典面试题</a></li></ul>
@@ -353,7 +400,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://dzjbupt.cn/2018/01/05/HEAP-407-Trapping-Rain-Water-II/" data-id="cjfqu249d0001q8na123a2y7j" class="article-share-link">Teilen</a>
+      <a data-url="http://dzjbupt.cn/2018/01/05/HEAP-407-Trapping-Rain-Water-II/" data-id="cjgasndx200002snazuqbh30u" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Heap/">Heap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Leetcode/">Leetcode</a></li></ul>
@@ -394,7 +441,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://dzjbupt.cn/2018/01/05/HEAP-451-Sort-Characters-By-Frequency/" data-id="cjfqu249j0004q8nakrnzhbx5" class="article-share-link">Teilen</a>
+      <a data-url="http://dzjbupt.cn/2018/01/05/HEAP-451-Sort-Characters-By-Frequency/" data-id="cjgasndxb00012snaliapby7g" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Heap/">Heap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Leetcode/">Leetcode</a></li></ul>
@@ -434,7 +481,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://dzjbupt.cn/2018/01/05/HEAP-502-IPO/" data-id="cjfqu249o0009q8nap1zgul2k" class="article-share-link">Teilen</a>
+      <a data-url="http://dzjbupt.cn/2018/01/05/HEAP-502-IPO/" data-id="cjgasndxg00032snafx0zeefe" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Heap/">Heap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Leetcode/">Leetcode</a></li></ul>
@@ -474,50 +521,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://dzjbupt.cn/2018/01/04/HEAP-659-Split-Array-into-Consecutive-Subsequence/" data-id="cjfqu249i0003q8navat6iiz9" class="article-share-link">Teilen</a>
+      <a data-url="http://dzjbupt.cn/2018/01/04/HEAP-659-Split-Array-into-Consecutive-Subsequence/" data-id="cjgasndxi00042snadba7vou4" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Heap/">Heap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Leetcode/">Leetcode</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-dp-691-Stickers-to-Spell-Word" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/01/04/dp-691-Stickers-to-Spell-Word/" class="article-date">
-  <time datetime="2018-01-04T02:12:27.000Z" itemprop="datePublished">2018-01-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/04/dp-691-Stickers-to-Spell-Word/">dp-691.Stickers to Spell Word</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote><footer><strong>@691</strong><cite><a href="https://leetcode.com/problems/stickers-to-spell-word/description/" target="_blank" rel="noopener">leetcode.com/problems/stickers-to-spell-word/description</a></cite></footer></blockquote>
-<p>2017-01-04<br>rewrite(1) Deng<br>Time O(2^T∗S*len(S)∗T) Space O(2^T)<br>idea:<br>    1 dp<br>    2 把target看成N（target的长度）长的01串，用stickers中的Word不断扫，然后把状态记录到dp中</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int minStickers(String[] stickers, String target) &#123;</span><br><span class="line">        //target的长度</span><br><span class="line">        int N = target.length();</span><br><span class="line">        int[] dp = new int[1 &lt;&lt; N]; // 2^N 的空间复杂度</span><br><span class="line">        <span class="keyword">for</span> (int i = 1; i &lt; 1 &lt;&lt; N; i++) dp[i] = -1; //初始化dp空间</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (int state = 0; state &lt; 1 &lt;&lt; N; state++) &#123;</span><br><span class="line">            //state == 0 时候不会<span class="built_in">continue</span>，走到最近的now上，now上标记着target上哪些char已经被满足了</span><br><span class="line">            //从左到右优先满足</span><br><span class="line">            //如果这个点是不可达的，<span class="built_in">continue</span></span><br><span class="line">            <span class="keyword">if</span> (dp[state] == -1) <span class="built_in">continue</span>;</span><br><span class="line">            //对于所有stickers</span><br><span class="line">            <span class="keyword">for</span> (String sticker: stickers) &#123;</span><br><span class="line">                //记录当前位置</span><br><span class="line">                int now = state;</span><br><span class="line">                //对于每一个sticker，now上标记target被满足的char</span><br><span class="line">                <span class="keyword">for</span> (char letter: sticker.toCharArray()) &#123;</span><br><span class="line">                    <span class="keyword">for</span> (int i = 0; i &lt; N; i++) &#123;</span><br><span class="line">                        //0~N上如果某位为1就会<span class="built_in">continue</span> ， 继续为当前now向前补1</span><br><span class="line">                        <span class="keyword">if</span> (((now &gt;&gt; i) &amp; 1) == 1) <span class="built_in">continue</span>;</span><br><span class="line">                        //如果某位上不为1 并且 == letter</span><br><span class="line">                        <span class="keyword">if</span> (target.charAt(i) == letter) &#123;</span><br><span class="line">                            //now在该位上置1，其实表示的是该位上的数被优先满足了</span><br><span class="line">                            now |= 1 &lt;&lt; i;</span><br><span class="line">                            <span class="built_in">break</span>;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                //填充dp， 从state上花费了一步到达now</span><br><span class="line">                <span class="keyword">if</span> (dp[now] == -1 || dp[now] &gt; dp[state] + 1) &#123;</span><br><span class="line">                    dp[now] = dp[state] + 1;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        //dp的最后一位,也就是所有位都被满足的</span><br><span class="line">        <span class="built_in">return</span> dp[(1 &lt;&lt; N) - 1];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://dzjbupt.cn/2018/01/04/dp-691-Stickers-to-Spell-Word/" data-id="cjfqu249l0005q8nacl9nipcm" class="article-share-link">Teilen</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DP/">DP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Leetcode/">Leetcode</a></li></ul>
 
     </footer>
   </div>
@@ -544,7 +551,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DP/">DP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Heap/">Heap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JAVA基础/">JAVA基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Leetcode/">Leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LintCode/">LintCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hadoop/">hadoop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图论/">图论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经典面试题/">经典面试题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建设/">网站建设</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DP/">DP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Heap/">Heap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JAVA基础/">JAVA基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JAVA理论与实践/">JAVA理论与实践</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Leetcode/">Leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LintCode/">LintCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hadoop/">hadoop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图论/">图论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经典面试题/">经典面试题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建设/">网站建设</a></li></ul>
     </div>
   </div>
 
@@ -554,7 +561,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/DP/" style="font-size: 10px;">DP</a> <a href="/tags/Heap/" style="font-size: 15px;">Heap</a> <a href="/tags/JAVA基础/" style="font-size: 10px;">JAVA基础</a> <a href="/tags/Leetcode/" style="font-size: 20px;">Leetcode</a> <a href="/tags/LintCode/" style="font-size: 10px;">LintCode</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/图论/" style="font-size: 10px;">图论</a> <a href="/tags/经典面试题/" style="font-size: 15px;">经典面试题</a> <a href="/tags/网站建设/" style="font-size: 10px;">网站建设</a>
+      <a href="/tags/DP/" style="font-size: 10px;">DP</a> <a href="/tags/Heap/" style="font-size: 15px;">Heap</a> <a href="/tags/JAVA基础/" style="font-size: 10px;">JAVA基础</a> <a href="/tags/JAVA理论与实践/" style="font-size: 10px;">JAVA理论与实践</a> <a href="/tags/Leetcode/" style="font-size: 20px;">Leetcode</a> <a href="/tags/LintCode/" style="font-size: 10px;">LintCode</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/图论/" style="font-size: 10px;">图论</a> <a href="/tags/经典面试题/" style="font-size: 15px;">经典面试题</a> <a href="/tags/网站建设/" style="font-size: 10px;">网站建设</a>
     </div>
   </div>
 
@@ -576,6 +583,10 @@
       <ul>
         
           <li>
+            <a href="/2018/04/22/Volatile使用/">Volatile使用</a>
+          </li>
+        
+          <li>
             <a href="/2018/04/08/线段树/">线段树</a>
           </li>
         
@@ -589,10 +600,6 @@
         
           <li>
             <a href="/2018/04/03/约瑟夫问题/">约瑟夫问题</a>
-          </li>
-        
-          <li>
-            <a href="/2018/03/21/计算器系列/">计算器系列</a>
           </li>
         
       </ul>
