@@ -65,6 +65,91 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-XGBoost" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/07/XGBoost/" class="article-date">
+  <time datetime="2018-05-07T14:19:05.000Z" itemprop="datePublished">2018-05-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/07/XGBoost/">XGBoost</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://dzjbupt.cn/2018/05/07/XGBoost/" data-id="cjgwc3lt000074cna0ded5cw4" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-矩阵" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/01/矩阵/" class="article-date">
+  <time datetime="2018-05-01T03:12:17.000Z" itemprop="datePublished">2018-05-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/01/矩阵/">矩阵</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;放了很久的假，终于又重新开工了啦，这个专题是矩阵相关的题目。<br>&nbsp;&nbsp;&nbsp;&nbsp;下面是LintCode上遇到的一些题目：</p>
+<ul style="color:#FF0000"><br><li><b>38.Search a 2D Matrix</b></li><br><li><b>161. Rotate Image &lt;简单&gt;</b></li><br><li><b>162. Set Matrix Zeroes &lt;简单&gt;</b></li><br></ul>
+
+<blockquote><footer><strong>@38</strong><cite><a href="https://www.lintcode.com/en/problem/search-a-2d-matrix-ii/" target="_blank" rel="noopener">www.lintcode.com/en/problem/search-a-2d-matrix-ii</a></cite></footer></blockquote>
+<div style="background:#BEBEBE"><br><b>题目:38.Search a 2D Matrix</b><br>描述：<br>Write an efficient algorithm that searches for a value in an m x n matrix, return the occurrence of it.This matrix has the following properties:<br><ul><br><li>Integers in each row are sorted from left to right.</li><br><li>Integers in each column are sorted from up to bottom.</li><br><li>No duplicate integers in each row or column.</li><br></ul><br></div><br><div style="background:#66B3FF"><br>样例：<br>[<br>  [1, 3, 5, 7],<br>  [2, 4, 7, 8],<br>  [3, 5, 9, 10]<br>]<br>Given target = 3, return 2.<br></div>
+
+<p><div style="background:#53FF53"><br>挑战：O(m+n) time and O(1) extra space<br></div><br>思路：<br>r1.首先这题是不适用二分查找方式的。<br>r2.这样的矩阵有一个规律：1.左下角元素看，指针往上变小，指针往右变大。（右上角规律类似）、<br>r3.基于r2中的规律，我们可以从网络的左下角开始遍历矩阵，统计目标数出现的次数。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    /**</span><br><span class="line">     * @param matrix: A list of lists of integers</span><br><span class="line">     * @param target: An <span class="built_in">integer</span> you want to search <span class="keyword">in</span> matrix</span><br><span class="line">     * @<span class="built_in">return</span>: An <span class="built_in">integer</span> indicate the total occurrence of target <span class="keyword">in</span> the given matrix</span><br><span class="line">     */</span><br><span class="line">    public int searchMatrix(int[][] matrix, int target) &#123;</span><br><span class="line">        // write your code here</span><br><span class="line">        <span class="keyword">if</span>(matrix == null || matrix.length == 0 || matrix[0].length == 0)   <span class="built_in">return</span> 0;</span><br><span class="line">        int n = matrix.length;</span><br><span class="line">        int m = matrix[0].length;</span><br><span class="line">        int res =0;</span><br><span class="line">        int col =0;</span><br><span class="line">        int row = n-1;</span><br><span class="line">        <span class="keyword">while</span>(row &gt;= 0 &amp;&amp; row &lt; n &amp;&amp; col &gt;=0 &amp;&amp; col &lt; m)&#123;</span><br><span class="line">            int cur = matrix[row][col];</span><br><span class="line">            <span class="keyword">if</span>(cur == target)&#123;</span><br><span class="line">                res ++;</span><br><span class="line">                row --;</span><br><span class="line">                col ++;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(target &gt; cur)&#123;</span><br><span class="line">                col ++;</span><br><span class="line">            &#125;<span class="keyword">else</span></span><br><span class="line">                row --;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote><footer><strong>@161</strong><cite><a href="https://www.lintcode.com/en/problem/rotate-image/" target="_blank" rel="noopener">www.lintcode.com/en/problem/rotate-image</a></cite></footer></blockquote>
+<p>思路：<br>r1.很简单的矩阵顺时针旋转90度，套用旋转的式子就行了。具体看代码吧。<br>复杂度: Time O(N^2) Space O(1)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    /**</span><br><span class="line">     * @param matrix: a lists of integers</span><br><span class="line">     * @<span class="built_in">return</span>: nothing</span><br><span class="line">     */</span><br><span class="line">    public void rotate(int[][] matrix) &#123;</span><br><span class="line">        // write your code here</span><br><span class="line">        <span class="keyword">if</span>(matrix == null || matrix.length == 0)    <span class="built_in">return</span> ;</span><br><span class="line">        int n = matrix.length;</span><br><span class="line">        <span class="keyword">for</span>(int i=0;i &lt;  n;i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(int j=i;j&lt;n-i-1;j++)&#123;</span><br><span class="line">                rotateOne(matrix,i,j,n-1);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    public void rotateOne(int[][] matrix,int x,int y,int len)&#123;</span><br><span class="line">        int tmp = matrix[x][y];</span><br><span class="line">        matrix[x][y] = matrix[len - y][x];</span><br><span class="line">        matrix[len - y][x] = matrix[len-x][len - y];</span><br><span class="line">        matrix[len-x][len - y] = matrix[y][len-x];</span><br><span class="line">        matrix[y][len-x] = tmp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote><footer><strong>@162</strong><cite><a href="https://www.lintcode.com/en/problem/set-matrix-zeroes/" target="_blank" rel="noopener">www.lintcode.com/en/problem/set-matrix-zeroes</a></cite></footer></blockquote>
+<p>思路：<br>r1.用矩阵第一行和第一列作为标记为位，记录0出现的位置。<br>r2.注意(0,0)这个位置的标计量有重，要用另外的值来记录。<br>复杂度：Time O(N^2) Space O(1)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    /**</span><br><span class="line">     * @param matrix: A lsit of lists of integers</span><br><span class="line">     * @<span class="built_in">return</span>: nothing</span><br><span class="line">     */</span><br><span class="line">    public void setZeroes(int[][] matrix) &#123;</span><br><span class="line">        // write your code here</span><br><span class="line">        <span class="keyword">if</span>(matrix == null || matrix.length ==0 || matrix[0].length ==0 ) <span class="built_in">return</span> ;</span><br><span class="line">        //mark the loc of zero</span><br><span class="line">        int n =matrix.length;</span><br><span class="line">        int m =matrix[0].length;</span><br><span class="line">        //int tmp = matrix[0][0];</span><br><span class="line">        int tmp = -1;</span><br><span class="line">        <span class="keyword">for</span>(int i=0;i &lt; n;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(matrix[i][0] == 0)   tmp =0;</span><br><span class="line">            <span class="keyword">for</span>(int j=1;j &lt; m;j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(matrix[i][j] == 0)&#123;</span><br><span class="line">                    matrix[0][j] = 0;</span><br><span class="line">                    matrix[i][0] = 0;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(int j=1;j &lt; m;j++) <span class="keyword">if</span>(matrix[0][j] == 0) <span class="keyword">for</span>(int i=0;i &lt; n;i++)  matrix[i][j] = 0;</span><br><span class="line">        <span class="keyword">for</span>(int i=0;i &lt; n;i++)  <span class="keyword">if</span>(matrix[i][0] == 0)   <span class="keyword">for</span>(int j=0;j &lt; m;j++)  matrix[i][j] = 0;</span><br><span class="line">        <span class="keyword">if</span>(tmp == 0)   <span class="keyword">for</span>(int i=0;i &lt; n;i++)  matrix[i][0]=0;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://dzjbupt.cn/2018/05/01/矩阵/" data-id="cjgwc3ltn000k4cnaglc7bpht" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LintCode/">LintCode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/经典面试题/">经典面试题</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Volatile使用" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/04/22/Volatile使用/" class="article-date">
@@ -100,7 +185,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://dzjbupt.cn/2018/04/22/Volatile使用/" data-id="cjgasndxm00072snatszoin8m" class="article-share-link">Teilen</a>
+      <a data-url="http://dzjbupt.cn/2018/04/22/Volatile使用/" data-id="cjgwc3lsy00054cnaxhqqgs96" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVA理论与实践/">JAVA理论与实践</a></li></ul>
@@ -142,7 +227,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://dzjbupt.cn/2018/04/08/线段树/" data-id="cjgasndy8000k2snabzbz6pip" class="article-share-link">Teilen</a>
+      <a data-url="http://dzjbupt.cn/2018/04/08/线段树/" data-id="cjgwc3ltq000o4cnaytaqhn68" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/经典面试题/">经典面试题</a></li></ul>
@@ -181,7 +266,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://dzjbupt.cn/2018/04/04/JAVA基础知识/" data-id="cjgasndxk00052snatckua5wa" class="article-share-link">Teilen</a>
+      <a data-url="http://dzjbupt.cn/2018/04/04/JAVA基础知识/" data-id="cjgwc3lt200084cnasain1qsx" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVA基础/">JAVA基础</a></li></ul>
@@ -269,7 +354,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://dzjbupt.cn/2018/04/04/二进制/" data-id="cjgasndxt000c2snavocp9fzy" class="article-share-link">Teilen</a>
+      <a data-url="http://dzjbupt.cn/2018/04/04/二进制/" data-id="cjgwc3lt7000c4cnamvnhxn1s" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LintCode/">LintCode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/经典面试题/">经典面试题</a></li></ul>
@@ -315,7 +400,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://dzjbupt.cn/2018/04/03/约瑟夫问题/" data-id="cjgasndy6000i2snaoiyrvh25" class="article-share-link">Teilen</a>
+      <a data-url="http://dzjbupt.cn/2018/04/03/约瑟夫问题/" data-id="cjgwc3ltp000n4cna0cjt74ea" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/经典面试题/">经典面试题</a></li></ul>
@@ -360,7 +445,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://dzjbupt.cn/2018/03/21/计算器系列/" data-id="cjgasndya000n2sna00wr8fad" class="article-share-link">Teilen</a>
+      <a data-url="http://dzjbupt.cn/2018/03/21/计算器系列/" data-id="cjgwc3lts000q4cnaqcioqwiq" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/经典面试题/">经典面试题</a></li></ul>
@@ -400,7 +485,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://dzjbupt.cn/2018/01/05/HEAP-407-Trapping-Rain-Water-II/" data-id="cjgasndx200002snazuqbh30u" class="article-share-link">Teilen</a>
+      <a data-url="http://dzjbupt.cn/2018/01/05/HEAP-407-Trapping-Rain-Water-II/" data-id="cjgwc3lsi00004cnaqkg9pxop" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Heap/">Heap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Leetcode/">Leetcode</a></li></ul>
@@ -441,87 +526,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://dzjbupt.cn/2018/01/05/HEAP-451-Sort-Characters-By-Frequency/" data-id="cjgasndxb00012snaliapby7g" class="article-share-link">Teilen</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Heap/">Heap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Leetcode/">Leetcode</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-HEAP-502-IPO" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/01/05/HEAP-502-IPO/" class="article-date">
-  <time datetime="2018-01-05T06:59:59.000Z" itemprop="datePublished">2018-01-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/05/HEAP-502-IPO/">HEAP-502.IPO</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote><footer><strong>@502</strong><cite><a href="https://leetcode.com/problems/ipo/description/" target="_blank" rel="noopener">leetcode.com/problems/ipo/description</a></cite></footer></blockquote>
-<p>2017-01-05<br>rewrite(1) Deng<br>Time O(N log N) Space O(N)<br>idea:<br>    贪心算法 ＋ 优先队列<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    // 贪心算法</span><br><span class="line">    public int findMaximizedCapital(int k, int W, int[] Profits, int[] Capital) &#123;</span><br><span class="line">        //容量从小到大的优先队列</span><br><span class="line">        PriorityQueue&lt;int[]&gt; pqCap = new PriorityQueue&lt;&gt;((a, b) -&gt; (a[0] - b[0]));</span><br><span class="line">        //价格从大到小的优先队列</span><br><span class="line">        PriorityQueue&lt;int[]&gt; pqPro = new PriorityQueue&lt;&gt;((a, b) -&gt; (b[1] - a[1]));</span><br><span class="line">        </span><br><span class="line">        //先把所有的东西放到caption 中</span><br><span class="line">        <span class="keyword">for</span> (int i = 0; i &lt; Profits.length; i++) &#123;</span><br><span class="line">            pqCap.add(new int[] &#123;Capital[i], Profits[i]&#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        //总共拿k次</span><br><span class="line">        <span class="keyword">for</span> (int i = 0; i &lt; k; i++) &#123;</span><br><span class="line">            // 本次能拿的最多项目</span><br><span class="line">            <span class="keyword">while</span> (!pqCap.isEmpty() &amp;&amp; pqCap.peek()[0] &lt;= W) &#123;</span><br><span class="line">                pqPro.add(pqCap.poll());</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> (pqPro.isEmpty()) <span class="built_in">break</span>;</span><br><span class="line">            // 可能获取的最大利益</span><br><span class="line">            W += pqPro.poll()[1];</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">return</span> W;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://dzjbupt.cn/2018/01/05/HEAP-502-IPO/" data-id="cjgasndxg00032snafx0zeefe" class="article-share-link">Teilen</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Heap/">Heap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Leetcode/">Leetcode</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-HEAP-659-Split-Array-into-Consecutive-Subsequence" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/01/04/HEAP-659-Split-Array-into-Consecutive-Subsequence/" class="article-date">
-  <time datetime="2018-01-04T11:31:42.000Z" itemprop="datePublished">2018-01-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/04/HEAP-659-Split-Array-into-Consecutive-Subsequence/">HEAP-659.Split Array into Consecutive Subsequence</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote><footer><strong>@659</strong><cite><a href="https://leetcode.com/problems/split-array-into-consecutive-subsequences/description/" target="_blank" rel="noopener">leetcode.com/problems/split-array-into-consecutive-subsequences/description</a></cite></footer></blockquote>
-<p>2018-01-04<br>rewrite(1) Deng<br>Time O(N) Space O(N)<br>idea:<br>    一个新的数只有两个去处：<br>    1 接上之前的数<br>    2 新开一个子串<br>    否则的话就不满足要求。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public boolean isPossible(int[] nums) &#123;</span><br><span class="line">        Counter count = new Counter();</span><br><span class="line">        Counter tails = new Counter();</span><br><span class="line">        //统计数组中出现的num</span><br><span class="line">        <span class="keyword">for</span> (int x: nums) count.add(x, 1);</span><br><span class="line">        </span><br><span class="line">        //对于数组中的每一个num</span><br><span class="line">        <span class="keyword">for</span> (int x: nums) &#123;</span><br><span class="line">            <span class="keyword">if</span> (count.get(x) == 0) &#123;</span><br><span class="line">                <span class="built_in">continue</span>;</span><br><span class="line">            //成为之前子串的tail，优先这一步</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (tails.get(x) &gt; 0) &#123;</span><br><span class="line">                tails.add(x, -1);</span><br><span class="line">                tails.add(x+1, 1);</span><br><span class="line">            //如果这个num 之后两个值存在的话，新组一个子串</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (count.get(x+1) &gt; 0 &amp;&amp; count.get(x+2) &gt; 0) &#123;</span><br><span class="line">                count.add(x+1, -1);</span><br><span class="line">                count.add(x+2, -1);</span><br><span class="line">                //这里放一个元素到tail中作为标记，表示该元素可以往后接的</span><br><span class="line">                tails.add(x+3, 1);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            //1 </span><br><span class="line">            //2 与x+1 x+2组成一对然后删除</span><br><span class="line">            count.add(x, -1);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Counter extends HashMap&lt;Integer, Integer&gt; &#123;</span><br><span class="line">    public int get(int k) &#123;</span><br><span class="line">        //从父类中调用get</span><br><span class="line">        <span class="built_in">return</span> containsKey(k) ? super.get(k) : 0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void add(int k, int v) &#123;</span><br><span class="line">        put(k, get(k) + v);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://dzjbupt.cn/2018/01/04/HEAP-659-Split-Array-into-Consecutive-Subsequence/" data-id="cjgasndxi00042snadba7vou4" class="article-share-link">Teilen</a>
+      <a data-url="http://dzjbupt.cn/2018/01/05/HEAP-451-Sort-Characters-By-Frequency/" data-id="cjgwc3lsv00034cnaa7xzm6nc" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Heap/">Heap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Leetcode/">Leetcode</a></li></ul>
@@ -561,7 +566,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/DP/" style="font-size: 10px;">DP</a> <a href="/tags/Heap/" style="font-size: 15px;">Heap</a> <a href="/tags/JAVA基础/" style="font-size: 10px;">JAVA基础</a> <a href="/tags/JAVA理论与实践/" style="font-size: 10px;">JAVA理论与实践</a> <a href="/tags/Leetcode/" style="font-size: 20px;">Leetcode</a> <a href="/tags/LintCode/" style="font-size: 10px;">LintCode</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/图论/" style="font-size: 10px;">图论</a> <a href="/tags/经典面试题/" style="font-size: 15px;">经典面试题</a> <a href="/tags/网站建设/" style="font-size: 10px;">网站建设</a>
+      <a href="/tags/DP/" style="font-size: 10px;">DP</a> <a href="/tags/Heap/" style="font-size: 16.67px;">Heap</a> <a href="/tags/JAVA基础/" style="font-size: 10px;">JAVA基础</a> <a href="/tags/JAVA理论与实践/" style="font-size: 10px;">JAVA理论与实践</a> <a href="/tags/Leetcode/" style="font-size: 20px;">Leetcode</a> <a href="/tags/LintCode/" style="font-size: 13.33px;">LintCode</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/图论/" style="font-size: 10px;">图论</a> <a href="/tags/经典面试题/" style="font-size: 20px;">经典面试题</a> <a href="/tags/网站建设/" style="font-size: 10px;">网站建设</a>
     </div>
   </div>
 
@@ -570,7 +575,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archiv</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li></ul>
     </div>
   </div>
 
@@ -583,6 +588,14 @@
       <ul>
         
           <li>
+            <a href="/2018/05/07/XGBoost/">XGBoost</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/01/矩阵/">矩阵</a>
+          </li>
+        
+          <li>
             <a href="/2018/04/22/Volatile使用/">Volatile使用</a>
           </li>
         
@@ -592,14 +605,6 @@
         
           <li>
             <a href="/2018/04/04/JAVA基础知识/">JAVA基础知识</a>
-          </li>
-        
-          <li>
-            <a href="/2018/04/04/二进制/">二进制</a>
-          </li>
-        
-          <li>
-            <a href="/2018/04/03/约瑟夫问题/">约瑟夫问题</a>
           </li>
         
       </ul>

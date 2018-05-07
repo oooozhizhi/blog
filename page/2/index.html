@@ -65,6 +65,86 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-HEAP-502-IPO" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/05/HEAP-502-IPO/" class="article-date">
+  <time datetime="2018-01-05T06:59:59.000Z" itemprop="datePublished">2018-01-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/05/HEAP-502-IPO/">HEAP-502.IPO</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote><footer><strong>@502</strong><cite><a href="https://leetcode.com/problems/ipo/description/" target="_blank" rel="noopener">leetcode.com/problems/ipo/description</a></cite></footer></blockquote>
+<p>2017-01-05<br>rewrite(1) Deng<br>Time O(N log N) Space O(N)<br>idea:<br>    贪心算法 ＋ 优先队列<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    // 贪心算法</span><br><span class="line">    public int findMaximizedCapital(int k, int W, int[] Profits, int[] Capital) &#123;</span><br><span class="line">        //容量从小到大的优先队列</span><br><span class="line">        PriorityQueue&lt;int[]&gt; pqCap = new PriorityQueue&lt;&gt;((a, b) -&gt; (a[0] - b[0]));</span><br><span class="line">        //价格从大到小的优先队列</span><br><span class="line">        PriorityQueue&lt;int[]&gt; pqPro = new PriorityQueue&lt;&gt;((a, b) -&gt; (b[1] - a[1]));</span><br><span class="line">        </span><br><span class="line">        //先把所有的东西放到caption 中</span><br><span class="line">        <span class="keyword">for</span> (int i = 0; i &lt; Profits.length; i++) &#123;</span><br><span class="line">            pqCap.add(new int[] &#123;Capital[i], Profits[i]&#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        //总共拿k次</span><br><span class="line">        <span class="keyword">for</span> (int i = 0; i &lt; k; i++) &#123;</span><br><span class="line">            // 本次能拿的最多项目</span><br><span class="line">            <span class="keyword">while</span> (!pqCap.isEmpty() &amp;&amp; pqCap.peek()[0] &lt;= W) &#123;</span><br><span class="line">                pqPro.add(pqCap.poll());</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> (pqPro.isEmpty()) <span class="built_in">break</span>;</span><br><span class="line">            // 可能获取的最大利益</span><br><span class="line">            W += pqPro.poll()[1];</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">return</span> W;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://dzjbupt.cn/2018/01/05/HEAP-502-IPO/" data-id="cjgwc3lsq00014cnakv0m5xxo" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Heap/">Heap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Leetcode/">Leetcode</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-HEAP-659-Split-Array-into-Consecutive-Subsequence" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/04/HEAP-659-Split-Array-into-Consecutive-Subsequence/" class="article-date">
+  <time datetime="2018-01-04T11:31:42.000Z" itemprop="datePublished">2018-01-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/04/HEAP-659-Split-Array-into-Consecutive-Subsequence/">HEAP-659.Split Array into Consecutive Subsequence</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote><footer><strong>@659</strong><cite><a href="https://leetcode.com/problems/split-array-into-consecutive-subsequences/description/" target="_blank" rel="noopener">leetcode.com/problems/split-array-into-consecutive-subsequences/description</a></cite></footer></blockquote>
+<p>2018-01-04<br>rewrite(1) Deng<br>Time O(N) Space O(N)<br>idea:<br>    一个新的数只有两个去处：<br>    1 接上之前的数<br>    2 新开一个子串<br>    否则的话就不满足要求。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public boolean isPossible(int[] nums) &#123;</span><br><span class="line">        Counter count = new Counter();</span><br><span class="line">        Counter tails = new Counter();</span><br><span class="line">        //统计数组中出现的num</span><br><span class="line">        <span class="keyword">for</span> (int x: nums) count.add(x, 1);</span><br><span class="line">        </span><br><span class="line">        //对于数组中的每一个num</span><br><span class="line">        <span class="keyword">for</span> (int x: nums) &#123;</span><br><span class="line">            <span class="keyword">if</span> (count.get(x) == 0) &#123;</span><br><span class="line">                <span class="built_in">continue</span>;</span><br><span class="line">            //成为之前子串的tail，优先这一步</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (tails.get(x) &gt; 0) &#123;</span><br><span class="line">                tails.add(x, -1);</span><br><span class="line">                tails.add(x+1, 1);</span><br><span class="line">            //如果这个num 之后两个值存在的话，新组一个子串</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (count.get(x+1) &gt; 0 &amp;&amp; count.get(x+2) &gt; 0) &#123;</span><br><span class="line">                count.add(x+1, -1);</span><br><span class="line">                count.add(x+2, -1);</span><br><span class="line">                //这里放一个元素到tail中作为标记，表示该元素可以往后接的</span><br><span class="line">                tails.add(x+3, 1);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            //1 </span><br><span class="line">            //2 与x+1 x+2组成一对然后删除</span><br><span class="line">            count.add(x, -1);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Counter extends HashMap&lt;Integer, Integer&gt; &#123;</span><br><span class="line">    public int get(int k) &#123;</span><br><span class="line">        //从父类中调用get</span><br><span class="line">        <span class="built_in">return</span> containsKey(k) ? super.get(k) : 0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void add(int k, int v) &#123;</span><br><span class="line">        put(k, get(k) + v);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://dzjbupt.cn/2018/01/04/HEAP-659-Split-Array-into-Consecutive-Subsequence/" data-id="cjgwc3lsx00044cna5mt17zmk" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Heap/">Heap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Leetcode/">Leetcode</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-dp-691-Stickers-to-Spell-Word" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/01/04/dp-691-Stickers-to-Spell-Word/" class="article-date">
@@ -93,7 +173,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://dzjbupt.cn/2018/01/04/dp-691-Stickers-to-Spell-Word/" data-id="cjgasndxn00082snahudj66gp" class="article-share-link">Teilen</a>
+      <a data-url="http://dzjbupt.cn/2018/01/04/dp-691-Stickers-to-Spell-Word/" data-id="cjgwc3lt5000a4cnamxjgq3x5" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DP/">DP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Leetcode/">Leetcode</a></li></ul>
@@ -204,7 +284,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://dzjbupt.cn/2018/01/02/图论-最短路/" data-id="cjgasndxv000f2snawm8zkmfq" class="article-share-link">Teilen</a>
+      <a data-url="http://dzjbupt.cn/2018/01/02/图论-最短路/" data-id="cjgwc3lti000g4cnas11p96lb" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图论/">图论</a></li></ul>
@@ -255,7 +335,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://dzjbupt.cn/2017/12/22/模板测试页/" data-id="cjgasndy2000g2snaaz19lnzu" class="article-share-link">Teilen</a>
+      <a data-url="http://dzjbupt.cn/2017/12/22/模板测试页/" data-id="cjgwc3ltm000i4cna6exyxnpg" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网站建设/">网站建设</a></li></ul>
@@ -300,7 +380,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://dzjbupt.cn/2017/01/07/hadoop-streaming开坑贴/" data-id="cjgasndxr000a2sna678fu9a1" class="article-share-link">Teilen</a>
+      <a data-url="http://dzjbupt.cn/2017/01/07/hadoop-streaming开坑贴/" data-id="cjgwc3ltc000f4cnawxgcmvrq" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hadoop/">hadoop</a></li></ul>
@@ -340,7 +420,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/DP/" style="font-size: 10px;">DP</a> <a href="/tags/Heap/" style="font-size: 15px;">Heap</a> <a href="/tags/JAVA基础/" style="font-size: 10px;">JAVA基础</a> <a href="/tags/JAVA理论与实践/" style="font-size: 10px;">JAVA理论与实践</a> <a href="/tags/Leetcode/" style="font-size: 20px;">Leetcode</a> <a href="/tags/LintCode/" style="font-size: 10px;">LintCode</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/图论/" style="font-size: 10px;">图论</a> <a href="/tags/经典面试题/" style="font-size: 15px;">经典面试题</a> <a href="/tags/网站建设/" style="font-size: 10px;">网站建设</a>
+      <a href="/tags/DP/" style="font-size: 10px;">DP</a> <a href="/tags/Heap/" style="font-size: 16.67px;">Heap</a> <a href="/tags/JAVA基础/" style="font-size: 10px;">JAVA基础</a> <a href="/tags/JAVA理论与实践/" style="font-size: 10px;">JAVA理论与实践</a> <a href="/tags/Leetcode/" style="font-size: 20px;">Leetcode</a> <a href="/tags/LintCode/" style="font-size: 13.33px;">LintCode</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/图论/" style="font-size: 10px;">图论</a> <a href="/tags/经典面试题/" style="font-size: 20px;">经典面试题</a> <a href="/tags/网站建设/" style="font-size: 10px;">网站建设</a>
     </div>
   </div>
 
@@ -349,7 +429,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archiv</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li></ul>
     </div>
   </div>
 
@@ -362,6 +442,14 @@
       <ul>
         
           <li>
+            <a href="/2018/05/07/XGBoost/">XGBoost</a>
+          </li>
+        
+          <li>
+            <a href="/2018/05/01/矩阵/">矩阵</a>
+          </li>
+        
+          <li>
             <a href="/2018/04/22/Volatile使用/">Volatile使用</a>
           </li>
         
@@ -371,14 +459,6 @@
         
           <li>
             <a href="/2018/04/04/JAVA基础知识/">JAVA基础知识</a>
-          </li>
-        
-          <li>
-            <a href="/2018/04/04/二进制/">二进制</a>
-          </li>
-        
-          <li>
-            <a href="/2018/04/03/约瑟夫问题/">约瑟夫问题</a>
           </li>
         
       </ul>
