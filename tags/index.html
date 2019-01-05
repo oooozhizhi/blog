@@ -11,7 +11,7 @@
 
     <title>
         
-        Volatile使用 - undefined
+        
         
     </title>
 
@@ -59,7 +59,7 @@
                     <span>HOME</span>
                 </a>
             </li>
-            <li >
+            <li  class=active >
                 <a href="/tags">
                     <i class="iconfont icon-biaoqian1"></i>
                     <span>TAGS</span>
@@ -80,12 +80,6 @@
             
         </ul>
     </div>
-    
-        <div id="toc" class="toc-article">
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Volatile变量"><span class="toc-text">Volatile变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#正确使用Volatile变量的条件"><span class="toc-text">正确使用Volatile变量的条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#性能考虑"><span class="toc-text">性能考虑</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#结束语"><span class="toc-text">结束语</span></a></li></ol>
-</div>
-
-
     
 	
 </div>
@@ -130,61 +124,6 @@
     <div class="index-middle">
         <!-- Main Content -->
         
-
-
-<div class="post-container">
-    <div class="post-title">
-        Volatile使用
-    </div>
-
-    <div class="post-meta">
-        <span class="attr">Post：<span>2018-04-22 19:42:02</span></span>
-        
-        <span class="attr">Tags：/
-        
-        <a class="tag" href="/tags/#JAVA理论与实践" title="JAVA理论与实践">JAVA理论与实践</a>
-        <span>/</span>
-        
-        
-        </span>
-        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
-</span>
-</span>
-    </div>
-    <div class="post-content no-indent">
-        <p>Java语言中的volatile变量可以被看作一种”程度较轻的synchronized”;与synchronized块相比，volatile变量所需的编码较少，并且运行时开销也较少，但是它所能实现的功能也仅是synchronized的一部分。本文只简要的介绍一下volatile变量，具体内容请看扩展。<br><blockquote><p><br></p>
-<footer><strong>@正确使用Volatile变量</strong><cite><a href="https://www.ibm.com/developerworks/cn/java/j-jtp06197.html" target="_blank" rel="noopener">www.ibm.com/developerworks/cn/java/j-jtp06197.html</a></cite></footer></blockquote><br>锁提供了两种主要特征：互斥(mutual exclusion)和可见性(visiblility)。互斥即一次只允许一个线程持有某个特定的锁，因此可使用该特性实现对共享数据的协调访问协议，这样，一次就只有一个线程能够使用该共享数据。可见性要更加复杂一点，它必须确保释放锁之前对共享数据做出的更改对于随后获得该锁的另一个线程是可见的。</p>
-<h3 id="Volatile变量"><a href="#Volatile变量" class="headerlink" title="Volatile变量"></a>Volatile变量</h3><p>Volatile变量具有synchronized的可见性特征，但是不具备原子特性。这就是说线程能够自动发现volatile变量的最新值。Volatile变量可用于提供线程安全，但是只能应用于非常有限的一组用例：多个变量之间或者某个变量的当前值与修改后值之间没有约束。因此，单独使用volatile还不足以实现计数器，互斥锁或任何具有与多个变量相关的不变式的类。<br>出于简易性或可伸缩的考虑，您可能倾向于使用volatile变量而不是锁。当使用volatile变量而非锁时，某些习惯用法更加易于编码和与阅读。此外，volatile变量不会像锁那样造成线程阻塞，因此也很少造成可伸缩性问题。在某些情况下，如果读操作远远大于写操作，volatile变量还可以提供优于锁的性能优势。</p>
-<h3 id="正确使用Volatile变量的条件"><a href="#正确使用Volatile变量的条件" class="headerlink" title="正确使用Volatile变量的条件"></a>正确使用Volatile变量的条件</h3><p>只能在有限的一些情形下使用volatile变量代替锁。要使volatile变量提供理想的线程安全，必须同时满足下面两个条件：</p>
-<p><ul></ul></p>
-<p><li>对变量的写操作不依赖于当前值</li></p>
-<p><li>该变量没有包含在具有其他变量的不变式中</li><br><br>实际上，这些条件表明，可以被写入volatile变量的这些有效值独立于任何程序的状态，包括变量的当前状态。<br>第一个条件的限制使volatile变量不能用作线程安全计数器。虽然增量操作看上去类似一个单独操作，实际上它是一个由读取-修改-写入操作序列组成的组合操作，必须以原子方式执行，而volatile不能提供必须的原子特性。实现正确的操作需要使x的值在操作期间保持不变，而volatile变量无法实现这点。</p>
-<h3 id="性能考虑"><a href="#性能考虑" class="headerlink" title="性能考虑"></a>性能考虑</h3><p>使用volatile变量的主要原因是其简易：在某些情况下，使用volatile变量要比使用相应的锁简单的多。使用volatile变量次要原因是其性能：某些情况下，volatile变量同步机制的性能要优于锁。<br>在目前大多数的处理器架构上，volatile读操作开销非常低–几乎和非volatile操作一样。而volatile写操作的开销要比非volatile写操作多很多，因为要保证可见性需要实现内存界定。即便如此，volatile的总开销仍然要比锁获取低。<br>volatile操作不会像锁一样造成阻塞，因此，在能够安全使用volatile的情况下，volatile可以提供一些优于锁的可伸缩特性。如果读操作的次数要远远超过写操作，与锁相比，volatile变量通常能够减少同步的性能开销。</p>
-<h3 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h3><p>与锁相比，Volatile变量是一种非常简单但同时又非常脆弱的同步机制，它在某些情况下将提供优于锁的性能和伸缩性。如果严格遵循Volatile的使用条件–即变量真正独立于其他变量和自己以前的值–在某些情况下可以使用volatile代替synchronized来简化代码。然而，使用volatile的代码往往比使用锁的代码更加容易出错。<br>这个篇只是给自己科普一下知识就不深入了，看情况。</p>
-
-        
-            <div class="donate-container">
-    <div class="donate-button">
-        <button id="donate-button">donate</button>
-    </div>
-    <div class="donate-img-container hide" id="donate-img-container">
-        <img id="donate-img" src="" data-src="/img/favicon.ico">
-        <p> 感谢鼓励 </p>
-    </div>
-</div>
-        
-        <br />
-        <div id="comment-container">
-        </div>
-        <div id="disqus_thread"></div>
-
-        <div id="lv-container">
-        </div>
-
-    </div>
-</div>
-
-
     </div>
 </div>
 
@@ -290,7 +229,7 @@
     // We expose some of the variables needed by the front end
     window.hexo_search_path = ""
     window.hexo_root = "/"
-    window.isPost = true
+    window.isPost = false
 </script>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>

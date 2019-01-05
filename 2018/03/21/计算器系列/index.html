@@ -1,95 +1,157 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
 
-  
-  <title>计算器系列 | 阿福</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="计算器作为一个考察 字符串 + 栈 的题目，觉得在很多的面试中会遇到。如果对这个题目不太熟悉的话，很可能会在上面花费很多的时间。接下来以LEETCODE为基础，讲讲计算器类型题目的解法和这个类型题目的扩展。@224leetcode.com/problems/basic-calculator/description 题目">
-<meta name="keywords" content="经典面试题">
-<meta property="og:type" content="article">
-<meta property="og:title" content="计算器系列">
-<meta property="og:url" content="http://dzjbupt.cn/2018/03/21/计算器系列/index.html">
-<meta property="og:site_name" content="阿福">
-<meta property="og:description" content="计算器作为一个考察 字符串 + 栈 的题目，觉得在很多的面试中会遇到。如果对这个题目不太熟悉的话，很可能会在上面花费很多的时间。接下来以LEETCODE为基础，讲讲计算器类型题目的解法和这个类型题目的扩展。@224leetcode.com/problems/basic-calculator/description 题目(+ - () 计算器)Implement a basic calculator">
-<meta property="og:updated_time" content="2018-03-22T01:22:08.598Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="计算器系列">
-<meta name="twitter:description" content="计算器作为一个考察 字符串 + 栈 的题目，觉得在很多的面试中会遇到。如果对这个题目不太熟悉的话，很可能会在上面花费很多的时间。接下来以LEETCODE为基础，讲讲计算器类型题目的解法和这个类型题目的扩展。@224leetcode.com/problems/basic-calculator/description 题目(+ - () 计算器)Implement a basic calculator">
-  
-    <link rel="alternate" href="/atom.xml" title="阿福" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/style.css">
+    <title>
+        
+        计算器系列 - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
 </head>
 
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">阿福</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">我很懒的。</a>
-        </h2>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://dzjbupt.cn"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="post-计算器系列" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/03/21/计算器系列/" class="article-date">
-  <time datetime="2018-03-21T09:49:39.000Z" itemprop="datePublished">2018-03-21</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      计算器系列
-    </h1>
-  
 
-      </header>
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> 我很懒的。 </i>
+</div>
+
+<div class="index-container">
     
-    <div class="article-entry" itemprop="articleBody">
-      
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/" />
+        </div>
+        <div class="name">
+            <i>阿福</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#题目-计算器"><span class="toc-text">题目(+ - () 计算器)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解法："><span class="toc-text">解法：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#题目-计算器-1"><span class="toc-text">题目 (+ - * / 计算器)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解法：-1"><span class="toc-text">解法：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#前缀表达式-中缀表达式-后缀表达式"><span class="toc-text">前缀表达式-中缀表达式-后缀表达式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#之后将会补充各个表达式之间互相转换的代码。"><span class="toc-text">之后将会补充各个表达式之间互相转换的代码。</span></a></li></ol>
+</div>
+
+
+    
+	
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+<!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC80MTk4Ni8xODUzMw==">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+
+        <div class="index-about-mobile">
+            <i> 我很懒的。 </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        计算器系列
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2018-03-21 17:49:39</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#经典面试题" title="经典面试题">经典面试题</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content no-indent">
         <p>计算器作为一个考察 字符串 + 栈 的题目，觉得在很多的面试中会遇到。如果对这个题目不太熟悉的话，<br>很可能会在上面花费很多的时间。接下来以LEETCODE为基础，讲讲计算器类型题目的解法和这个类型题目的扩展。<br><blockquote><footer><strong>@224</strong><cite><a href="https://leetcode.com/problems/basic-calculator/description/" target="_blank" rel="noopener">leetcode.com/problems/basic-calculator/description</a></cite></footer></blockquote></p>
 <h3 id="题目-计算器"><a href="#题目-计算器" class="headerlink" title="题目(+ - () 计算器)"></a>题目(+ - () 计算器)</h3><p><div style="background:#BEBEBE"><br>Implement a basic calculator to evaluate a simple expression string.<br>The expression string may contain open ( and closing parentheses ), the plus + or minus sign -, non-negative integers and empty spaces .<br>You may assume that the given expression is always valid.<br>Some examples:<br>“1 + 1” = 2<br>“ 2-1 + 2 “ = 3<br>“(1+(4+5+2)-3)+(6+8)” = 23<br></div></p>
 <h3 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h3><p>2018-03-21<br>rewrite(3) Deng<br>Time O(N) Space O(N)<br>idea:<br>主要的思路是开辟两个栈：一个符号栈，一个数字栈。<br>&nbsp;&nbsp;&nbsp;&nbsp;1 利用Character.isDisgit() 来判断一个字母是不是属于数字，如果是数字的话通过：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b> num = 10 * num + (char - ‘0’)</b><br>&nbsp;&nbsp;&nbsp;&nbsp;的方式来获得多位的数字。<br>&nbsp;&nbsp;&nbsp;&nbsp; 2 题目中只有 ‘空格’ ‘ + ‘ ‘ - ‘ ‘(‘ ‘ ) ‘ 四种符号，并且式子都是有意义的。为了保证 + - 号能够正确的计算，每进来一个新符号我们都会计算完之前栈中的结果。<br>&nbsp;&nbsp;&nbsp;&nbsp; 3 最后结束的时候要考虑多种边界条件。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">class Solution&#123;</span><br><span class="line">    public int calculate(String s)&#123;</span><br><span class="line">        Stack&lt;Integer&gt; numStack = new Stack&lt;Integer&gt;();</span><br><span class="line">        Stack&lt;Character&gt; opStack = new Stack&lt;Character&gt;();</span><br><span class="line">        int num = 0;</span><br><span class="line">        boolean flag = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">for</span>(char c : s.toCharArray())&#123;</span><br><span class="line">            <span class="keyword">if</span>(Character.isDigit(c))&#123;</span><br><span class="line">                num = 10*num + (c - <span class="string">'0'</span>);</span><br><span class="line">                flag = <span class="literal">true</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(c == <span class="string">'+'</span>|| c == <span class="string">'-'</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(flag)    numStack.push(num);</span><br><span class="line">                int num1,num2;</span><br><span class="line">                <span class="keyword">while</span>(!opStack.isEmpty() &amp;&amp; opStack.peek() != <span class="string">'('</span>)&#123;</span><br><span class="line">                    num2 = numStack.pop();</span><br><span class="line">                    num1 = numStack.pop();</span><br><span class="line">                    <span class="keyword">if</span>(opStack.peek() == <span class="string">'+'</span>)&#123;</span><br><span class="line">                        numStack.push(num1 + num2);</span><br><span class="line">                    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                        numStack.push(num1 - num2);</span><br><span class="line">                    &#125;</span><br><span class="line">                    opStack.pop();</span><br><span class="line">                &#125;</span><br><span class="line">                opStack.push(c);</span><br><span class="line">                num = 0;</span><br><span class="line">                flag = <span class="literal">false</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(c == <span class="string">'('</span>)&#123;</span><br><span class="line">                opStack.push(c);</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(c == <span class="string">')'</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(flag)    numStack.push(num);</span><br><span class="line">                int num1,num2;</span><br><span class="line">                <span class="keyword">while</span>(opStack.peek() != <span class="string">'('</span>)&#123;</span><br><span class="line">                    num2 = numStack.pop();</span><br><span class="line">                    num1 = numStack.pop();</span><br><span class="line">                    <span class="keyword">if</span>(opStack.peek() == <span class="string">'+'</span>)&#123;</span><br><span class="line">                        numStack.push(num1 + num2);</span><br><span class="line">                    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                        numStack.push(num1 - num2);</span><br><span class="line">                    &#125;</span><br><span class="line">                    opStack.pop();</span><br><span class="line">                &#125;</span><br><span class="line">                opStack.pop();</span><br><span class="line">                num =0;</span><br><span class="line">                flag = <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(flag)&#123;</span><br><span class="line">            <span class="keyword">if</span>(opStack.isEmpty())   <span class="built_in">return</span> num;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">if</span>(opStack.peek() == <span class="string">'-'</span>) <span class="built_in">return</span> numStack.pop() -num;</span><br><span class="line">                <span class="keyword">else</span> <span class="built_in">return</span> numStack.pop() + num;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(opStack.isEmpty()) <span class="built_in">return</span> numStack.pop();</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                int num1 = numStack.pop();</span><br><span class="line">                <span class="keyword">if</span>(opStack.peek() == <span class="string">'-'</span>)   <span class="built_in">return</span> numStack.pop() - num1;</span><br><span class="line">                <span class="keyword">else</span> <span class="built_in">return</span> numStack.pop() +num1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        // <span class="built_in">return</span> 0;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
@@ -98,140 +160,141 @@
 <h3 id="解法：-1"><a href="#解法：-1" class="headerlink" title="解法："></a>解法：</h3><p>2018-03-21<br>rewrite(3) Deng<br>Time O() Space O()<br>idea:<br>&nbsp;&nbsp;&nbsp;&nbsp;跟上面的思路相同，不过引入了两个新的计算符号 ‘*’ ‘/‘ 要注意出现这两个符号要优先计算。不过没有了括号，难度跟上面一致。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int calculate(String s) &#123;</span><br><span class="line">        Stack&lt;Integer&gt; numStack = new Stack&lt;Integer&gt;();</span><br><span class="line">        Stack&lt;Character&gt; opStack = new Stack&lt;Character&gt;();</span><br><span class="line">        int num = 0;</span><br><span class="line">        boolean flag = <span class="literal">false</span>;</span><br><span class="line">        int num1,num2;</span><br><span class="line">        <span class="keyword">for</span>(char c : s.toCharArray())&#123;</span><br><span class="line">            <span class="keyword">if</span>(Character.isDigit(c))&#123;</span><br><span class="line">                num = 10 * num + (c - <span class="string">'0'</span>);</span><br><span class="line">                flag = <span class="literal">true</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(c == <span class="string">'*'</span> || c == <span class="string">'/'</span> || c == <span class="string">'-'</span> || c == <span class="string">'+'</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(flag)    numStack.push(num);</span><br><span class="line">                <span class="keyword">if</span>(!opStack.isEmpty() )&#123;</span><br><span class="line">                    <span class="keyword">if</span>(opStack.peek() == <span class="string">'*'</span>)&#123;</span><br><span class="line">                        num2 = numStack.pop();</span><br><span class="line">                        num1 = numStack.pop();</span><br><span class="line">                        numStack.push(num1 * num2);</span><br><span class="line">                        opStack.pop();</span><br><span class="line">                    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(opStack.peek() == <span class="string">'/'</span>)&#123;</span><br><span class="line">                        num2 = numStack.pop();</span><br><span class="line">                        num1 = numStack.pop();</span><br><span class="line">                        numStack.push(num1 / num2);</span><br><span class="line">                        opStack.pop();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(c != <span class="string">'*'</span> &amp;&amp; c != <span class="string">'/'</span>)&#123;</span><br><span class="line">                    <span class="keyword">while</span>(!opStack.isEmpty())&#123;</span><br><span class="line">                        <span class="keyword">if</span>(opStack.peek() == <span class="string">'+'</span>)&#123;</span><br><span class="line">                            num2 = numStack.pop();</span><br><span class="line">                            num1 = numStack.pop();</span><br><span class="line">                            numStack.push(num1 + num2);</span><br><span class="line">                            opStack.pop();</span><br><span class="line">                        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(opStack.peek() == <span class="string">'-'</span>)&#123;</span><br><span class="line">                            num2 = numStack.pop();</span><br><span class="line">                            num1 = numStack.pop();</span><br><span class="line">                            numStack.push(num1 - num2);</span><br><span class="line">                            opStack.pop();</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                opStack.push(c);</span><br><span class="line">                flag = <span class="literal">false</span>;</span><br><span class="line">                num = 0;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(numStack.isEmpty())  <span class="built_in">return</span> num;</span><br><span class="line">        <span class="keyword">if</span>(flag)    numStack.push(num);</span><br><span class="line">        <span class="keyword">while</span>(!opStack.isEmpty())&#123;</span><br><span class="line">            num2 = numStack.pop();</span><br><span class="line">            num1 =numStack.pop();</span><br><span class="line">            <span class="keyword">if</span>(opStack.peek() == <span class="string">'*'</span>)&#123;</span><br><span class="line">                numStack.push(num1 * num2);</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(opStack.peek() == <span class="string">'/'</span>)&#123;</span><br><span class="line">                numStack.push(num1 / num2);</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(opStack.peek() == <span class="string">'+'</span>)&#123;</span><br><span class="line">                numStack.push(num1 + num2);</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(opStack.peek() == <span class="string">'-'</span>)&#123;</span><br><span class="line">                numStack.push(num1 - num2);</span><br><span class="line">            &#125;</span><br><span class="line">            opStack.pop();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> numStack.peek();</span><br><span class="line">        // <span class="keyword">if</span>(flag)    numStack.push(num);</span><br><span class="line">        // Stack&lt;Integer&gt; rNumStack = new Stack&lt;Integer&gt;();</span><br><span class="line">        // Stack&lt;Character&gt; rOpStack = new Stack</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h3 id="前缀表达式-中缀表达式-后缀表达式"><a href="#前缀表达式-中缀表达式-后缀表达式" class="headerlink" title="前缀表达式-中缀表达式-后缀表达式"></a>前缀表达式-中缀表达式-后缀表达式</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;上面的两个式子都是中缀表达式的计算方式。实际上四则运算中，前缀表达式，中缀表达式，后缀表达式都是四则运算的表达方式，用以四则运算的表达式求值。<br>&nbsp;&nbsp;&nbsp;&nbsp;1 中缀表达式:(3+4)<em>5-6    其实就是常见的运算表达式。<br>&nbsp;&nbsp;&nbsp;&nbsp;2 前缀表达式又称波兰式，<b>前缀表达式的运算符位于操作符之前</b>。比如：-</em>+3456。可以很容易计算出前缀表达式的值。<br>&nbsp;&nbsp;&nbsp;&nbsp;3 后缀表达式又称波兰表达式，与前缀表达式类似，只是运算符位于操作数之后。比如:3 4 + 5 * 6 -</p>
 <h3 id="之后将会补充各个表达式之间互相转换的代码。"><a href="#之后将会补充各个表达式之间互相转换的代码。" class="headerlink" title="之后将会补充各个表达式之间互相转换的代码。"></a>之后将会补充各个表达式之间互相转换的代码。</h3>
-      
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">donate</button>
     </div>
-    <footer class="article-footer">
-      <a data-url="http://dzjbupt.cn/2018/03/21/计算器系列/" data-id="cjgwc3lts000q4cnaqcioqwiq" class="article-share-link">Teilen</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/经典面试题/">经典面试题</a></li></ul>
-
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2018/04/03/约瑟夫问题/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Neuer</strong>
-      <div class="article-nav-title">
-        
-          约瑟夫问题
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2018/01/05/HEAP-407-Trapping-Rain-Water-II/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Älter</strong>
-      <div class="article-nav-title">HEAP-407.Trapping Rain Water II</div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DP/">DP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Heap/">Heap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JAVA基础/">JAVA基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JAVA理论与实践/">JAVA理论与实践</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Leetcode/">Leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LintCode/">LintCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hadoop/">hadoop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图论/">图论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经典面试题/">经典面试题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建设/">网站建设</a></li></ul>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/favicon.ico">
+        <p> 感谢鼓励 </p>
     </div>
-  </div>
+</div>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
 
 
-  
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        <li>
+            <a target="_blank" href="https://twitter.com/iconie_alloy">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-twitter"></i>
+                            </span>
+            </a>
+        </li>
+        
+        
+        <li>
+            <a target="_blank" href="https://www.zhihu.com/people/ai-er-lan-xue-da">
+                            <span class="fa-stack fa-lg">
+                                 <i class="iconfont icon-zhihu"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="http://weibo.com/3286578617">
+                            <span class="fa-stack fa-lg">
+                                  <i class="iconfont icon-weibo"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.facebook.com/xiaotao.nie.5">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-facebook"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/AirCloud">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://www.linkedin.com/in/小涛-聂-80964aba">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/DP/" style="font-size: 10px;">DP</a> <a href="/tags/Heap/" style="font-size: 16.67px;">Heap</a> <a href="/tags/JAVA基础/" style="font-size: 10px;">JAVA基础</a> <a href="/tags/JAVA理论与实践/" style="font-size: 10px;">JAVA理论与实践</a> <a href="/tags/Leetcode/" style="font-size: 20px;">Leetcode</a> <a href="/tags/LintCode/" style="font-size: 13.33px;">LintCode</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/图论/" style="font-size: 10px;">图论</a> <a href="/tags/经典面试题/" style="font-size: 20px;">经典面试题</a> <a href="/tags/网站建设/" style="font-size: 10px;">网站建设</a>
-    </div>
-  </div>
-
-  
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://www.10000h.top">10000H</a></span>
+        <span>/</span>
+        
+        <span><a href="https://niexiaotao.com">Xiaotao&#39;s Page</a></span>
+        <span>/</span>
+        
+        <span><a href="#">It helps SEO</a></span>
+        <span>/</span>
+        
+    </p>
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archiv</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li></ul>
-    </div>
-  </div>
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+		
+		
 
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">letzter Beitrag</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2018/05/07/XGBoost/">XGBoost</a>
-          </li>
-        
-          <li>
-            <a href="/2018/05/01/矩阵/">矩阵</a>
-          </li>
-        
-          <li>
-            <a href="/2018/04/22/Volatile使用/">Volatile使用</a>
-          </li>
-        
-          <li>
-            <a href="/2018/04/08/线段树/">线段树</a>
-          </li>
-        
-          <li>
-            <a href="/2018/04/04/JAVA基础知识/">JAVA基础知识</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2018 阿福<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
 </footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="/js/script.js"></script>
 
 
 
-  </div>
+
+
 </body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = ""
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
 </html>

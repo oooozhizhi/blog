@@ -1,234 +1,297 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
 
-  
-  <title>线段树 | 阿福</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前一段面试，遇到了线段树的问题，这两天抽空把线段树的内容看了下，这里对线段树做一个总结。下面是Lintcode上有关线段树的一些题目:     201.线段树的构造 | 439.线段树的构造II    202.线段树的查询 | 247.线段树的查询II    203.线段树的修改    205.区间最小树    205">
-<meta name="keywords" content="经典面试题">
-<meta property="og:type" content="article">
-<meta property="og:title" content="线段树">
-<meta property="og:url" content="http://dzjbupt.cn/2018/04/08/线段树/index.html">
-<meta property="og:site_name" content="阿福">
-<meta property="og:description" content="前一段面试，遇到了线段树的问题，这两天抽空把线段树的内容看了下，这里对线段树做一个总结。下面是Lintcode上有关线段树的一些题目:     201.线段树的构造 | 439.线段树的构造II    202.线段树的查询 | 247.线段树的查询II    203.线段树的修改    205.区间最小树    205.区间求和I | 207.区间求和II    248.统计比给定整数小的数的个数">
-<meta property="og:updated_time" content="2018-04-10T10:20:03.871Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="线段树">
-<meta name="twitter:description" content="前一段面试，遇到了线段树的问题，这两天抽空把线段树的内容看了下，这里对线段树做一个总结。下面是Lintcode上有关线段树的一些题目:     201.线段树的构造 | 439.线段树的构造II    202.线段树的查询 | 247.线段树的查询II    203.线段树的修改    205.区间最小树    205.区间求和I | 207.区间求和II    248.统计比给定整数小的数的个数">
-  
-    <link rel="alternate" href="/atom.xml" title="阿福" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/style.css">
+    <title>
+        
+        线段树 - undefined
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
 </head>
 
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">阿福</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">我很懒的。</a>
-        </h2>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://dzjbupt.cn"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="post-线段树" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/04/08/线段树/" class="article-date">
-  <time datetime="2018-04-08T13:15:19.000Z" itemprop="datePublished">2018-04-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      线段树
-    </h1>
-  
 
-      </header>
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> 我很懒的。 </i>
+</div>
+
+<div class="index-container">
     
-    <div class="article-entry" itemprop="articleBody">
-      
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/" />
+        </div>
+        <div class="name">
+            <i>阿福</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    
+</div>
+
+
+    
+	
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+<!-- 来必力City版安装代码 -->
+<div id="lv-container" data-id="city" data-uid="MTAyMC80MTk4Ni8xODUzMw==">
+<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+</script>
+<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+
+        <div class="index-about-mobile">
+            <i> 我很懒的。 </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        线段树
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2018-04-08 21:15:19</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#经典面试题" title="经典面试题">经典面试题</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content no-indent">
         <p>前一段面试，遇到了线段树的问题，这两天抽空把线段树的内容看了下，这里对线段树做一个总结。<br>下面是Lintcode上有关线段树的一些题目:</p>
 <p><ul><br>    <li>201.线段树的构造 | 439.线段树的构造II</li><br>    <li>202.线段树的查询 | 247.线段树的查询II</li><br>    <li>203.线段树的修改</li><br>    <li>205.区间最小树</li><br>    <li>205.区间求和I | 207.区间求和II</li><br>    <li>248.统计比给定整数小的数的个数</li><br>    <li>249.统计前面比自己小的数的个数</li><br></ul><br>其实里面重复的内容还挺多的，这里我就统一贴上线段树的代码，包含构造，查询，修改。其他的只需要根据实际问题不同，修改对应的构造，查询方式就可以了。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br></pre></td><td class="code"><pre><span class="line">class SegmentTreeNode&#123;</span><br><span class="line">	//start 开始 end 结束 val 统计量 max 区间最大值 min 区间最小值</span><br><span class="line">    int start,end,val,max,min;</span><br><span class="line">	//left right 左孩纸/右孩纸指针</span><br><span class="line">    SegmentTreeNode left,right;</span><br><span class="line">    public SegmentTreeNode(int start,int end,int sum)&#123;</span><br><span class="line">        this.start = start;</span><br><span class="line">        this.end = end;</span><br><span class="line">        this.val = sum;</span><br><span class="line">        // this.min = min;</span><br><span class="line">        this.left = this.right = null;</span><br><span class="line">    &#125;</span><br><span class="line">    public SegmentTreeNode(int start,int end,int sum,int max,int min)&#123;</span><br><span class="line">        this.start = start;</span><br><span class="line">        this.end = end;</span><br><span class="line">        this.val = sum;</span><br><span class="line">        this.max = max;</span><br><span class="line">        this.min = min;</span><br><span class="line">        // this.min = min;</span><br><span class="line">        this.left = this.right = null;</span><br><span class="line">    &#125;</span><br><span class="line">    //builde Tree</span><br><span class="line">    public SegmentTreeNode build(int[] A) &#123;</span><br><span class="line">        // write your code here</span><br><span class="line">        <span class="keyword">if</span>(A == null || A.length == 0)  <span class="built_in">return</span> null;</span><br><span class="line">        <span class="built_in">return</span> buildTree(A,0,A.length-1);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //builde Tree - 自底向上构建线段树</span><br><span class="line">    public SegmentTreeNode buildTree(int[] A,int start,int end)&#123;</span><br><span class="line">        //如果起始 - 终止 都是自己的话，那么比自己小的数就是没有了 </span><br><span class="line">        <span class="keyword">if</span>(start == end)    <span class="built_in">return</span> new SegmentTreeNode(start,end,1,A[start],A[start]);</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            // init the root value</span><br><span class="line">            SegmentTreeNode root = new SegmentTreeNode(start,end,-1,-1,-1);</span><br><span class="line">            // build the left</span><br><span class="line">            root.left = buildTree(A,start,(start+end)/2);</span><br><span class="line">            //build the right </span><br><span class="line">            root.right = buildTree(A,(start + end)/2 +1,end);</span><br><span class="line">            //自底向上构建</span><br><span class="line">            root.max = Math.max(root.left.max,root.right.max);</span><br><span class="line">            root.min = Math.min(root.left.min,root.right.min);</span><br><span class="line">            root.val = root.left.val + root.right.val;</span><br><span class="line">            //<span class="keyword">if</span>(start == 0)  res[end] = smallCount(root,start,end,A[end]);</span><br><span class="line">            // root.val = Math.max(root.left.val,root.right.val);</span><br><span class="line">            // root.min = Math.min(root.left.min,root.right.min);</span><br><span class="line">            <span class="built_in">return</span> root;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">	//线段树的修改  最大最小值</span><br><span class="line">	public void modify(SegmentTreeNode root, int index, int value) &#123;</span><br><span class="line">        // write your code here</span><br><span class="line">        <span class="keyword">if</span>(index == root.start &amp;&amp; index == root.end)&#123; </span><br><span class="line">			root.max = value;</span><br><span class="line">			root.min = value;</span><br><span class="line">			<span class="built_in">return</span> ;</span><br><span class="line">		&#125;    </span><br><span class="line">        <span class="keyword">if</span>(index &gt;= root.right.start)&#123;</span><br><span class="line">            modify(root.right,index,value);</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(index &lt;= root.left.end)&#123;</span><br><span class="line">            modify(root.left,index,value);</span><br><span class="line">        &#125;</span><br><span class="line">        root.max = Math.max(root.left.max,root.right.max);</span><br><span class="line">		root.min = Math.min(root.left.min,root.right.min);</span><br><span class="line">    &#125;</span><br><span class="line">	//线段树的修改 区间和</span><br><span class="line">    public long modify(SegmentTreeNode root, int index, long value) &#123;</span><br><span class="line">        // write your code here</span><br><span class="line">        <span class="keyword">if</span>(index == root.start &amp;&amp; index == root.end)&#123;</span><br><span class="line">            long tmp = value - root.val;</span><br><span class="line">            root.val = value;</span><br><span class="line">            <span class="built_in">return</span> tmp;</span><br><span class="line">        &#125;    </span><br><span class="line">        long tmp = 0;</span><br><span class="line">        <span class="keyword">if</span>(index &gt;= root.right.start)&#123;</span><br><span class="line">            tmp = modify(root.right,index,value);</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(index &lt;= root.left.end)&#123;</span><br><span class="line">            tmp = modify(root.left,index,value);</span><br><span class="line">        &#125;</span><br><span class="line">        root.sum += tmp ;</span><br><span class="line">        <span class="built_in">return</span> tmp;</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">	//线段树的查询 - 区间的元素个数</span><br><span class="line">	public int query(SegmentTreeNode root, int start, int end) &#123;</span><br><span class="line">        // write your code here</span><br><span class="line">        <span class="keyword">if</span>(root == null)    <span class="built_in">return</span> 0;</span><br><span class="line">        start = Math.max(root.start,start);</span><br><span class="line">        end = Math.min(root.end,end);</span><br><span class="line">        <span class="keyword">if</span>(start &gt; end) <span class="built_in">return</span> 0;</span><br><span class="line">        <span class="keyword">if</span>(start == root.start &amp;&amp; end == root.end)  <span class="built_in">return</span> root.val;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(start &gt;= root.right.start)  <span class="built_in">return</span> query(root.right,start,end);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(end &lt;= root.left.end)   <span class="built_in">return</span> query(root.left,start,end);</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">return</span> query(root.left,start,root.left.end)+query(root.right,root.right.start,end);</span><br><span class="line">    &#125;</span><br><span class="line">	//线段树的查询 - 区间最小数 --- 类似可以做 区间最大数 的查询类似</span><br><span class="line">	public int query(SegmentTreeNode root, int start, int end) &#123;</span><br><span class="line">        // write your code here</span><br><span class="line">        <span class="keyword">if</span>(root == null)    <span class="built_in">return</span> 0;</span><br><span class="line">        start = Math.max(root.start,start);</span><br><span class="line">        end = Math.min(root.end,end);</span><br><span class="line">        <span class="keyword">if</span>(start &gt; end) <span class="built_in">return</span> 0;</span><br><span class="line">        <span class="keyword">if</span>(start == root.start &amp;&amp; end == root.end)  <span class="built_in">return</span> root.min;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(start &gt;= root.right.start)  <span class="built_in">return</span> query(root.right,start,end);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(end &lt;= root.left.end)   <span class="built_in">return</span> query(root.left,start,end);</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">return</span> Math.min(query(root.left,start,root.left.end),query(root.right,root.right.start,end));</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
 <p>对于线段树中的每一个非叶子节点[a,b]，它的左儿子表示的区间为[a,(a+b)/2]，右儿子表示的区间为[(a+b)/2+1,b]。因此线段树是平衡二叉树，最后的子节点数目为N，即整个线段区间的长度。<br>使用线段树可以快速的查找某一个节点在若干条线段中出现的次数，时间复杂度为O(logN）。而未优化的空间复杂度为2N，因此有时需要离散化让空间压缩。<br>线段树对于修改的时间复杂度也是log(N),这样在查询很多的场景中，性能还是挺好的。</p>
 <p>感觉自己对于线段树的了解也暂时停留在这么多，感觉线段树挺复杂的，真正要在短时间写一个还是挺考验熟悉程度的。并且觉得线段树的性能并不是特别的高。。。</p>
 
-      
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">donate</button>
     </div>
-    <footer class="article-footer">
-      <a data-url="http://dzjbupt.cn/2018/04/08/线段树/" data-id="cjgwc3ltq000o4cnaytaqhn68" class="article-share-link">Teilen</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/经典面试题/">经典面试题</a></li></ul>
-
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2018/04/22/Volatile使用/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Neuer</strong>
-      <div class="article-nav-title">
-        
-          Volatile使用
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2018/04/04/JAVA基础知识/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Älter</strong>
-      <div class="article-nav-title">JAVA基础知识</div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DP/">DP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Heap/">Heap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JAVA基础/">JAVA基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JAVA理论与实践/">JAVA理论与实践</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Leetcode/">Leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LintCode/">LintCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hadoop/">hadoop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图论/">图论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经典面试题/">经典面试题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建设/">网站建设</a></li></ul>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/favicon.ico">
+        <p> 感谢鼓励 </p>
     </div>
-  </div>
+</div>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
 
 
-  
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        <li>
+            <a target="_blank" href="https://twitter.com/iconie_alloy">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-twitter"></i>
+                            </span>
+            </a>
+        </li>
+        
+        
+        <li>
+            <a target="_blank" href="https://www.zhihu.com/people/ai-er-lan-xue-da">
+                            <span class="fa-stack fa-lg">
+                                 <i class="iconfont icon-zhihu"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="http://weibo.com/3286578617">
+                            <span class="fa-stack fa-lg">
+                                  <i class="iconfont icon-weibo"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.facebook.com/xiaotao.nie.5">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-facebook"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/AirCloud">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://www.linkedin.com/in/小涛-聂-80964aba">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-linkedin"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+    </ul>
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/DP/" style="font-size: 10px;">DP</a> <a href="/tags/Heap/" style="font-size: 16.67px;">Heap</a> <a href="/tags/JAVA基础/" style="font-size: 10px;">JAVA基础</a> <a href="/tags/JAVA理论与实践/" style="font-size: 10px;">JAVA理论与实践</a> <a href="/tags/Leetcode/" style="font-size: 20px;">Leetcode</a> <a href="/tags/LintCode/" style="font-size: 13.33px;">LintCode</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/图论/" style="font-size: 10px;">图论</a> <a href="/tags/经典面试题/" style="font-size: 20px;">经典面试题</a> <a href="/tags/网站建设/" style="font-size: 10px;">网站建设</a>
-    </div>
-  </div>
-
-  
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://www.10000h.top">10000H</a></span>
+        <span>/</span>
+        
+        <span><a href="https://niexiaotao.com">Xiaotao&#39;s Page</a></span>
+        <span>/</span>
+        
+        <span><a href="#">It helps SEO</a></span>
+        <span>/</span>
+        
+    </p>
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archiv</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li></ul>
-    </div>
-  </div>
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+		
+		
 
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">letzter Beitrag</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2018/05/07/XGBoost/">XGBoost</a>
-          </li>
-        
-          <li>
-            <a href="/2018/05/01/矩阵/">矩阵</a>
-          </li>
-        
-          <li>
-            <a href="/2018/04/22/Volatile使用/">Volatile使用</a>
-          </li>
-        
-          <li>
-            <a href="/2018/04/08/线段树/">线段树</a>
-          </li>
-        
-          <li>
-            <a href="/2018/04/04/JAVA基础知识/">JAVA基础知识</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2018 阿福<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
 </footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="/js/script.js"></script>
 
 
 
-  </div>
+
+
 </body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = ""
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
 </html>
